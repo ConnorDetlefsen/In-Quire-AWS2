@@ -3,6 +3,8 @@ import { ToastContainer, toast } from "react-toastify";
 import http from "../Services/httpService.js";
 import "react-toastify/dist/ReactToastify.css";
 import config from "../config.json";
+import Navbar from "../Components/Nav";
+
 import UserContext from "../Context/UserContext";
 
 class MarketingForm extends Component {
@@ -114,6 +116,7 @@ class MarketingForm extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
+        <Navbar />
         <nav className="navbar navbar-light bg-primary">
           Budget: {team.budget}{" "}
         </nav>

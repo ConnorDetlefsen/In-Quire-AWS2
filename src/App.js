@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Route, Switch } from "react-router-dom";
 import Login from "./Components/loginForm";
 import Inventory from "./Pages/inventoryForm";
-import Nav from "./Components/Nav";
+// import Nav from "./Components/Nav";
 import Marketing from "./Pages/MarketingForm";
 import Messages from "./Pages/messagingForm";
 import Finances from "./Pages/financesForm";
@@ -12,6 +12,7 @@ import Location from "./Pages/locationComponent";
 import Overview from "./Pages/overviewComponent";
 import BuyData from "./Pages/buyDataForm";
 import { UserContext } from "./Context/UserContext";
+//          {this.state.currentUser.name !== null && <Nav></Nav>}
 
 class App extends Component {
   handleLoggedIn = (username) => {
@@ -29,7 +30,6 @@ class App extends Component {
             onLoggedIn: this.handleLoggedIn,
           }}
         >
-          <Nav />
           <div className="mainContent">
             <Switch>
               <Route path="/overview" component={Overview} />

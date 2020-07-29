@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import http from "../Services/httpService";
 import config from "../config.json";
 import UserContext from "../Context/UserContext";
+import Navbar from "../Components/Nav";
+
 class financesForm extends Component {
   static contextType = UserContext;
 
@@ -23,6 +25,7 @@ class financesForm extends Component {
     const { finances } = this.state;
     return (
       <div>
+        <Navbar />
         <table className="financeTable">
           <thead>
             <tr>

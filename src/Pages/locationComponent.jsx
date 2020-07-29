@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 import Joi from "joi-browser";
+import Navbar from "../Components/Nav";
 
 const mapStyles = {
   width: "70%",
@@ -52,6 +53,7 @@ export class locationComponent extends Component {
   render() {
     return (
       <React.Fragment>
+        <Navbar />
         <Map
           google={this.props.google}
           zoom={14}

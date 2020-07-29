@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Info from "../Components/teamInfo";
+import Navbar from "../Components/Nav";
 
 class overviewComponent extends Component {
   render() {
     return (
       <React.Fragment>
+        <Navbar />
         <div className="container">
           <Info></Info>
           <section className="col main">

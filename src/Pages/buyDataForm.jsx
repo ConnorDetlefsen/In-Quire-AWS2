@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import UserContext from "../Context/UserContext";
 import http from "../Services/httpService";
 import config from "../config.json";
+import Navbar from "../Components/Nav";
 
 //const test = "S3_test.pdf";
 const txt = "S3_pull.txt";
@@ -63,6 +64,7 @@ class buyDataForm extends Component {
     const { team } = this.state;
     return (
       <React.Fragment>
+        <Navbar />
         <nav className="navbar navbar-light bg-primary">
           Budget: {team.budget}{" "}
         </nav>

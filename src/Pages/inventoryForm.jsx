@@ -5,7 +5,7 @@ import Input from "../Components/inventoryInput";
 import http from "../Services/httpService";
 import config from "../config.json";
 import UserContext from "../Context/UserContext";
-
+import Navbar from "../Components/Nav";
 class inventoryForm extends Component {
   static contextType = UserContext;
 
@@ -265,6 +265,7 @@ class inventoryForm extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
+        <Navbar />
         <nav className="navbar navbar-light bg-primary">
           Budget: {team.budget}{" "}
         </nav>

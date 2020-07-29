@@ -3,6 +3,7 @@ import http from "../Services/httpService";
 import config from "../config.json";
 import UserContext from "../Context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
+import Navbar from "../Components/Nav";
 
 class messagingForm extends Component {
   static contextType = UserContext;
@@ -48,7 +49,7 @@ class messagingForm extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
-
+        <Navbar />
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <p>Send a message to the team!</p>
