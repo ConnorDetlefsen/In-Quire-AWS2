@@ -20,8 +20,8 @@ class MarketingForm extends Component {
       errors: {},
       team: [],
     };
-    /*this.handleDropdownChange = this.handleDropdownChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDropdownChange = this.handleDropdownChange.bind(this);
+    /*this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this); */
   }
 
@@ -80,9 +80,16 @@ class MarketingForm extends Component {
   };
   budgetUpdate = async (team) => {
     const amount = this.state.amount;
-    const budget = this.context.currentUser.budget; // used to set api team.budget
+    const budget = team.budget; // used to set api team.budget
 
+    const isBudgetNotNegative = parseInt(budget, 10) - parseInt(amount, 10);
+    console.log(isBudgetNotNegative);
+    if (isBudgetNotNegative < 0) {
+      toast.error("You don't have enough money!");
+      return;
+    }
     team.budget = parseInt(budget, 10) - parseInt(amount, 10);
+
     this.context.currentUser.budget = team.budget; //updates the context
 
     const { data } = await http.put(
@@ -90,6 +97,7 @@ class MarketingForm extends Component {
       team
     );
     console.log(data);
+    this.putSubmit(this.state.marketing);
   };
 
   handleSubmit = (e) => {
@@ -99,7 +107,6 @@ class MarketingForm extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
 
-    this.putSubmit(this.state.marketing);
     this.budgetUpdate(this.state.team);
   };
 
@@ -122,43 +129,75 @@ class MarketingForm extends Component {
         </nav>
 
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Select Marketing Type
-            <select
-              id="dropdown"
-              className="message-box"
-              onChange={this.handleDropdownChange}
-              value={this.state.selectValue}
+          <div>
+            <div>
+              <label>
+                Select Marketing Type
+                <select
+                  id="dropdown"
+                  class=" form-control form-control-sm "
+                  onChange={this.handleDropdownChange}
+                  value={this.state.selectValue}
+                >
+                  <option value="facebook">Facebook</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="newspaper">Newspaper</option>
+                  <option value="television">Television</option>
+                </select>
+              </label>
+            </div>
+            <div>
+              <label>Amount $ </label>
+              <input
+                value={this.state.amount}
+                onChange={this.handleChange}
+                name="amount"
+                type="number"
+                class="form-control form-control-sm "
+                id="amount"
+                error={errors.amount}
+              />
+            </div>
+            <div class="divider" />
+            <button
+              disabled={!this.context.currentUser.isManager}
+              type="submit"
+              margin-top=".5em"
+              class="btn btn-primary"
             >
-              <option value="facebook">Facebook</option>
-              <option value="instagram">Instagram</option>
-              <option value="newspaper">Newspaper</option>
-              <option value="television">Television</option>
-            </select>
-          </label>
-          <div className="form-group">
-            <label>Amount $ </label>
-            <input
-              value={this.state.amount}
-              onChange={this.handleChange}
-              name="amount"
-              type="number"
-              className="test"
-              id="amount"
-              error={errors.amount}
-            />
+              Submit
+            </button>
           </div>
-
-          <button type="submit" className="inv-btn" margin-top=".5em">
-            Submit
-          </button>
         </form>
-        <div>
-          <h1>Team ID: {this.context.currentUser.teamID}</h1>
-          <h1>Facebook: {marketing.facebook}</h1>
-          <h1>Instagram: {marketing.instagram}</h1>
-          <h1>Television: {marketing.television}</h1>
-          <h1>Newspaper: {marketing.newspaper}</h1>
+        <div class="row">
+          <div class="column">
+            <div class="card">
+              <h4>Facebook Marketing</h4>
+              <p>Description of what is included in this data package</p>
+              <h5>Amount Spent: {marketing.facebook}</h5>
+            </div>
+          </div>
+          <div class="column">
+            <div class="card">
+              <h4>Instagram Marketing</h4>
+              <p>Description of what is included in this data package</p>
+              <h5>Amount Spent: {marketing.instagram}</h5>
+            </div>
+          </div>
+          <div class="column">
+            <div class="card">
+              <h4>Newspaper Marketing</h4>
+              <p>Description of what is included in this data package</p>
+              <h5>Amount Spent: {marketing.newspaper}</h5>
+            </div>
+          </div>
+          <div class="column">
+            <div class="card">
+              <h4>Television Marketing</h4>
+              <p>Description of what is included in this data package</p>
+              <h5>Amount Spent: {marketing.television}</h5>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     );

@@ -2,27 +2,202 @@ import React, { Component } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 import Joi from "joi-browser";
 import Navbar from "../Components/Nav";
+import UserContext from "../Context/UserContext";
+import config from "../config.json";
+import http from "../Services/httpService.js";
+import { ToastContainer, toast } from "react-toastify";
+import store1 from "../Store-Images/1.jpg";
+import store2 from "../Store-Images/2.jpg";
+import store3 from "../Store-Images/3.jpg";
 
 const mapStyles = {
-  width: "70%",
-  height: "80%",
+  width: "90%",
+  height: "100%",
   color: "black",
 };
 
-export class locationComponent extends Component {
-  state = {
-    showingInfoWindow: false, //Hides or the shows the infoWindow
-    activeMarker: {}, //Shows the active marker upon click
-    selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
-    markerList: [
-      { lat: 33.789, lng: -117.851 },
-      { lat: 33.79, lng: -117.858 },
-      { lat: 33.81, lng: -177.839 },
-      { lat: 33.756, lng: -177.849 },
-    ],
-    bid: 0,
-    errors: {},
+class locationComponent extends Component {
+  static contextType = UserContext;
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showingInfoWindow: false, //Hides or the shows the infoWindow
+      activeMarker: {}, //Shows the active marker upon click
+      selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
+      selectValue: "1",
+      amount: 0,
+      errors: {},
+      team: [],
+      locations: [],
+
+      test: "this is state test",
+
+      prevID: 1,
+      location: [],
+      prevTeam: [],
+    };
+    this.handleDropdownChange = this.handleDropdownChange.bind(this);
+  }
+
+  async componentDidMount() {
+    http
+      .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
+      .then((res) => {
+        this.setState({ team: res.data });
+        console.log(res);
+      });
+    http.get(config.apiEndpoint + "/location/").then((res) => {
+      this.setState({ locations: res.data });
+      console.log(res);
+    });
+  }
+  validate = () => {
+    const errors = {};
+
+    const { amount, selectValue } = this.state;
+    if (amount < 0) {
+      errors.amount = "Amount cannot be negative!";
+      toast.error(`${errors.amount}`);
+    }
+    if (selectValue === "select") {
+      errors.selectValue = "Please enter a location ID!";
+      toast.error(`${errors.selectValue}`);
+    }
+
+    return Object.keys(errors).length === 0 ? null : errors;
   };
+  /*  we do this in the getCurrent function now
+  getLocation = async (location) => {
+    //this works kinda
+    const locationID = this.state.selectValue;
+    http.get(config.apiEndpoint + "/location/" + locationID).then((res) => {
+      this.setState({ location: res.data });
+      console.log(res);
+    });
+  };*/
+
+  /* we do this in getCurrent now
+  getPrevTeam = async (prevTeam) => {
+    const { locations } = this.state;
+
+    const locationID = this.state.selectValue;
+
+    for (let x in locations) {
+      if (locationID === locations[x].location_id) {
+        this.state.prevID = locations[x].team_id;
+        //this.setState({ prevID: locations[x].team_id });
+        break;
+      }
+    }
+    //const prevTeamID = this.state.location.team_id;
+    http.get(config.apiEndpoint + "/team/" + this.state.prevID).then((res) => {
+      this.setState({ prevTeam: res.data });
+      console.log("prev tem");
+      console.log(res);
+    });
+  }; */
+  /* we do this in getCurrent now
+  giveRefund = async (prevTeam) => {
+    const prevBid = this.state.location.high_bid; //old highest bid - refund this to old team
+    const prevTeamBudget = prevTeam.budget;
+
+    prevTeam.budget = parseInt(prevBid, 10) + parseInt(prevTeamBudget, 10);
+    const { data1 } = await http.put(
+      //refund previous team
+      config.apiEndpoint + "/team/" + this.state.prevTeam.team_id,
+      prevTeam
+    );
+    console.log(data1);
+  };*/
+
+  updateLocation = async (location) => {
+    const locationID = this.state.selectValue;
+    location.team_id = this.context.currentUser.teamID; //update location id and new highest bid
+    location.high_bid = this.state.amount; //updates bid
+    const { data } = await http.put(
+      config.apiEndpoint + "/location/" + locationID,
+      location
+    );
+    console.log(data);
+  };
+
+  updateNewTeamBudget = async (team) => {
+    const budget = this.context.currentUser.budget; // used to set api team.budget
+    const amount = this.state.amount;
+    team.budget = parseInt(budget, 10) - parseInt(amount, 10);
+    this.context.currentUser.budget = team.budget; //updates the context
+    const { data3 } = await http.put(
+      config.apiEndpoint + "/team/" + this.context.currentUser.teamID,
+      team
+    );
+    console.log(data3);
+  };
+
+  getCurrent = async (location) => {
+    const locationID = this.state.selectValue;
+    const locationResponse = await http.get(
+      config.apiEndpoint + "/location/" + locationID
+    );
+    this.setState({ location: locationResponse.data });
+
+    const amount = this.state.amount;
+    const previousBid = locationResponse.data.high_bid;
+
+    const { locations } = this.state;
+    for (let x in locations) {
+      if (parseInt(locationID, 10) === locations[x].location_id) {
+        this.state.prevID = locations[x].team_id;
+        console.log("prev id");
+        console.log(this.state.prevID);
+        //this.setState({ prevID: locations[x].team_id });
+        break;
+      }
+    }
+    const PreviousTeam = await http.get(
+      config.apiEndpoint + "/team/" + this.state.prevID
+    );
+    this.setState({ prevTeam: PreviousTeam.data });
+
+    if (amount > previousBid) {
+      const prevTeamBudget = PreviousTeam.data.budget;
+      console.log("prevteamBudg");
+      console.log(prevTeamBudget);
+      this.state.prevTeam.budget =
+        parseInt(previousBid, 10) + parseInt(prevTeamBudget, 10);
+      const { data1 } = await http.put(
+        //refund previous team
+        config.apiEndpoint + "/team/" + this.state.prevID,
+        this.state.prevTeam
+      );
+      console.log(data1);
+      //this.giveRefund(this.state.prevTeam);
+      this.updateLocation(this.state.location);
+      this.updateNewTeamBudget(this.state.team);
+      console.log("amnt > prevbid");
+      toast.success(`Bid entered!`);
+    } else {
+      toast.error(
+        "Bid must be higher than the current bid of: $" +
+          this.state.location.high_bid +
+          " by team: " +
+          this.state.prevID
+      );
+    }
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const errors = this.validate(); //error checking if negative or if no dropdown selected
+    this.setState({ errors: errors || {} });
+    if (errors) return;
+
+    // this.getLocation(this.state.location);
+    // this.getPrevTeam(this.state.prevTeam);
+    this.getCurrent(this.state.location);
+  };
+
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -49,11 +224,80 @@ export class locationComponent extends Component {
   setMark = (e) => {
     this.setState({ marks: [...this.state.marks, e.latLng] });
   };
+  handleDropdownChange(e) {
+    this.setState({ selectValue: e.target.value });
+  }
 
   render() {
+    const { errors, team, locations } = this.state;
+
     return (
       <React.Fragment>
+        <ToastContainer />
+
         <Navbar />
+        <nav className="navbar navbar-light bg-primary">
+          Budget: {team.budget}{" "}
+        </nav>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Location ID</th>
+              <th scope="col">Current Highest Bidder</th>
+              <th scope="col">Bid Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {locations.map((locations) => (
+              <tr key={locations.location_id}>
+                <td>{locations.location_id}</td>
+                <td>Team {locations.team_id}</td>
+                <td>${locations.high_bid}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div>
+          <h1>Bid on a location!</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Select Location ID
+              <select
+                id="dropdown"
+                class=" form-control form-control-sm "
+                onChange={this.handleDropdownChange}
+                value={this.state.selectValue}
+              >
+                <option value="1">Location 1</option>
+                <option value="2">Location 2</option>
+                <option value="3">Location 3</option>
+                <option value="4">Location 4</option>
+              </select>
+            </label>
+            <div class="divider" />
+            <label>
+              Amount $
+              <input
+                value={this.state.amount}
+                onChange={this.handleChange}
+                name="amount"
+                type="number"
+                class="form-control form-control-sm "
+                id="amount"
+                error={errors.amount}
+              />
+            </label>
+            <button
+              //disabled={!this.context.currentUser.isManager}
+              type="submit"
+              class="btn btn-primary"
+              margin-top=".5em"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
         <Map
           google={this.props.google}
           zoom={14}
@@ -63,7 +307,14 @@ export class locationComponent extends Component {
           <Marker
             position={{ lat: 33.789, lng: -117.851 }}
             onClick={this.onMarkerClick}
-            name={""}
+            name={
+              <div>
+                <div>
+                  <h1>Location 1</h1>
+                  <img alt="store1" src={store1} height="300" />
+                </div>
+              </div>
+            }
           />
           <InfoWindow
             marker={this.state.activeMarker}
@@ -77,7 +328,14 @@ export class locationComponent extends Component {
           <Marker
             position={{ lat: 33.7931, lng: -117.85 }}
             onClick={this.onMarkerClick}
-            name={"Coffee Shop Location 2"}
+            name={
+              <div>
+                <div>
+                  <h1>Location 2</h1>
+                  <img alt="store2" src={store2} height="300" />
+                </div>
+              </div>
+            }
           />
           <InfoWindow
             marker={this.state.activeMarker}
@@ -91,7 +349,14 @@ export class locationComponent extends Component {
           <Marker
             position={{ lat: 33.7949, lng: -117.8556 }}
             onClick={this.onMarkerClick}
-            name={"Coffee Shop Location 3"}
+            name={
+              <div>
+                <div>
+                  <h1>Location 3</h1>
+                  <img alt="store3" src={store3} height="300" />
+                </div>
+              </div>
+            }
           />
           <InfoWindow
             marker={this.state.activeMarker}
@@ -103,6 +368,7 @@ export class locationComponent extends Component {
             </div>
           </InfoWindow>
         </Map>
+        <div></div>
       </React.Fragment>
     );
   }

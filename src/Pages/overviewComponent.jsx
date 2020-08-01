@@ -1,15 +1,50 @@
 import React, { Component } from "react";
-import Info from "../Components/teamInfo";
 import Navbar from "../Components/Nav";
+import UserContext from "../Context/UserContext";
+import http from "../Services/httpService";
+import config from "../config.json";
 
 class overviewComponent extends Component {
+  state = {
+    team: [],
+  };
+  static contextType = UserContext;
+
+  async componentDidMount() {
+    http
+      .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
+      .then((res) => {
+        console.log(res);
+        this.context.currentUser.budget = res.budget; //using user id right now since the team ids are the same
+      });
+  }
+
   render() {
     return (
       <React.Fragment>
         <Navbar />
         <div className="container">
-          <Info></Info>
           <section className="col main">
+            <div class="jumbotron">
+              <h1 class="display-4">Hello, {this.context.currentUser.name}!</h1>
+              <p class="lead">
+                Welcome to In-Quire Simulations! Continue with another sentence
+                here description
+              </p>
+              <hr class="my-4" />
+              <p>Below you will find more information!</p>
+              <div>
+                <iframe
+                  title="video"
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/PYH5uxMulk8"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
             <h1 className="title">Overview</h1>
             <h2 className="overview-round-bar">Round 1</h2>
             <p className="body box">

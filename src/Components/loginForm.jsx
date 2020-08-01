@@ -14,9 +14,9 @@ class LoginForm extends Component {
     data: { email: "", password: "" },
     errors: {},
     userList: {},
-    userLoggedIn: { email: "", password: "", id: 0 },
+    userLoggedIn: { email: "", password: "", id: 0, isManager: false },
     id: 1,
-    team: {},
+    team: [],
   };
 
   schema = {
@@ -98,7 +98,8 @@ class LoginForm extends Component {
         data.password === userList[x].password
       ) {
         this.context.currentUser.name = userList[x].first_name;
-        this.context.currentUser.teamID = userList[x].user_id; //using user id right now since the team ids are the same
+        this.context.currentUser.teamID = userList[x].team_id; //using user id right now since the team ids are the same
+        this.context.currentUser.isManager = userList[x].manager;
 
         toast.success(
           `Logged in successfully, hi ${this.context.currentUser.name}!`
@@ -108,6 +109,8 @@ class LoginForm extends Component {
         history.push("/overview");
       }
     }
+
+    toast.error("Username and Password doesn't match");
   };
   async componentDidMount() {
     http.get(authEndpoint).then((res) => {

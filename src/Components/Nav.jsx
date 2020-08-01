@@ -11,33 +11,47 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-light bg-light">
-        <ul>
-          <li>In-Quire</li>
-          <li>
-            <Link to="/overview">Overview</Link>
-          </li>
-
-          <li>
-            <Link to="/location">Location</Link>
-          </li>
-          <li>
-            <Link to="/inventory">Inventory</Link>
-          </li>
-          <li>
-            <Link to="/marketing">Marketing</Link>
-          </li>
-          <li>
-            <Link to="/finances">Finances</Link>
-          </li>
-          <li>
-            <Link to="/messages">Messages</Link>
-          </li>
-          <li>
-            <Link to="/buydata">Buy Data</Link>
-          </li>
-        </ul>
-      </nav>
+      <React.Fragment>
+        <nav>
+          <ul class="nav nav-tabs bg-light">
+            <li class="nav-item">
+              <Link class="nav-link active" to="/overview">
+                Overview
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to="/location">
+                Location
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to="/inventory">
+                Inventory
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to="/marketing">
+                Marketing
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to="/finances">
+                Finances
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to="/messages">
+                Messages
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to="/buydata">
+                Buy Data
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </React.Fragment>
     );
   }
 }

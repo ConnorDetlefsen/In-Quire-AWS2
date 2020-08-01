@@ -14,6 +14,7 @@ class messagingForm extends Component {
       messages: [],
       new_message: "",
       errors: {},
+      team: [],
     };
   }
   async componentDidMount() {
@@ -21,6 +22,12 @@ class messagingForm extends Component {
       .get(config.apiEndpoint + "/message/" + this.context.currentUser.teamID)
       .then((res) => {
         this.setState({ messages: res.data });
+        console.log(res);
+      });
+    http
+      .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
+      .then((res) => {
+        this.setState({ team: res.data });
         console.log(res);
       });
   }
@@ -50,19 +57,24 @@ class messagingForm extends Component {
       <React.Fragment>
         <ToastContainer />
         <Navbar />
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <p>Send a message to the team!</p>
-            <textarea
-              onChange={this.handleChange}
-              className="message-box"
-              rows="5"
-            ></textarea>
-          </div>
-          <button type="submit" className="inv-btn">
-            Submit
-          </button>
-        </form>
+        <nav className="navbar navbar-light bg-primary">
+          Budget: {this.state.team.budget}{" "}
+        </nav>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <div class="form-group">
+              <p>Send a message to the team!</p>
+              <textarea
+                onChange={this.handleChange}
+                className="form-control"
+                rows="5"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
       </React.Fragment>
     );
   }

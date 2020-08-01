@@ -11,6 +11,7 @@ class financesForm extends Component {
     super(props);
     this.state = {
       finances: [],
+      team: [],
     };
   }
   async componentDidMount() {
@@ -20,21 +21,31 @@ class financesForm extends Component {
         this.setState({ finances: res.data });
         console.log(res);
       });
+    http
+      .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
+      .then((res) => {
+        this.setState({ team: res.data });
+        console.log(res);
+      });
   }
   render() {
-    const { finances } = this.state;
+    const { finances, team } = this.state;
     return (
       <div>
         <Navbar />
-        <table className="financeTable">
-          <thead>
+        <nav className="navbar navbar-light bg-primary">
+          Budget: {team.budget}{" "}
+        </nav>
+        <table class="table">
+          <thead class="thead-light">
             <tr>
-              <th>Category</th>
-              <th>Amount</th>
-              <th>Date</th>
-              <th>Timestamp</th>
+              <th scope="col">Category</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Date</th>
+              <th scope="col">Timestamp</th>
             </tr>
           </thead>
+
           <tbody>
             {finances.map((finances) => (
               <tr key={finances.trans_id}>

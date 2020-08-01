@@ -20,7 +20,9 @@ class App extends Component {
     const user = { name: "Connor" };
     this.setState({ currentUser: user });
   };
-  state = { currentUser: { name: null, teamID: null, budget: null } };
+  state = {
+    currentUser: { name: null, teamID: null, budget: null, isManager: null },
+  };
   render() {
     return (
       <React.Fragment>

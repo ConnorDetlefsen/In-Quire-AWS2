@@ -3,6 +3,7 @@ import UserContext from "../Context/UserContext";
 import http from "../Services/httpService";
 import config from "../config.json";
 import Navbar from "../Components/Nav";
+import { ToastContainer, toast } from "react-toastify";
 
 //const test = "S3_test.pdf";
 const txt = "S3_pull.txt";
@@ -14,6 +15,7 @@ class buyDataForm extends Component {
     this.state = {
       team: [],
       cost: 0,
+      dataBought: [],
       marketingData: false,
       populationData: false,
       competitorData: false,
@@ -27,11 +29,63 @@ class buyDataForm extends Component {
         this.setState({ team: res.data });
         console.log(res);
       });
+    http
+      .get(config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID)
+      .then((res) => {
+        this.setState({ dataBought: res.data });
+        console.log(res);
+      });
+
+    //this.setState({ marketingData: this.state.dataBought.data1 });
+    //console.log(this.state.marketingData);
   }
+
+  /*dataUpdate = async (dataBought) => {
+    const { marketingData, populationData, competitorData } = this.state;
+
+    dataBought.data1 = marketingData;
+    dataBought.data2 = populationData;
+    dataBought.data3 = competitorData;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
+*/
+  dataUpdate1 = async (dataBought) => {
+    dataBought.data1 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
+  dataUpdate2 = async (dataBought) => {
+    dataBought.data2 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
+
+  dataUpdate3 = async (dataBought) => {
+    dataBought.data3 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
 
   budgetUpdate = async (team) => {
     const cost1 = this.state.cost;
-    const budget = this.context.currentUser.budget; // used to set api team.budget
+    const budget = team.budget; // used to set api team.budget
 
     team.budget = parseInt(budget, 10) - parseInt(cost1, 10);
 
@@ -47,16 +101,29 @@ class buyDataForm extends Component {
   handleClick = (e) => {
     this.state.cost = e.target.value;
     console.log(this.state.cost);
+
+    const cost1 = this.state.cost;
+    const budget = this.state.team.budget; // used to set api team.budget
+
+    const isBudgetNotNegative = parseInt(budget, 10) - parseInt(cost1, 10);
+    if (isBudgetNotNegative < 0) {
+      toast.error("You don't have enough money!");
+      return;
+    }
     this.budgetUpdate(this.state.team);
 
     if (e.target.name === "marketing") {
+      //this.setState({ marketingData: this.state.dataBought.data1 });
       this.setState({ marketingData: true });
+      this.dataUpdate1(this.state.dataBought);
     }
     if (e.target.name === "population") {
       this.setState({ populationData: true });
+      this.dataUpdate2(this.state.dataBought);
     }
     if (e.target.name === "competitor") {
       this.setState({ competitorData: true });
+      this.dataUpdate3(this.state.dataBought);
     }
   };
 
@@ -64,6 +131,8 @@ class buyDataForm extends Component {
     const { team } = this.state;
     return (
       <React.Fragment>
+        <ToastContainer />
+
         <Navbar />
         <nav className="navbar navbar-light bg-primary">
           Budget: {team.budget}{" "}
@@ -73,8 +142,13 @@ class buyDataForm extends Component {
         <div class="row">
           <div class="column">
             <div class="card">
-              Marketing Data: $1,000
+              <h5>Marketing Data: $1,000</h5>
+              <p>Description of what is included in this data package</p>
               <button
+                disabled={
+                  !this.context.currentUser.isManager ||
+                  this.state.dataBought.data1
+                }
                 type="button"
                 onClick={this.handleClick}
                 class="btn btn-primary"
@@ -83,7 +157,7 @@ class buyDataForm extends Component {
               >
                 Puchase
               </button>
-              {this.state.marketingData === true && (
+              {this.state.dataBought.data1 === true && (
                 <a
                   href={
                     "https://inquire-team" +
@@ -100,8 +174,13 @@ class buyDataForm extends Component {
           </div>
           <div class="column">
             <div class="card">
-              Population Data: $1,500
+              <h5>Population Data: $1,500</h5>
+              <p>Description of what is included in this data package</p>
               <button
+                disabled={
+                  !this.context.currentUser.isManager ||
+                  this.state.dataBought.data2
+                }
                 type="button"
                 onClick={this.handleClick}
                 class="btn btn-primary"
@@ -110,7 +189,7 @@ class buyDataForm extends Component {
               >
                 Puchase
               </button>
-              {this.state.populationData === true && (
+              {this.state.dataBought.data2 === true && (
                 <a
                   href={
                     "https://inquire-team" +
@@ -127,8 +206,14 @@ class buyDataForm extends Component {
           </div>
           <div class="column">
             <div class="card">
-              Competitors Data: $2,000
+              <h5>Competitors Data: $2,000</h5>
+              <p>Description of what is included in this data package</p>
+
               <button
+                disabled={
+                  !this.context.currentUser.isManager ||
+                  this.state.dataBought.data3
+                }
                 type="button"
                 onClick={this.handleClick}
                 class="btn btn-primary"
@@ -137,7 +222,7 @@ class buyDataForm extends Component {
               >
                 Puchase
               </button>
-              {this.state.competitorData === true && (
+              {this.state.dataBought.data3 === true && (
                 <a
                   href={
                     "https://inquire-team" +

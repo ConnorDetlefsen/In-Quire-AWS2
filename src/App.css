@@ -76,6 +76,7 @@ body {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -88,4 +89,32 @@ body {
     display: block;
     margin-bottom: 20px;
   }
+}
+
+.loc-main-div {
+  border-color: green;
+}
+.loc-div {
+  border: 1px red;
+  float: left;
+}
+.loc-img-div {
+  border: 1px red;
+  float: left;
+}
+
+.half {
+  width: 50%;
+}
+/*these three are for inventory page */
+.wrapper {
+  display: flex;
+}
+.marginleft {
+  margin-left: 0rem;
+}
+.divider {
+  width: 5px;
+  padding-top: 5px;
+  height: auto;
 }

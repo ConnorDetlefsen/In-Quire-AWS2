@@ -2,15 +2,15 @@ import React from "react";
 
 const inventoryInput = ({ name, label, value, onChange }) => {
   return (
-    <div className="form-group">
-      <label className="inv-label" htmlFor={name}>
+    <div class="form-group">
+      <label class="marginleft" htmlFor={name}>
         {label}{" "}
       </label>
       <input
         value={value}
         onChange={onChange}
         type="number"
-        className="inv-input"
+        class="form-control form-control-sm marginleft"
         id={name}
         name={name}
       />
