@@ -923,7 +923,7 @@ class inventoryForm extends Component {
         </nav>
 
         <div>
-          <table class="table table-sm half">
+          <table class="table table-sm">
             <thead class="thead-light">
               <tr>
                 <th scope="col">Product</th>
