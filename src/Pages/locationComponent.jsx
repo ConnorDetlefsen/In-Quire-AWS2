@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 import Joi from "joi-browser";
-import Navbar from "../Components/Nav";
+import SideBar from "../Components/sideBar";
 import UserContext from "../Context/UserContext";
 import config from "../config.json";
 import http from "../Services/httpService.js";
@@ -11,7 +11,7 @@ import store2 from "../Store-Images/2.jpg";
 import store3 from "../Store-Images/3.jpg";
 
 const mapStyles = {
-  width: "90%",
+  width: "85%",
   height: "100%",
   color: "black",
 };
@@ -123,7 +123,7 @@ class locationComponent extends Component {
   };
 
   updateNewTeamBudget = async (team) => {
-    const budget = this.context.currentUser.budget; // used to set api team.budget
+    const budget = team.budget; // used to set api team.budget
     const amount = this.state.amount;
     team.budget = parseInt(budget, 10) - parseInt(amount, 10);
     this.context.currentUser.budget = team.budget; //updates the context
@@ -131,6 +131,7 @@ class locationComponent extends Component {
       config.apiEndpoint + "/team/" + this.context.currentUser.teamID,
       team
     );
+    this.state.team.budget = this.context.currentUser.budget;
     console.log(data3);
   };
 
@@ -154,6 +155,7 @@ class locationComponent extends Component {
         break;
       }
     }
+
     const PreviousTeam = await http.get(
       config.apiEndpoint + "/team/" + this.state.prevID
     );
@@ -234,141 +236,146 @@ class locationComponent extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
+        <div class="d-flex" id="wrapper">
+          <SideBar></SideBar>
+          <div id="page-content-wrapper">
+            <nav className="navbar navbar-dark bg-dark">
+              <h1 class="whiteFont">Location</h1>
+            </nav>
+            <nav className="navbar navbar-light bg-primary">
+              Budget: {team.budget}{" "}
+            </nav>
+            <table class="table table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Location ID</th>
+                  <th scope="col">Current Highest Bidder</th>
+                  <th scope="col">Bid Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {locations.map((locations) => (
+                  <tr key={locations.location_id}>
+                    <td>{locations.location_id}</td>
+                    <td>Team {locations.team_id}</td>
+                    <td>${locations.high_bid}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
-        <Navbar />
-        <nav className="navbar navbar-light bg-primary">
-          Budget: {team.budget}{" "}
-        </nav>
-        <table class="table">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">Location ID</th>
-              <th scope="col">Current Highest Bidder</th>
-              <th scope="col">Bid Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {locations.map((locations) => (
-              <tr key={locations.location_id}>
-                <td>{locations.location_id}</td>
-                <td>Team {locations.team_id}</td>
-                <td>${locations.high_bid}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div>
-          <h1>Bid on a location!</h1>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Select Location ID
-              <select
-                id="dropdown"
-                class=" form-control form-control-sm "
-                onChange={this.handleDropdownChange}
-                value={this.state.selectValue}
-              >
-                <option value="1">Location 1</option>
-                <option value="2">Location 2</option>
-                <option value="3">Location 3</option>
-                <option value="4">Location 4</option>
-              </select>
-            </label>
-            <div class="divider" />
-            <label>
-              Amount $
-              <input
-                value={this.state.amount}
-                onChange={this.handleChange}
-                name="amount"
-                type="number"
-                class="form-control form-control-sm "
-                id="amount"
-                error={errors.amount}
-              />
-            </label>
-            <button
-              //disabled={!this.context.currentUser.isManager}
-              type="submit"
-              class="btn btn-primary"
-              margin-top=".5em"
+            <div>
+              <h1>Bid on a location!</h1>
+              <form onSubmit={this.handleSubmit}>
+                <label>
+                  Select Location ID
+                  <select
+                    id="dropdown"
+                    class=" form-control form-control-sm "
+                    onChange={this.handleDropdownChange}
+                    value={this.state.selectValue}
+                  >
+                    <option value="1">Location 1</option>
+                    <option value="2">Location 2</option>
+                    <option value="3">Location 3</option>
+                    <option value="4">Location 4</option>
+                  </select>
+                </label>
+                <div class="divider" />
+                <label>
+                  Amount $
+                  <input
+                    value={this.state.amount}
+                    onChange={this.handleChange}
+                    name="amount"
+                    type="number"
+                    class="form-control form-control-sm "
+                    id="amount"
+                    error={errors.amount}
+                  />
+                </label>
+                <button
+                  //disabled={!this.context.currentUser.isManager}
+                  type="submit"
+                  class="btn btn-primary"
+                  margin-top=".5em"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+            <Map
+              google={this.props.google}
+              zoom={14}
+              style={mapStyles}
+              initialCenter={{ lat: 33.7931, lng: -117.8521 }}
             >
-              Submit
-            </button>
-          </form>
+              <Marker
+                position={{ lat: 33.789, lng: -117.851 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 1</h1>
+                      <img alt="store1" src={store1} height="300" />
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.7931, lng: -117.85 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 2</h1>
+                      <img alt="store2" src={store2} height="300" />
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.7949, lng: -117.8556 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 3</h1>
+                      <img alt="store3" src={store3} height="300" />
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+            </Map>
+          </div>
         </div>
-        <Map
-          google={this.props.google}
-          zoom={14}
-          style={mapStyles}
-          initialCenter={{ lat: 33.7931, lng: -117.8521 }}
-        >
-          <Marker
-            position={{ lat: 33.789, lng: -117.851 }}
-            onClick={this.onMarkerClick}
-            name={
-              <div>
-                <div>
-                  <h1>Location 1</h1>
-                  <img alt="store1" src={store1} height="300" />
-                </div>
-              </div>
-            }
-          />
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
-          >
-            <div>
-              <h4>{this.state.selectedPlace.name}</h4>
-            </div>
-          </InfoWindow>
-          <Marker
-            position={{ lat: 33.7931, lng: -117.85 }}
-            onClick={this.onMarkerClick}
-            name={
-              <div>
-                <div>
-                  <h1>Location 2</h1>
-                  <img alt="store2" src={store2} height="300" />
-                </div>
-              </div>
-            }
-          />
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
-          >
-            <div>
-              <h4>{this.state.selectedPlace.name}</h4>
-            </div>
-          </InfoWindow>
-          <Marker
-            position={{ lat: 33.7949, lng: -117.8556 }}
-            onClick={this.onMarkerClick}
-            name={
-              <div>
-                <div>
-                  <h1>Location 3</h1>
-                  <img alt="store3" src={store3} height="300" />
-                </div>
-              </div>
-            }
-          />
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
-          >
-            <div>
-              <h4>{this.state.selectedPlace.name}</h4>
-            </div>
-          </InfoWindow>
-        </Map>
-        <div></div>
       </React.Fragment>
     );
   }

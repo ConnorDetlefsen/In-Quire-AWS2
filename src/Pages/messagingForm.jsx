@@ -4,6 +4,7 @@ import config from "../config.json";
 import UserContext from "../Context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import Navbar from "../Components/Nav";
+import SideBar from "../Components/sideBar";
 
 class messagingForm extends Component {
   static contextType = UserContext;
@@ -56,24 +57,31 @@ class messagingForm extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
-        <Navbar />
-        <nav className="navbar navbar-light bg-primary">
-          Budget: {this.state.team.budget}{" "}
-        </nav>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <div class="form-group">
-              <p>Send a message to the team!</p>
-              <textarea
-                onChange={this.handleChange}
-                className="form-control"
-                rows="5"
-              ></textarea>
+        <div class="d-flex" id="wrapper">
+          <SideBar></SideBar>
+          <div id="page-content-wrapper">
+            <nav className="navbar navbar-dark bg-dark">
+              <h1 class="whiteFont">Messages</h1>
+            </nav>
+            <nav className="navbar navbar-light bg-primary">
+              Budget: {this.state.team.budget}{" "}
+            </nav>
+            <div>
+              <form onSubmit={this.handleSubmit}>
+                <div class="form-group">
+                  <p>Send a message to the team!</p>
+                  <textarea
+                    onChange={this.handleChange}
+                    className="form-control"
+                    rows="5"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Submit
+                </button>
+              </form>
             </div>
-            <button type="submit" class="btn btn-primary">
-              Submit
-            </button>
-          </form>
+          </div>
         </div>
       </React.Fragment>
     );

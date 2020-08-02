@@ -5,7 +5,7 @@ import Input from "../Components/inventoryInput";
 import http from "../Services/httpService";
 import config from "../config.json";
 import UserContext from "../Context/UserContext";
-import Navbar from "../Components/Nav";
+import SideBar from "../Components/sideBar";
 class inventoryForm extends Component {
   static contextType = UserContext;
 
@@ -917,295 +917,302 @@ class inventoryForm extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
-        <Navbar />
-        <nav className="navbar navbar-light bg-primary">
-          Budget: {team.budget}{" "}
-        </nav>
+        <div class="d-flex" id="wrapper">
+          <SideBar></SideBar>
+          <div id="page-content-wrapper">
+            <nav className="navbar navbar-dark bg-dark">
+              <h1 class="whiteFont">Inventory</h1>
+            </nav>
+            <nav className="navbar navbar-light bg-primary">
+              Budget: {team.budget}{" "}
+            </nav>
 
-        <div>
-          <table class="table table-sm">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Wholesale Purchase Product Price</th>
-                <th scope="col">Amount Owned</th>
-                <th scope="col">Your Selling Price</th>
-              </tr>
-            </thead>
+            <div>
+              <table class="table table-sm">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Wholesale Purchase Product Price</th>
+                    <th scope="col">Amount Owned</th>
+                    <th scope="col">Your Selling Price</th>
+                  </tr>
+                </thead>
 
-            <tbody>
-              <tr>
-                <td>{coffeeProduct.name}</td>
-                <td>${coffeeProduct.price}</td>
-                <td>{coffee.num_item}</td>
-                <td>${coffee.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{cokeProduct.name}</td>
-                <td>${cokeProduct.price}</td>
-                <td>{coke.num_item}</td>
-                <td>${coke.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{croissantProduct.name}</td>
-                <td>${croissantProduct.price}</td>
-                <td>{croissant.num_item}</td>
-                <td>${croissant.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{fruitCupProduct.name}</td>
-                <td>${fruitCupProduct.price}</td>
-                <td>{fruitCup.num_item}</td>
-                <td>${fruitCup.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{icedCoffeeProduct.name}</td>
-                <td>${icedCoffeeProduct.price}</td>
-                <td>{icedCoffee.num_item}</td>
-                <td>${icedCoffee.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{juiceProduct.name}</td>
-                <td>${juiceProduct.price}</td>
-                <td>{juice.num_item}</td>
-                <td>${juice.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{latteProduct.name}</td>
-                <td>${latteProduct.price}</td>
-                <td>{latte.num_item}</td>
-                <td>${latte.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{milkProduct.name}</td>
-                <td>${milkProduct.price}</td>
-                <td>{milk.num_item}</td>
-                <td>${milk.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{barProduct.name}</td>
-                <td>${barProduct.price}</td>
-                <td>{bar.num_item}</td>
-                <td>${bar.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{saladProduct.name}</td>
-                <td>${saladProduct.price}</td>
-                <td>{salad.num_item}</td>
-                <td>${salad.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{sandwichProduct.name}</td>
-                <td>${sandwichProduct.price}</td>
-                <td>{sandwich.num_item}</td>
-                <td>${sandwich.selling_price}</td>
-              </tr>
-              <tr>
-                <td>{smoothieProduct.name}</td>
-                <td>${smoothieProduct.price}</td>
-                <td>{smoothie.num_item}</td>
-                <td>${smoothie.selling_price}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div className="divider" />
-        <div class="wrapper">
-          <div class="form-group half ">
-            <h1>Order</h1>
-            <form onSubmit={this.handleInventoryOrderSubmit}>
-              <Input
-                class="form-control"
-                name="coffeeAmount"
-                value={this.state.coffeeAmount}
-                label="Coffee"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="cokeAmount"
-                value={this.state.cokeAmount}
-                label="Coke     "
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="croissantAmount"
-                value={this.state.croissantAmount}
-                label="Croissant"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="fruitCupAmount"
-                value={this.state.fruitCupAmount}
-                label="Fruit Cup"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="icedCoffeeAmount"
-                value={this.state.icedCoffeeAmount}
-                label="Iced Coffee"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="juiceAmount"
-                value={this.state.juiceAmount}
-                label="Juice"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="latteAmount"
-                value={this.state.latteAmount}
-                label="Latte"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="milkAmount"
-                value={this.state.milkAmount}
-                label="Milk and Cookies"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="barAmount"
-                value={this.state.barAmount}
-                label="Protein Bar"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="saladAmount"
-                value={this.state.saladAmount}
-                label="Salad"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="sandwichAmount"
-                value={this.state.sandwichAmount}
-                label="Sandwich"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="smoothieAmount"
-                value={this.state.smoothieAmount}
-                label="Smoothie"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
+                <tbody>
+                  <tr>
+                    <td>{coffeeProduct.name}</td>
+                    <td>${coffeeProduct.price}</td>
+                    <td>{coffee.num_item}</td>
+                    <td>${coffee.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{cokeProduct.name}</td>
+                    <td>${cokeProduct.price}</td>
+                    <td>{coke.num_item}</td>
+                    <td>${coke.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{croissantProduct.name}</td>
+                    <td>${croissantProduct.price}</td>
+                    <td>{croissant.num_item}</td>
+                    <td>${croissant.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{fruitCupProduct.name}</td>
+                    <td>${fruitCupProduct.price}</td>
+                    <td>{fruitCup.num_item}</td>
+                    <td>${fruitCup.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{icedCoffeeProduct.name}</td>
+                    <td>${icedCoffeeProduct.price}</td>
+                    <td>{icedCoffee.num_item}</td>
+                    <td>${icedCoffee.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{juiceProduct.name}</td>
+                    <td>${juiceProduct.price}</td>
+                    <td>{juice.num_item}</td>
+                    <td>${juice.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{latteProduct.name}</td>
+                    <td>${latteProduct.price}</td>
+                    <td>{latte.num_item}</td>
+                    <td>${latte.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{milkProduct.name}</td>
+                    <td>${milkProduct.price}</td>
+                    <td>{milk.num_item}</td>
+                    <td>${milk.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{barProduct.name}</td>
+                    <td>${barProduct.price}</td>
+                    <td>{bar.num_item}</td>
+                    <td>${bar.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{saladProduct.name}</td>
+                    <td>${saladProduct.price}</td>
+                    <td>{salad.num_item}</td>
+                    <td>${salad.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{sandwichProduct.name}</td>
+                    <td>${sandwichProduct.price}</td>
+                    <td>{sandwich.num_item}</td>
+                    <td>${sandwich.selling_price}</td>
+                  </tr>
+                  <tr>
+                    <td>{smoothieProduct.name}</td>
+                    <td>${smoothieProduct.price}</td>
+                    <td>{smoothie.num_item}</td>
+                    <td>${smoothie.selling_price}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="divider" />
+            <div class="wrapper">
+              <div class="form-group half ">
+                <h1>Order</h1>
+                <form onSubmit={this.handleInventoryOrderSubmit}>
+                  <Input
+                    class="form-control"
+                    name="coffeeAmount"
+                    value={this.state.coffeeAmount}
+                    label="Coffee"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="cokeAmount"
+                    value={this.state.cokeAmount}
+                    label="Coke     "
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="croissantAmount"
+                    value={this.state.croissantAmount}
+                    label="Croissant"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="fruitCupAmount"
+                    value={this.state.fruitCupAmount}
+                    label="Fruit Cup"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="icedCoffeeAmount"
+                    value={this.state.icedCoffeeAmount}
+                    label="Iced Coffee"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="juiceAmount"
+                    value={this.state.juiceAmount}
+                    label="Juice"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="latteAmount"
+                    value={this.state.latteAmount}
+                    label="Latte"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="milkAmount"
+                    value={this.state.milkAmount}
+                    label="Milk and Cookies"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="barAmount"
+                    value={this.state.barAmount}
+                    label="Protein Bar"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="saladAmount"
+                    value={this.state.saladAmount}
+                    label="Salad"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="sandwichAmount"
+                    value={this.state.sandwichAmount}
+                    label="Sandwich"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="smoothieAmount"
+                    value={this.state.smoothieAmount}
+                    label="Smoothie"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
 
-              <button
-                disabled={!this.context.currentUser.isManager}
-                type="submit"
-                margin-top=".5em"
-                class="btn btn-primary"
-              >
-                Submit
-              </button>
-            </form>
-          </div>
-          <div class="half">
-            <h1>Set Your Selling Prices</h1>
-            <form onSubmit={this.handleSellingPriceSubmit}>
-              <Input
-                name="coffeePrice"
-                value={this.state.coffeePrice}
-                label="Coffee Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="cokePrice"
-                value={this.state.cokePrice}
-                label="Coke Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="croissantPrice"
-                value={this.state.croissantPrice}
-                label="Croissant Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="fruitCupPrice"
-                value={this.state.fruitCupPrice}
-                label="Fruit Cup Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="icedCoffeePrice"
-                value={this.state.icedCoffeePrice}
-                label="Iced Coffee Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="juicePrice"
-                value={this.state.juicePrice}
-                label="Juice Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="lattePrice"
-                value={this.state.lattePrice}
-                label="Latte Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="milkPrice"
-                value={this.state.milkPrice}
-                label="Milk and Cookies Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="barPrice"
-                value={this.state.barPrice}
-                label="Protein Bar Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="saladPrice"
-                value={this.state.saladPrice}
-                label="Salad Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="sandwichPrice"
-                value={this.state.sandwichPrice}
-                label="Sandwich Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <Input
-                name="smoothiePrice"
-                value={this.state.smoothiePrice}
-                label="Smoothie Price"
-                onChange={this.handleChange}
-                error={errors.amount}
-              ></Input>
-              <button
-                disabled={!this.context.currentUser.isManager}
-                type="submit"
-                margin-top=".5em"
-                class="btn btn-primary"
-              >
-                Submit
-              </button>
-            </form>
+                  <button
+                    disabled={!this.context.currentUser.isManager}
+                    type="submit"
+                    margin-top=".5em"
+                    class="btn btn-primary"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </div>
+              <div class="half">
+                <h1>Set Your Selling Prices</h1>
+                <form onSubmit={this.handleSellingPriceSubmit}>
+                  <Input
+                    name="coffeePrice"
+                    value={this.state.coffeePrice}
+                    label="Coffee Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="cokePrice"
+                    value={this.state.cokePrice}
+                    label="Coke Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="croissantPrice"
+                    value={this.state.croissantPrice}
+                    label="Croissant Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="fruitCupPrice"
+                    value={this.state.fruitCupPrice}
+                    label="Fruit Cup Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="icedCoffeePrice"
+                    value={this.state.icedCoffeePrice}
+                    label="Iced Coffee Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="juicePrice"
+                    value={this.state.juicePrice}
+                    label="Juice Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="lattePrice"
+                    value={this.state.lattePrice}
+                    label="Latte Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="milkPrice"
+                    value={this.state.milkPrice}
+                    label="Milk and Cookies Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="barPrice"
+                    value={this.state.barPrice}
+                    label="Protein Bar Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="saladPrice"
+                    value={this.state.saladPrice}
+                    label="Salad Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="sandwichPrice"
+                    value={this.state.sandwichPrice}
+                    label="Sandwich Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <Input
+                    name="smoothiePrice"
+                    value={this.state.smoothiePrice}
+                    label="Smoothie Price"
+                    onChange={this.handleChange}
+                    error={errors.amount}
+                  ></Input>
+                  <button
+                    disabled={!this.context.currentUser.isManager}
+                    type="submit"
+                    margin-top=".5em"
+                    class="btn btn-primary"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>

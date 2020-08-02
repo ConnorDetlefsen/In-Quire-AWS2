@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import http from "../Services/httpService.js";
 import "react-toastify/dist/ReactToastify.css";
 import config from "../config.json";
-import Navbar from "../Components/Nav";
+import SideBar from "../Components/sideBar";
 
 import UserContext from "../Context/UserContext";
 
@@ -123,79 +123,87 @@ class MarketingForm extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
-        <Navbar />
-        <nav className="navbar navbar-light bg-primary">
-          Budget: {team.budget}{" "}
-        </nav>
+        <div class="d-flex" id="wrapper">
+          <SideBar></SideBar>
+          <div id="page-content-wrapper">
+            <nav className="navbar navbar-dark bg-dark">
+              <h1 class="whiteFont">Marketing</h1>
+            </nav>
+            <nav className="navbar navbar-light bg-primary">
+              Budget: {team.budget}{" "}
+            </nav>
 
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <div>
-              <label>
-                Select Marketing Type
-                <select
-                  id="dropdown"
-                  class=" form-control form-control-sm "
-                  onChange={this.handleDropdownChange}
-                  value={this.state.selectValue}
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <div>
+                  <label>
+                    Select Marketing Type
+                    <select
+                      id="dropdown"
+                      class=" form-control form-control-sm "
+                      onChange={this.handleDropdownChange}
+                      value={this.state.selectValue}
+                    >
+                      <option value="facebook">Facebook</option>
+                      <option value="instagram">Instagram</option>
+                      <option value="newspaper">Newspaper</option>
+                      <option value="television">Television</option>
+                    </select>
+                  </label>
+                </div>
+                <div>
+                  <label>Amount $ </label>
+                  <input
+                    value={this.state.amount}
+                    onChange={this.handleChange}
+                    name="amount"
+                    type="number"
+                    class="form-control form-control-sm "
+                    id="amount"
+                    error={errors.amount}
+                  />
+                </div>
+                <div class="divider" />
+                <button
+                  disabled={!this.context.currentUser.isManager}
+                  type="submit"
+                  margin-top=".5em"
+                  class="btn btn-primary"
                 >
-                  <option value="facebook">Facebook</option>
-                  <option value="instagram">Instagram</option>
-                  <option value="newspaper">Newspaper</option>
-                  <option value="television">Television</option>
-                </select>
-              </label>
-            </div>
-            <div>
-              <label>Amount $ </label>
-              <input
-                value={this.state.amount}
-                onChange={this.handleChange}
-                name="amount"
-                type="number"
-                class="form-control form-control-sm "
-                id="amount"
-                error={errors.amount}
-              />
-            </div>
-            <div class="divider" />
-            <button
-              disabled={!this.context.currentUser.isManager}
-              type="submit"
-              margin-top=".5em"
-              class="btn btn-primary"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-        <div class="row">
-          <div class="column">
-            <div class="card">
-              <h4>Facebook Marketing</h4>
-              <p>Description of what is included in this data package</p>
-              <h5>Amount Spent: {marketing.facebook}</h5>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <h4>Instagram Marketing</h4>
-              <p>Description of what is included in this data package</p>
-              <h5>Amount Spent: {marketing.instagram}</h5>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <h4>Newspaper Marketing</h4>
-              <p>Description of what is included in this data package</p>
-              <h5>Amount Spent: {marketing.newspaper}</h5>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <h4>Television Marketing</h4>
-              <p>Description of what is included in this data package</p>
-              <h5>Amount Spent: {marketing.television}</h5>
+                  Submit
+                </button>
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                  <h4>Facebook Marketing</h4>
+
+                  <p>Description of what is included in this data package</p>
+                  <h5>Amount Spent: {marketing.facebook}</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <h4>Instagram Marketing</h4>
+                  <p>Description of what is included in this data package</p>
+                  <h5>Amount Spent: {marketing.instagram}</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <h4>Newspaper Marketing</h4>
+                  <p>Description of what is included in this data package</p>
+                  <h5>Amount Spent: {marketing.newspaper}</h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <h4>Television Marketing</h4>
+                  <p>Description of what is included in this data package</p>
+                  <h5>Amount Spent: {marketing.television}</h5>
+                </div>
+              </div>
             </div>
           </div>
         </div>
