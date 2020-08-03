@@ -7,10 +7,16 @@ import config from "../config.json";
 class overviewComponent extends Component {
   state = {
     team: [],
+    round: 1,
   };
   static contextType = UserContext;
 
   async componentDidMount() {
+    const { history } = this.props;
+
+    if (this.context.currentUser.name === null) {
+      history.push("/");
+    }
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -31,6 +37,8 @@ class overviewComponent extends Component {
                   <h1 class="display-4">
                     Hello, {this.context.currentUser.name}!
                   </h1>
+                  <small>Team ID: {this.context.currentUser.teamID} </small>
+                  <small> Round: {this.state.round} </small>
                   <p class="lead">
                     Welcome to In-Quire Simulations! Continue with another
                     sentence here description

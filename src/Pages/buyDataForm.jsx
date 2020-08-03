@@ -5,8 +5,9 @@ import config from "../config.json";
 import SideBar from "../Components/sideBar";
 import { ToastContainer, toast } from "react-toastify";
 
-//const test = "S3_test.pdf";
+const pdf = "S3_test.pdf";
 const txt = "S3_pull.txt";
+const csv = "msft.csv";
 
 class buyDataForm extends Component {
   static contextType = UserContext;
@@ -19,10 +20,16 @@ class buyDataForm extends Component {
       marketingData: false,
       populationData: false,
       competitorData: false,
+      log: { category: "Data", amount: null, team_id: null, round_num: 1 },
     };
   }
 
   async componentDidMount() {
+    const { history } = this.props;
+
+    if (this.context.currentUser.name === null) {
+      history.push("/");
+    }
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -87,6 +94,18 @@ class buyDataForm extends Component {
     const cost1 = this.state.cost;
     const budget = team.budget; // used to set api team.budget
 
+    const { log } = this.state;
+    http
+      .post(config.apiEndpoint + "/log/", {
+        amount: cost1,
+        team_id: this.context.currentUser.teamID,
+        round_num: log.round_num,
+        category: log.category,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+
     team.budget = parseInt(budget, 10) - parseInt(cost1, 10);
 
     this.context.currentUser.budget = team.budget; //updates the context
@@ -125,6 +144,7 @@ class buyDataForm extends Component {
       this.setState({ competitorData: true });
       this.dataUpdate3(this.state.dataBought);
     }
+    toast.success("Data Purchased!");
   };
 
   render() {
@@ -141,7 +161,7 @@ class buyDataForm extends Component {
             <nav className="navbar navbar-light bg-primary">
               Budget: {team.budget}{" "}
             </nav>
-            <h1>{this.state.marketingData}</h1>
+            <br />
             <div class="row">
               <div class="column">
                 <div class="card">
@@ -198,7 +218,7 @@ class buyDataForm extends Component {
                         "https://inquire-team" +
                         this.context.currentUser.teamID +
                         ".s3-us-west-1.amazonaws.com/" +
-                        txt
+                        pdf
                       }
                       download
                     >
@@ -231,7 +251,7 @@ class buyDataForm extends Component {
                         "https://inquire-team" +
                         this.context.currentUser.teamID +
                         ".s3-us-west-1.amazonaws.com/" +
-                        txt
+                        csv
                       }
                       download
                     >

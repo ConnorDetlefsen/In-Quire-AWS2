@@ -19,6 +19,11 @@ class messagingForm extends Component {
     };
   }
   async componentDidMount() {
+    const { history } = this.props;
+
+    if (this.context.currentUser.name === null) {
+      history.push("/");
+    }
     http
       .get(config.apiEndpoint + "/message/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -76,7 +81,11 @@ class messagingForm extends Component {
                     rows="5"
                   ></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button
+                  disabled={!this.context.currentUser.isManager}
+                  type="submit"
+                  class="btn btn-primary"
+                >
                   Submit
                 </button>
               </form>

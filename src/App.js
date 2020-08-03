@@ -21,7 +21,13 @@ class App extends Component {
     this.setState({ currentUser: user });
   };
   state = {
-    currentUser: { name: null, teamID: null, budget: null, isManager: null },
+    currentUser: {
+      name: null,
+      teamID: null,
+      budget: null,
+      isManager: null,
+      isHighestBid: null,
+    },
   };
   render() {
     return (

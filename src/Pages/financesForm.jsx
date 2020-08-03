@@ -15,6 +15,11 @@ class financesForm extends Component {
     };
   }
   async componentDidMount() {
+    const { history } = this.props;
+
+    if (this.context.currentUser.name === null) {
+      history.push("/");
+    }
     http
       .get(config.apiEndpoint + "/log/" + this.context.currentUser.teamID)
       .then((res) => {

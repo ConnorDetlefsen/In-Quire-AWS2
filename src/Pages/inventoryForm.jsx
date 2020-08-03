@@ -68,10 +68,17 @@ class inventoryForm extends Component {
       saladProduct: [],
       sandwichProduct: [],
       smoothieProduct: [],
+
+      log: { category: "Inventory", amount: null, team_id: null, round_num: 1 },
     };
   }
 
   async componentDidMount() {
+    const { history } = this.props;
+
+    if (this.context.currentUser.name === null) {
+      history.push("/");
+    }
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -411,7 +418,7 @@ class inventoryForm extends Component {
         "/1",
       coffee
     );
-
+    this.setState({ coffeeAmount: 0 });
     console.log(data);
   };
   cokeSubmit = async (coke) => {
@@ -425,6 +432,8 @@ class inventoryForm extends Component {
         "/2",
       coke
     );
+    this.setState({ cokeAmount: 0 });
+
     console.log(data);
   };
   croissantSubmit = async (croissant) => {
@@ -438,6 +447,8 @@ class inventoryForm extends Component {
         "/3",
       croissant
     );
+    this.setState({ croissantAmount: 0 });
+
     console.log(data);
   };
   fruitCupSubmit = async (fruitCup) => {
@@ -451,6 +462,8 @@ class inventoryForm extends Component {
         "/4",
       fruitCup
     );
+    this.setState({ fruitCupAmount: 0 });
+
     console.log(data);
   };
   icedCoffeeSubmit = async (icedCoffee) => {
@@ -465,6 +478,7 @@ class inventoryForm extends Component {
         "/5",
       icedCoffee
     );
+    this.setState({ icedCoffeeAmount: 0 });
     console.log(data);
   };
   juiceSubmit = async (juice) => {
@@ -478,6 +492,8 @@ class inventoryForm extends Component {
         "/6",
       juice
     );
+    this.setState({ juiceAmount: 0 });
+
     console.log(data);
   };
   latteSubmit = async (latte) => {
@@ -491,6 +507,8 @@ class inventoryForm extends Component {
         "/7",
       latte
     );
+    this.setState({ latteAmount: 0 });
+
     console.log(data);
   };
   milkSubmit = async (milk) => {
@@ -504,6 +522,8 @@ class inventoryForm extends Component {
         "/8",
       milk
     );
+    this.setState({ milkAmount: 0 });
+
     console.log(data);
   };
   barSubmit = async (bar) => {
@@ -517,6 +537,8 @@ class inventoryForm extends Component {
         "/9",
       bar
     );
+    this.setState({ barAmount: 0 });
+
     console.log(data);
   };
   saladSubmit = async (salad) => {
@@ -530,6 +552,8 @@ class inventoryForm extends Component {
         "/10",
       salad
     );
+    this.setState({ saladAmount: 0 });
+
     console.log(data);
   };
   sandwichSubmit = async (sandwich) => {
@@ -543,6 +567,8 @@ class inventoryForm extends Component {
         "/11",
       sandwich
     );
+    this.setState({ sandwichAmount: 0 });
+
     console.log(data);
   };
   smoothieSubmit = async (smoothie) => {
@@ -556,6 +582,8 @@ class inventoryForm extends Component {
         "/12",
       smoothie
     );
+    this.setState({ smoothieAmount: 0 });
+
     console.log(data);
   };
 
@@ -569,6 +597,8 @@ class inventoryForm extends Component {
         "/1",
       coffee
     );
+    this.setState({ coffeePrice: 0 });
+
     console.log(data);
   };
 
@@ -582,6 +612,7 @@ class inventoryForm extends Component {
         "/2",
       coke
     );
+    this.setState({ cokePrice: 0 });
     console.log(data);
   };
 
@@ -595,6 +626,8 @@ class inventoryForm extends Component {
         "/3",
       croissant
     );
+    this.setState({ croissantPrice: 0 });
+
     console.log(data);
   };
   fruitCupPriceSubmit = async (fruitCup) => {
@@ -607,6 +640,8 @@ class inventoryForm extends Component {
         "/4",
       fruitCup
     );
+    this.setState({ fruitCupPrice: 0 });
+
     console.log(data);
   };
   icedCoffeePriceSubmit = async (icedCoffee) => {
@@ -619,6 +654,8 @@ class inventoryForm extends Component {
         "/5",
       icedCoffee
     );
+    this.setState({ icedCoffeePrice: 0 });
+
     console.log(data);
   };
   juicePriceSubmit = async (juice) => {
@@ -631,6 +668,8 @@ class inventoryForm extends Component {
         "/6",
       juice
     );
+    this.setState({ juicePrice: 0 });
+
     console.log(data);
   };
   lattePriceSubmit = async (latte) => {
@@ -643,6 +682,8 @@ class inventoryForm extends Component {
         "/7",
       latte
     );
+    this.setState({ lattePrice: 0 });
+
     console.log(data);
   };
   milkPriceSubmit = async (milk) => {
@@ -655,6 +696,8 @@ class inventoryForm extends Component {
         "/8",
       milk
     );
+    this.setState({ milkPrice: 0 });
+
     console.log(data);
   };
   barPriceSubmit = async (bar) => {
@@ -667,6 +710,8 @@ class inventoryForm extends Component {
         "/9",
       bar
     );
+    this.setState({ barPrice: 0 });
+
     console.log(data);
   };
   saladPriceSubmit = async (salad) => {
@@ -679,6 +724,8 @@ class inventoryForm extends Component {
         "/10",
       salad
     );
+    this.setState({ saladPrice: 0 });
+
     console.log(data);
   };
   sandwichPriceSubmit = async (sandwich) => {
@@ -691,6 +738,8 @@ class inventoryForm extends Component {
         "/11",
       sandwich
     );
+    this.setState({ sandwichPrice: 0 });
+
     console.log(data);
   };
   smoothiePriceSubmit = async (smoothie) => {
@@ -703,6 +752,8 @@ class inventoryForm extends Component {
         "/12",
       smoothie
     );
+    this.setState({ smoothiePrice: 0 });
+
     console.log(data);
   };
 
@@ -775,20 +826,23 @@ class inventoryForm extends Component {
       this.state.smoothieAmount * this.state.products[11].price;
 
     const budget = this.state.team.budget; // used to set api team.budget
-    const isBudgetNotNegative =
-      parseInt(budget, 10) -
-      parseInt(coffeeAmount1, 10) -
-      parseInt(cokeAmount1, 10) -
-      parseInt(croissantAmount1, 10) -
-      parseInt(fruitCupAmount1, 10) -
-      parseInt(icedCoffeeAmount1, 10) -
-      parseInt(juiceAmount1, 10) -
-      parseInt(latteAmount1, 10) -
-      parseInt(milkAmount1, 10) -
-      parseInt(barAmount1, 10) -
-      parseInt(saladAmount1, 10) -
-      parseInt(sandwichAmount1, 10) -
+
+    const purchaseTotal =
+      parseInt(coffeeAmount1, 10) +
+      parseInt(cokeAmount1, 10) +
+      parseInt(croissantAmount1, 10) +
+      parseInt(fruitCupAmount1, 10) +
+      parseInt(icedCoffeeAmount1, 10) +
+      parseInt(juiceAmount1, 10) +
+      parseInt(latteAmount1, 10) +
+      parseInt(milkAmount1, 10) +
+      parseInt(barAmount1, 10) +
+      parseInt(saladAmount1, 10) +
+      parseInt(sandwichAmount1, 10) +
       parseInt(smoothieAmount1, 10);
+
+    const isBudgetNotNegative =
+      parseInt(budget, 10) - parseInt(purchaseTotal, 10);
 
     if (isBudgetNotNegative < 0) {
       toast.error("You don't have enough money!");
@@ -836,6 +890,19 @@ class inventoryForm extends Component {
       this.smoothieSubmit(this.state.smoothie);
     }
     this.budgetUpdate(this.state.team);
+
+    const { amount, log } = this.state;
+    http
+      .post(config.apiEndpoint + "/log/", {
+        amount: purchaseTotal,
+        team_id: this.context.currentUser.teamID,
+        round_num: log.round_num,
+        category: log.category,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+    toast.success("Inventory Order Submitted!")
   };
   handleSellingPriceSubmit = (e) => {
     e.preventDefault();
@@ -879,6 +946,7 @@ class inventoryForm extends Component {
     if (this.state.smoothiePrice > 0) {
       this.smoothiePriceSubmit(this.state.smoothie);
     }
+    toast.success("Selling Prices Set!")
   };
 
   handleChange = (e) => {

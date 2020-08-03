@@ -6,6 +6,7 @@ import Input from "./Input";
 import UserContext from "../Context/UserContext";
 
 const authEndpoint = "https://in-quire.org/user";
+const teamEndpoint = "https://in-quire.org/team";
 
 class LoginForm extends Component {
   static contextType = UserContext;
@@ -16,7 +17,8 @@ class LoginForm extends Component {
     userList: {},
     userLoggedIn: { email: "", password: "", id: 0, isManager: false },
     id: 1,
-    team: [],
+    // team: [],
+    teams: [],
   };
 
   schema = {
@@ -89,7 +91,7 @@ class LoginForm extends Component {
   };
 
   doSubmit = async () => {
-    const { userList, data } = this.state;
+    const { userList, data, teams } = this.state;
     const { history } = this.props;
 
     for (let x in userList) {
@@ -101,6 +103,13 @@ class LoginForm extends Component {
         this.context.currentUser.teamID = userList[x].team_id; //using user id right now since the team ids are the same
         this.context.currentUser.isManager = userList[x].manager;
 
+        for (let x in teams) {
+          if (this.context.currentUser.teamID === teams[x].team_id) {
+            this.context.currentUser.isHighestBid = teams[x].ishighestbid;
+            this.context.currentUser.budget = teams[x].budget;
+            break;
+          }
+        }
         toast.success(
           `Logged in successfully, hi ${this.context.currentUser.name}!`
         );
@@ -115,6 +124,10 @@ class LoginForm extends Component {
   async componentDidMount() {
     http.get(authEndpoint).then((res) => {
       this.setState({ userList: res.data });
+      console.log(res);
+    });
+    http.get(teamEndpoint).then((res) => {
+      this.setState({ teams: res.data });
       console.log(res);
     });
   }

@@ -19,13 +19,20 @@ class MarketingForm extends Component {
       selectValue: "facebook",
       errors: {},
       team: [],
+      log: { category: "Marketing", amount: null, team_id: null, round_num: 1 },
     };
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
+    this.putSubmit = this.putSubmit.bind(this);
     /*this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this); */
   }
 
   async componentDidMount() {
+    const { history } = this.props;
+
+    if (this.context.currentUser.name === null) {
+      history.push("/");
+    }
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -70,6 +77,7 @@ class MarketingForm extends Component {
     const selectVal = this.state.selectValue;
     const amount = this.state.amount;
     const plusThis = this.state.marketing[selectVal];
+    const test = parseInt(amount, 10) + parseInt(plusThis, 10);
     marketing[selectVal] = parseInt(amount, 10) + parseInt(plusThis, 10);
     //marketing[selectVal] = amount + add;
     const { data } = await http.put(
@@ -77,6 +85,13 @@ class MarketingForm extends Component {
       marketing
     );
     console.log(data);
+    toast.success(
+      "Marketing Order Submitted: " +
+        this.state.selectValue +
+        ": $" +
+        this.state.amount
+    );
+    this.setState({ amount: 0 });
   };
   budgetUpdate = async (team) => {
     const amount = this.state.amount;
@@ -101,6 +116,8 @@ class MarketingForm extends Component {
   };
 
   handleSubmit = (e) => {
+    const { amount, log } = this.state;
+
     e.preventDefault();
 
     const errors = this.validate(); //error checking if negative or if no dropdown selected
@@ -108,6 +125,24 @@ class MarketingForm extends Component {
     if (errors) return;
 
     this.budgetUpdate(this.state.team);
+
+    http
+      .post(config.apiEndpoint + "/log/", {
+        amount: amount,
+        team_id: this.context.currentUser.teamID,
+        round_num: log.round_num,
+        category: log.category,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+    /*toast.success(
+      "Marketing Order Submitted: " +
+        this.state.selectValue +
+        ": $" +
+        this.state.amount
+    );
+    //this.setState({ amount: 0 }); */
   };
 
   handleChange = (e) => {
@@ -174,11 +209,12 @@ class MarketingForm extends Component {
                 </button>
               </div>
             </form>
+            <br />
+
             <div class="row">
               <div class="col-sm-6">
                 <div class="card">
                   <h4>Facebook Marketing</h4>
-
                   <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.facebook}</h5>
                 </div>

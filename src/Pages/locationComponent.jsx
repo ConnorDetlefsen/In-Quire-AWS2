@@ -41,6 +41,11 @@ class locationComponent extends Component {
   }
 
   async componentDidMount() {
+    const { history } = this.props;
+
+    if (this.context.currentUser.name === null) {
+      history.push("/");
+    }
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -126,6 +131,8 @@ class locationComponent extends Component {
     const budget = team.budget; // used to set api team.budget
     const amount = this.state.amount;
     team.budget = parseInt(budget, 10) - parseInt(amount, 10);
+    this.context.currentUser.isHighestBid = true;
+    team.ishighestbid = true;
     this.context.currentUser.budget = team.budget; //updates the context
     const { data3 } = await http.put(
       config.apiEndpoint + "/team/" + this.context.currentUser.teamID,
@@ -133,6 +140,7 @@ class locationComponent extends Component {
     );
     this.state.team.budget = this.context.currentUser.budget;
     console.log(data3);
+    this.setState({ amount: 0 });
   };
 
   getCurrent = async (location) => {
@@ -155,7 +163,13 @@ class locationComponent extends Component {
         break;
       }
     }
-
+    if (
+      this.context.currentUser.isHighestBid === true &&
+      this.state.prevID !== this.context.currentUser.teamID
+    ) {
+      toast.error("You are already a highest bidder!");
+      return;
+    }
     const PreviousTeam = await http.get(
       config.apiEndpoint + "/team/" + this.state.prevID
     );
@@ -165,6 +179,7 @@ class locationComponent extends Component {
       const prevTeamBudget = PreviousTeam.data.budget;
       console.log("prevteamBudg");
       console.log(prevTeamBudget);
+      this.state.prevTeam.ishighestbid = false;
       this.state.prevTeam.budget =
         parseInt(previousBid, 10) + parseInt(prevTeamBudget, 10);
       const { data1 } = await http.put(
@@ -194,6 +209,20 @@ class locationComponent extends Component {
     const errors = this.validate(); //error checking if negative or if no dropdown selected
     this.setState({ errors: errors || {} });
     if (errors) return;
+
+    const bid = this.state.amount;
+    const budget = this.state.team.budget; // used to set api team.budget
+
+    const isBudgetNotNegative = parseInt(budget, 10) - parseInt(bid, 10);
+    if (isBudgetNotNegative < 0) {
+      toast.error("You don't have enough money!");
+      return;
+    }
+    /*
+    if (this.context.currentUser.isHighestBid === true && ) {
+      toast.error("You are already a highest bidder!");
+      return;
+    }*/
 
     // this.getLocation(this.state.location);
     // this.getPrevTeam(this.state.prevTeam);
@@ -295,7 +324,7 @@ class locationComponent extends Component {
                   />
                 </label>
                 <button
-                  //disabled={!this.context.currentUser.isManager}
+                  disabled={!this.context.currentUser.isManager}
                   type="submit"
                   class="btn btn-primary"
                   margin-top=".5em"
