@@ -35,7 +35,7 @@ class locationComponent extends Component {
       locClear: [],
       refund: 0,
 
-      test: "this is state test",
+      test: 0,
 
       prevID: 1,
       location: [],
@@ -260,20 +260,26 @@ class locationComponent extends Component {
             .then((res) => {
               const prevBudget1 = res.data.budget;
               const refund1 = this.state.refund;
+              const penalty = 1000;
               res.data.ishighestbid = false;
+              this.context.isHighestBid = false;
               console.log(prevBudget1);
               const newBudget =
-                parseInt(prevBudget1, 10) + parseInt(refund1, 10);
+                parseInt(prevBudget1, 10) +
+                parseInt(refund1, 10) -
+                parseInt(penalty, 10);
               console.log(newBudget);
               res.data.budget = newBudget;
-              this.context.currentUser.budget = res.data.budget;
+              this.context.currentUser.budget = newBudget;
+              this.state.team.budget = newBudget;
+              this.setState({ test: 0 });
               http.put(
                 config.apiEndpoint + "/team/" + this.context.currentUser.teamID,
                 res.data
               );
             });
         });
-
+        toast.success("Previous Bid Cleared, $1000 penalty");
         break;
       }
     }
