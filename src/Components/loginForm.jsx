@@ -4,10 +4,11 @@ import Joi from "joi-browser";
 import http from "../Services/httpService";
 import Input from "./Input";
 import UserContext from "../Context/UserContext";
+import logo from "./In-Quire.png";
 
-const authEndpoint = "https://in-quire.org/user";
-const teamEndpoint = "https://in-quire.org/team";
+const authEndpoint = "https://in-quire-api-cpqv4tv3zkthnqzu.com/user";
 
+const teamEndpoint = "https://in-quire-api-cpqv4tv3zkthnqzu.com/team";
 class LoginForm extends Component {
   static contextType = UserContext;
 
@@ -134,19 +135,36 @@ class LoginForm extends Component {
 
   render() {
     return (
+      <>
+      <center><img
+      src={logo}
+      width="200px"
+      height="100px"
+    ></img>
+
+    </center>
       <React.Fragment>
         <ToastContainer position="top-center" />
-        <div className="login-wrapper">
-          <div className="login-css">
-            <h1>Login</h1>
-            <form onSubmit={this.handleSubmit}>
-              {this.renderInput("email", "Email")}
-              {this.renderInput("password", "Password", "password")}
-              {this.renderButton("Login")}
-            </form>
+        <div className="login-body">
+          <div className="login-page ">
+            <div className="login-css">
+              <div className="form">
+                <div className="login">
+                  <div className="Login Header">
+                    <h1><b>BAS User Login</b></h1>
+                  </div>
+                </div>
+                <form className="login-form " onSubmit={this.handleSubmit}>
+                  {this.renderInput("email", "Email")}
+                  {this.renderInput("password", "Password", "password")}
+                  {this.renderButton("Login")}
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>
+      </>
     );
   }
 }

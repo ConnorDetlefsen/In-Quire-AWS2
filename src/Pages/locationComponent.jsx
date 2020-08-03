@@ -31,6 +31,10 @@ class locationComponent extends Component {
       team: [],
       locations: [],
 
+      locID: 0, //for clear bid
+      locClear: [],
+      refund: 0,
+
       test: "this is state test",
 
       prevID: 1,
@@ -50,6 +54,8 @@ class locationComponent extends Component {
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
         this.setState({ team: res.data });
+        this.context.currentUser.isHighestBid = res.data.ishighestbid;
+        console.log(this.context.currentUser.isHighestBid);
         console.log(res);
       });
     http.get(config.apiEndpoint + "/location/").then((res) => {
@@ -218,6 +224,7 @@ class locationComponent extends Component {
       toast.error("You don't have enough money!");
       return;
     }
+
     /*
     if (this.context.currentUser.isHighestBid === true && ) {
       toast.error("You are already a highest bidder!");
@@ -227,6 +234,59 @@ class locationComponent extends Component {
     // this.getLocation(this.state.location);
     // this.getPrevTeam(this.state.prevTeam);
     this.getCurrent(this.state.location);
+  };
+
+  handleBidClear = (e) => {
+    e.preventDefault();
+    const { locations, team, locID, locClear } = this.state;
+
+    for (let x in locations) {
+      if (this.context.currentUser.teamID === locations[x].team_id) {
+        // this.state.locID = locations[x].team_id;
+        const locID = locations[x].location_id;
+        console.log(locID);
+        http.get(config.apiEndpoint + "/location/" + locID).then((res) => {
+          this.setState({ locClear: res.data });
+          const refund = res.data.high_bid;
+          this.state.refund = res.data.high_bid;
+          console.log(refund);
+          res.data.high_bid = 0;
+          res.data.team_id = 0;
+          http.put(config.apiEndpoint + "/location/" + locID, res.data);
+          http
+            .get(
+              config.apiEndpoint + "/team/" + this.context.currentUser.teamID
+            )
+            .then((res) => {
+              const prevBudget1 = res.data.budget;
+              const refund1 = this.state.refund;
+              res.data.ishighestbid = false;
+              console.log(prevBudget1);
+              const newBudget =
+                parseInt(prevBudget1, 10) + parseInt(refund1, 10);
+              console.log(newBudget);
+              res.data.budget = newBudget;
+              this.context.currentUser.budget = res.data.budget;
+              http.put(
+                config.apiEndpoint + "/team/" + this.context.currentUser.teamID,
+                res.data
+              );
+            });
+        });
+
+        break;
+      }
+    }
+    /*
+    http.get(config.apiEndpoint + "/location/" + locID).then((res) => {
+      this.setState({ locClear: res.data });
+    });
+
+    const refund = this.state.locClear.high_bid;
+    console.log(refund);
+    locClear.team_id = 0;
+    locClear.high_bid = 0;
+    http.put(config.apiEndpoint + "/location/" + locID, locClear);*/
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -333,6 +393,16 @@ class locationComponent extends Component {
                 </button>
               </form>
             </div>
+            <h1>Clear Bid!</h1>
+            <button
+              disabled={!this.context.currentUser.isManager}
+              type="button"
+              class="btn btn-warning"
+              onClick={this.handleBidClear}
+              margin-top=".5em"
+            >
+              Clear Current Bid
+            </button>
             <Map
               google={this.props.google}
               zoom={14}

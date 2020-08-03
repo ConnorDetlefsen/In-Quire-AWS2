@@ -804,26 +804,35 @@ class inventoryForm extends Component {
 
   handleInventoryOrderSubmit = (e) => {
     e.preventDefault();
+    const {
+      coffeeAmount,
+      cokeAmount,
+      croissantAmount,
+      fruitCupAmount,
+      icedCoffeeAmount,
+      juiceAmount,
+      latteAmount,
+      milkAmount,
+      barAmount,
+      saladAmount,
+      sandwichAmount,
+      smoothieAmount,
+      products,
+    } = this.state;
     //budget negative check here
 
-    const coffeeAmount1 =
-      this.state.coffeeAmount * this.state.products[0].price;
-    const cokeAmount1 = this.state.cokeAmount * this.state.products[1].price;
-    const croissantAmount1 =
-      this.state.croissantAmount * this.state.products[2].price;
-    const fruitCupAmount1 =
-      this.state.fruitCupAmount * this.state.products[3].price;
-    const icedCoffeeAmount1 =
-      this.state.icedCoffeeAmount * this.state.products[4].price;
-    const juiceAmount1 = this.state.juiceAmount * this.state.products[5].price;
-    const latteAmount1 = this.state.latteAmount * this.state.products[6].price;
-    const milkAmount1 = this.state.milkAmount * this.state.products[7].price;
-    const barAmount1 = this.state.barAmount * this.state.products[8].price;
-    const saladAmount1 = this.state.saladAmount * this.state.products[9].price;
-    const sandwichAmount1 =
-      this.state.sandwichAmount * this.state.products[10].price;
-    const smoothieAmount1 =
-      this.state.smoothieAmount * this.state.products[11].price;
+    const coffeeAmount1 = coffeeAmount * products[0].price;
+    const cokeAmount1 = cokeAmount * products[1].price;
+    const croissantAmount1 = croissantAmount * products[2].price;
+    const fruitCupAmount1 = fruitCupAmount * products[3].price;
+    const icedCoffeeAmount1 = icedCoffeeAmount * products[4].price;
+    const juiceAmount1 = juiceAmount * products[5].price;
+    const latteAmount1 = latteAmount * products[6].price;
+    const milkAmount1 = milkAmount * products[7].price;
+    const barAmount1 = barAmount * products[8].price;
+    const saladAmount1 = saladAmount * products[9].price;
+    const sandwichAmount1 = sandwichAmount * products[10].price;
+    const smoothieAmount1 = smoothieAmount * products[11].price;
 
     const budget = this.state.team.budget; // used to set api team.budget
 
@@ -844,8 +853,43 @@ class inventoryForm extends Component {
     const isBudgetNotNegative =
       parseInt(budget, 10) - parseInt(purchaseTotal, 10);
 
+    const numOfProducts =
+      parseInt(coffeeAmount, 10) +
+      parseInt(cokeAmount, 10) +
+      parseInt(croissantAmount, 10) +
+      parseInt(fruitCupAmount, 10) +
+      parseInt(icedCoffeeAmount, 10) +
+      parseInt(juiceAmount, 10) +
+      parseInt(latteAmount, 10) +
+      parseInt(milkAmount, 10) +
+      parseInt(barAmount, 10) +
+      parseInt(saladAmount, 10) +
+      parseInt(sandwichAmount, 10) +
+      parseInt(smoothieAmount, 10);
+
+    const numOfProducts1 =
+      coffeeAmount +
+      cokeAmount +
+      croissantAmount +
+      fruitCupAmount +
+      icedCoffeeAmount +
+      juiceAmount +
+      latteAmount +
+      milkAmount +
+      barAmount +
+      saladAmount +
+      sandwichAmount +
+      smoothieAmount;
+
     if (isBudgetNotNegative < 0) {
       toast.error("You don't have enough money!");
+      return;
+    }
+
+    if (numOfProducts1 % 1 === 0) {
+      console.log("whole number");
+    } else {
+      toast.error("Please enter whole numbers only");
       return;
     }
 
@@ -853,40 +897,40 @@ class inventoryForm extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
 
-    if (this.state.coffeeAmount > 0) {
+    if (coffeeAmount > 1) {
       this.coffeeSubmit(this.state.coffee);
     }
-    if (this.state.cokeAmount > 0) {
+    if (cokeAmount > 1) {
       this.cokeSubmit(this.state.coke);
     }
-    if (this.state.croissantAmount > 0) {
+    if (croissantAmount > 1) {
       this.croissantSubmit(this.state.croissant);
     }
-    if (this.state.fruitCupAmount > 0) {
+    if (fruitCupAmount > 1) {
       this.fruitCupSubmit(this.state.fruitCup);
     }
-    if (this.state.icedCoffeeAmount > 0) {
+    if (icedCoffeeAmount > 1) {
       this.icedCoffeeSubmit(this.state.icedCoffee);
     }
-    if (this.state.juiceAmount > 0) {
+    if (juiceAmount > 1) {
       this.juiceSubmit(this.state.juice);
     }
-    if (this.state.latteAmount > 0) {
+    if (latteAmount > 1) {
       this.latteSubmit(this.state.latte);
     }
-    if (this.state.milkAmount > 0) {
+    if (milkAmount > 1) {
       this.milkSubmit(this.state.milk);
     }
-    if (this.state.barAmount > 0) {
+    if (barAmount > 1) {
       this.barSubmit(this.state.bar);
     }
-    if (this.state.saladAmount > 0) {
+    if (saladAmount > 1) {
       this.saladSubmit(this.state.salad);
     }
-    if (this.state.sandwichAmount > 0) {
+    if (sandwichAmount > 1) {
       this.sandwichSubmit(this.state.sandwich);
     }
-    if (this.state.smoothieAmount > 0) {
+    if (smoothieAmount > 1) {
       this.smoothieSubmit(this.state.smoothie);
     }
     this.budgetUpdate(this.state.team);
@@ -902,7 +946,7 @@ class inventoryForm extends Component {
       .then((res) => {
         console.log(res);
       });
-    toast.success("Inventory Order Submitted!")
+    toast.success("Inventory Order Submitted!");
   };
   handleSellingPriceSubmit = (e) => {
     e.preventDefault();
@@ -946,7 +990,7 @@ class inventoryForm extends Component {
     if (this.state.smoothiePrice > 0) {
       this.smoothiePriceSubmit(this.state.smoothie);
     }
-    toast.success("Selling Prices Set!")
+    toast.success("Selling Prices Set!");
   };
 
   handleChange = (e) => {

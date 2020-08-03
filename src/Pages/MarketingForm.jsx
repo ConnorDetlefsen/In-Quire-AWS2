@@ -124,6 +124,13 @@ class MarketingForm extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
 
+    if (amount % 1 === 0) {
+      console.log("whole number");
+    } else {
+      toast.error("Please enter a whole number");
+      return;
+    }
+
     this.budgetUpdate(this.state.team);
 
     http
