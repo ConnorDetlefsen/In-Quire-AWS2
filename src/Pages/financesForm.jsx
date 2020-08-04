@@ -12,6 +12,10 @@ class financesForm extends Component {
     this.state = {
       finances: [],
       team: [],
+      marketing: 0,
+      inventory: 0,
+      fixed: 0,
+      legal: 0,
     };
   }
   async componentDidMount() {
@@ -21,10 +25,15 @@ class financesForm extends Component {
       history.push("/");
     }
     http
-      .get(config.apiEndpoint + "/log/" + this.context.currentUser.teamID)
+      .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
       .then((res) => {
         this.setState({ finances: res.data });
         console.log(res);
+        /*
+        for (let x in res) {
+          console.log(res.data[x].trans_id);
+        }
+        */
       });
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
@@ -32,7 +41,14 @@ class financesForm extends Component {
         this.setState({ team: res.data });
         console.log(res);
       });
+    this.setFinances(this.state.finances);
   }
+
+  setFinances = (finances) => {
+    for (let x in finances) {
+      console.log(finances[x].trans_id);
+    }
+  };
   render() {
     const { finances, team } = this.state;
     return (
@@ -43,31 +59,37 @@ class financesForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Finances</h1>
             </nav>
-            <nav className="navbar navbar-light bg-primary">
+            <nav className="navbar background">
               Budget: {team.budget}{" "}
             </nav>
             <table class="table">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Category</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Round</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Timestamp</th>
+                  <th scope="col">Total Amount</th>
                 </tr>
               </thead>
-
               <tbody>
-                {finances.map((finances) => (
-                  <tr key={finances.trans_id}>
-                    <td>{finances.category}</td>
-                    <td>${finances.amount}</td>
-
-                    <td>{finances.round_num}</td>
-                    <td>{("" + finances.stamp).substring(0, 10)}</td>
-                    <td>{("" + finances.stamp).substring(11, 19)}</td>
-                  </tr>
-                ))}
+                <tr>
+                  <td>Inventory</td>
+                  <td>{this.state.finances.total_inventory}</td>
+                </tr>
+                <tr>
+                  <td>Marketing</td>
+                  <td>{this.state.finances.total_marketing}</td>
+                </tr>
+                <tr>
+                  <td>Data</td>
+                  <td>{this.state.finances.total_data}</td>
+                </tr>
+                <tr>
+                  <td>Fixed</td>
+                  <td>{this.state.finances.total_fixed}</td>
+                </tr>
+                <tr>
+                  <td>Legal</td>
+                  <td>{this.state.finances.total_legal}</td>
+                </tr>
               </tbody>
             </table>
           </div>

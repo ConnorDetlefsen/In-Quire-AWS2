@@ -130,6 +130,7 @@ body {
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
+  background-color: azure;
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -137,8 +138,10 @@ body {
   font-size: 1.2rem;
 }
 
-#sidebar-wrapper .list-group {
+#sidebar-wrapper .list-group-item {
   width: 10rem;
+  text-align: center;
+  background-color: azure;
 }
 
 #page-content-wrapper {
@@ -166,6 +169,7 @@ body {
 
 .whiteFont {
   color: white;
+  text-align: center;
 }
 
 /*login css */
@@ -235,7 +239,7 @@ header .header {
   text-decoration: none;
 }
 
-.container {
+.container-comp {
   position: center;
   z-index: 1;
   max-width: 400px;
@@ -243,9 +247,40 @@ header .header {
   background-color: white
 }
 
+
 .login-body {
   background-color: azure;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.background {
+  background-color: azure;
+}
+
+
+.back {
+  background-color: azure;
+  color: black;
+  margin-top: 20px;
+  padding-top:    30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 30px;
+  border-style: ridge;
+  border-radius: 12px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.th .td {
+  text-align: left;
+  padding: 8px;
+}
+
+

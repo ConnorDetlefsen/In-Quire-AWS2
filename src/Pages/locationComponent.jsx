@@ -40,6 +40,27 @@ class locationComponent extends Component {
       prevID: 1,
       location: [],
       prevTeam: [],
+
+      loc1: [],
+      loc2: [],
+      loc3: [],
+      loc4: [],
+      loc5: [],
+      loc6: [],
+      loc7: [],
+      loc8: [],
+      loc9: [],
+      loc10: [],
+      loc11: [],
+      loc12: [],
+      loc13: [],
+      loc14: [],
+      loc15: [],
+      loc16: [],
+      loc17: [],
+      loc18: [],
+      loc19: [],
+      loc20: [],
     };
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
@@ -60,6 +81,86 @@ class locationComponent extends Component {
       });
     http.get(config.apiEndpoint + "/location/").then((res) => {
       this.setState({ locations: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/1").then((res) => {
+      this.setState({ loc1: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/2").then((res) => {
+      this.setState({ loc2: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/3").then((res) => {
+      this.setState({ loc3: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/4").then((res) => {
+      this.setState({ loc4: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/5").then((res) => {
+      this.setState({ loc5: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/6").then((res) => {
+      this.setState({ loc6: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/7").then((res) => {
+      this.setState({ loc7: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/8").then((res) => {
+      this.setState({ loc8: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/9").then((res) => {
+      this.setState({ loc9: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/10").then((res) => {
+      this.setState({ loc10: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/11").then((res) => {
+      this.setState({ loc11: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/12").then((res) => {
+      this.setState({ loc12: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/13").then((res) => {
+      this.setState({ loc13: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/14").then((res) => {
+      this.setState({ loc14: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/15").then((res) => {
+      this.setState({ loc15: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/16").then((res) => {
+      this.setState({ loc16: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/17").then((res) => {
+      this.setState({ loc17: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/18").then((res) => {
+      this.setState({ loc18: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/19").then((res) => {
+      this.setState({ loc19: res.data });
+      console.log(res);
+    });
+    http.get(config.apiEndpoint + "/location/20").then((res) => {
+      this.setState({ loc20: res.data });
       console.log(res);
     });
   }
@@ -124,6 +225,8 @@ class locationComponent extends Component {
 
   updateLocation = async (location) => {
     const locationID = this.state.selectValue;
+    const amount = this.state.amount;
+    console.log(amount);
     location.team_id = this.context.currentUser.teamID; //update location id and new highest bid
     location.high_bid = this.state.amount; //updates bid
     const { data } = await http.put(
@@ -131,6 +234,124 @@ class locationComponent extends Component {
       location
     );
     console.log(data);
+    if (this.state.selectValue === "1") {
+      this.state.loc1.team_id = parseInt(this.context.currentUser.teamID, 10);
+      this.state.loc1.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "2") {
+      this.state.loc2.team_id = parseInt(this.context.currentUser.teamID, 10);
+      this.state.loc2.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "3") {
+      this.state.loc3.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc3.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "4") {
+      this.state.loc4.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc4.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "5") {
+      this.state.loc5.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc5.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "6") {
+      this.state.loc6.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc6.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "7") {
+      this.state.loc7.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc7.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "8") {
+      this.state.loc8.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc8.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "9") {
+      this.state.loc9.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc9.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "10") {
+      this.state.loc10.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc10.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "11") {
+      this.state.loc11.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc11.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "12") {
+      this.state.loc12.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc12.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "13") {
+      this.state.loc13.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc13.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "14") {
+      this.state.loc14.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc14.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "15") {
+      this.state.loc15.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc15.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "16") {
+      this.state.loc16.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc16.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "17") {
+      this.state.loc17.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc17.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "18") {
+      this.state.loc18.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc18.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "19") {
+      this.state.loc19.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc19.high_bid = amount;
+      this.setState({ test: 1 });
+    }
+    if (this.state.selectValue === "20") {
+      this.state.loc20.team_id = parseInt(this.context.currentUser.teamID, 10);
+      console.log(this.state.amount);
+      this.state.loc20.high_bid = amount;
+      this.setState({ test: 1 });
+    }
   };
 
   updateNewTeamBudget = async (team) => {
@@ -238,7 +459,10 @@ class locationComponent extends Component {
 
   handleBidClear = (e) => {
     e.preventDefault();
-    const { locations, team, locID, locClear } = this.state;
+    const { locations, team, locClear } = this.state;
+    http.get(config.apiEndpoint + "/location/").then((res) => {
+      this.state.locations = res.data;
+    });
 
     for (let x in locations) {
       if (this.context.currentUser.teamID === locations[x].team_id) {
@@ -252,7 +476,9 @@ class locationComponent extends Component {
           console.log(refund);
           res.data.high_bid = 0;
           res.data.team_id = 0;
+          this.state.locations[x].team_id = 0;
           http.put(config.apiEndpoint + "/location/" + locID, res.data);
+
           http
             .get(
               config.apiEndpoint + "/team/" + this.context.currentUser.teamID
@@ -260,15 +486,13 @@ class locationComponent extends Component {
             .then((res) => {
               const prevBudget1 = res.data.budget;
               const refund1 = this.state.refund;
-              const penalty = 1000;
+              const penalty = refund1 * 0.02;
               res.data.ishighestbid = false;
-              this.context.isHighestBid = false;
-              console.log(prevBudget1);
+              this.context.currentUser.isHighestBid = false;
               const newBudget =
                 parseInt(prevBudget1, 10) +
                 parseInt(refund1, 10) -
                 parseInt(penalty, 10);
-              console.log(newBudget);
               res.data.budget = newBudget;
               this.context.currentUser.budget = newBudget;
               this.state.team.budget = newBudget;
@@ -278,10 +502,93 @@ class locationComponent extends Component {
                 res.data
               );
             });
+
+          const setToZero = 0;
+          if (locID === 1) {
+            this.state.loc1.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 2) {
+            this.state.loc2.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 3) {
+            this.state.loc3.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 4) {
+            this.state.loc4.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 5) {
+            this.state.loc5.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 6) {
+            this.state.loc6.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 7) {
+            this.state.loc7.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 8) {
+            this.state.loc8.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 9) {
+            this.state.loc9.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 10) {
+            this.state.loc10.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 11) {
+            this.state.loc11.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 12) {
+            this.state.loc12.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 13) {
+            this.state.loc13.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 14) {
+            this.state.loc14.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 15) {
+            this.state.loc15.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 16) {
+            this.state.loc16.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 17) {
+            this.state.loc17.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 18) {
+            this.state.loc18.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 19) {
+            this.state.loc19.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
+          if (locID === 20) {
+            this.state.loc20.team_id = parseInt(setToZero, 10);
+            this.setState({ test: 1 });
+          }
         });
-        toast.success("Previous Bid Cleared, $1000 penalty");
+        toast.success("Previous Bid Cleared, 2% penalty taxed");
         break;
       }
+      //   toast.error("You don't currently have a bid! If you do, reload the page");
     }
     /*
     http.get(config.apiEndpoint + "/location/" + locID).then((res) => {
@@ -337,78 +644,239 @@ class locationComponent extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Location</h1>
             </nav>
-            <nav className="navbar navbar-light bg-primary">
+            <nav className="navbar background">
               Budget: {team.budget}{" "}
             </nav>
-            <table class="table table-sm">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Location ID</th>
-                  <th scope="col">Current Highest Bidder</th>
-                  <th scope="col">Bid Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {locations.map((locations) => (
-                  <tr key={locations.location_id}>
-                    <td>{locations.location_id}</td>
-                    <td>Team {locations.team_id}</td>
-                    <td>${locations.high_bid}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
+            <br />
+            <h1>
+              <center>Bid on a location!</center>
+            </h1>
+            <h6>
+              <center>* Map shown below</center>
+            </h6>
             <div>
-              <h1>Bid on a location!</h1>
+              <div class="container">
+                <table class="table table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Location ID</th>
+                      <th scope="col">Current Highest Bidder</th>
+                      <th scope="col">Bid Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.loc1.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc1.location_id}</td>
+                        <td>{this.state.loc1.team_id}</td>
+                        <td>{this.state.loc1.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc2.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc2.location_id}</td>
+                        <td>{this.state.loc2.team_id}</td>
+                        <td>{this.state.loc2.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc3.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc3.location_id}</td>
+                        <td>{this.state.loc3.team_id}</td>
+                        <td>{this.state.loc3.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc4.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc4.location_id}</td>
+                        <td>{this.state.loc4.team_id}</td>
+                        <td>{this.state.loc4.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc5.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc5.location_id}</td>
+                        <td>{this.state.loc5.team_id}</td>
+                        <td>{this.state.loc5.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc6.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc6.location_id}</td>
+                        <td>{this.state.loc6.team_id}</td>
+                        <td>{this.state.loc6.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc7.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc7.location_id}</td>
+                        <td>{this.state.loc7.team_id}</td>
+                        <td>{this.state.loc7.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc8.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc8.location_id}</td>
+                        <td>{this.state.loc8.team_id}</td>
+                        <td>{this.state.loc8.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc9.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc9.location_id}</td>
+                        <td>{this.state.loc9.team_id}</td>
+                        <td>{this.state.loc9.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc10.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc10.location_id}</td>
+                        <td>{this.state.loc10.team_id}</td>
+                        <td>{this.state.loc10.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc11.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc11.location_id}</td>
+                        <td>{this.state.loc11.team_id}</td>
+                        <td>{this.state.loc11.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc12.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc12.location_id}</td>
+                        <td>{this.state.loc12.team_id}</td>
+                        <td>{this.state.loc12.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc13.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc13.location_id}</td>
+                        <td>{this.state.loc13.team_id}</td>
+                        <td>{this.state.loc13.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc14.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc14.location_id}</td>
+                        <td>{this.state.loc14.team_id}</td>
+                        <td>{this.state.loc14.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc15.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc15.location_id}</td>
+                        <td>{this.state.loc15.team_id}</td>
+                        <td>{this.state.loc15.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc16.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc16.location_id}</td>
+                        <td>{this.state.loc16.team_id}</td>
+                        <td>{this.state.loc16.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc17.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc17.location_id}</td>
+                        <td>{this.state.loc17.team_id}</td>
+                        <td>{this.state.loc17.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc18.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc18.location_id}</td>
+                        <td>{this.state.loc18.team_id}</td>
+                        <td>{this.state.loc18.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc19.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc19.location_id}</td>
+                        <td>{this.state.loc19.team_id}</td>
+                        <td>{this.state.loc19.high_bid}</td>
+                      </tr>
+                    )}
+                    {this.state.loc20.team_id !== 0 && (
+                      <tr>
+                        <td>{this.state.loc20.location_id}</td>
+                        <td>{this.state.loc20.team_id}</td>
+                        <td>{this.state.loc20.high_bid}</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
               <form onSubmit={this.handleSubmit}>
-                <label>
-                  Select Location ID
-                  <select
-                    id="dropdown"
-                    class=" form-control form-control-sm "
-                    onChange={this.handleDropdownChange}
-                    value={this.state.selectValue}
+                <center>
+                  <label>
+                    Select Location ID
+                    <select
+                      id="dropdown"
+                      class=" form-control form-control-sm "
+                      onChange={this.handleDropdownChange}
+                      value={this.state.selectValue}
+                    >
+                      <option value="1">Location 1</option>
+                      <option value="2">Location 2</option>
+                      <option value="3">Location 3</option>
+                      <option value="4">Location 4</option>
+                      <option value="5">Location 5</option>
+                      <option value="6">Location 6</option>
+                      <option value="7">Location 7</option>
+                      <option value="8">Location 8</option>
+                      <option value="9">Location 9</option>
+                      <option value="10">Location 10</option>
+                      <option value="11">Location 11</option>
+                      <option value="12">Location 12</option>
+                      <option value="13">Location 13</option>
+                      <option value="14">Location 14</option>
+                      <option value="15">Location 15</option>
+                      <option value="16">Location 16</option>
+                      <option value="17">Location 17</option>
+                      <option value="18">Location 18</option>
+                      <option value="19">Location 19</option>
+                      <option value="20">Location 20</option>
+                    </select>
+                  </label>
+                  &emsp;&emsp;
+                  <label>
+                    Amount $
+                    <input
+                      value={this.state.amount}
+                      onChange={this.handleChange}
+                      name="amount"
+                      type="number"
+                      class="form-control form-control-sm "
+                      id="amount"
+                      error={errors.amount}
+                    />
+                  </label>
+                  &emsp;
+                  <button
+                    disabled={!this.context.currentUser.isManager}
+                    type="submit"
+                    class="btn btn-primary"
+                    margin-top=".5em"
                   >
-                    <option value="1">Location 1</option>
-                    <option value="2">Location 2</option>
-                    <option value="3">Location 3</option>
-                    <option value="4">Location 4</option>
-                  </select>
-                </label>
-                <div class="divider" />
-                <label>
-                  Amount $
-                  <input
-                    value={this.state.amount}
-                    onChange={this.handleChange}
-                    name="amount"
-                    type="number"
-                    class="form-control form-control-sm "
-                    id="amount"
-                    error={errors.amount}
-                  />
-                </label>
-                <button
-                  disabled={!this.context.currentUser.isManager}
-                  type="submit"
-                  class="btn btn-primary"
-                  margin-top=".5em"
-                >
-                  Submit
-                </button>
+                    Submit
+                  </button>
+                  &emsp;&emsp;
+                  <button
+                    disabled={!this.context.currentUser.isManager}
+                    type="button"
+                    class="btn btn-warning"
+                    onClick={this.handleBidClear}
+                    margin-top=".5em"
+                  >
+                    Clear Current Bid
+                  </button>
+                </center>
               </form>
             </div>
-            <h1>Clear Bid!</h1>
-            <button
-              disabled={!this.context.currentUser.isManager}
-              type="button"
-              class="btn btn-warning"
-              onClick={this.handleBidClear}
-              margin-top=".5em"
-            >
-              Clear Current Bid
-            </button>
+            <br /> <br />
             <Map
               google={this.props.google}
               zoom={14}

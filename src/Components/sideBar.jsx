@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import logo from "./In-Quire.png";
 
 class sideBar extends Component {
   state = {
@@ -14,57 +15,61 @@ class sideBar extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
-        <div class="bg-light border-right" id="sidebar-wrapper">
-          <div class="sidebar-heading">In-Quire</div>
+        <div class="border-right" id="sidebar-wrapper">
+          <div class="sidebar-heading">
+            <img src={logo} width="120px" height="55px"></img>
+          </div>
           <div class="list-group list-group-flush">
             <Link
-              class="list-group-item list-group-item-action bg-light"
+              class="list-group-item list-group-item-action"
               to="/overview"
             >
               Overview
             </Link>
             <Link
-              class="list-group-item list-group-item-action bg-light"
+              class="list-group-item list-group-item-action "
               to="/location"
             >
               Location
             </Link>
             <Link
               disabled={this.state.round}
-              class="list-group-item list-group-item-action bg-light"
+              class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/inventory"
             >
               Inventory
             </Link>
             <Link
-              class="list-group-item list-group-item-action bg-light"
+              className="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/marketing"
             >
               Marketing
             </Link>
             <Link
-              class="list-group-item list-group-item-action bg-light"
+              class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/finances"
             >
               Finances
             </Link>
             <Link
-              class="list-group-item list-group-item-action bg-light"
+              class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/messages"
             >
               Memo
             </Link>
             <Link
-              class="list-group-item list-group-item-action bg-light"
+              class="list-group-item list-group-item-action"
               //onClick={this.notRoundOne}
               to="/buydata"
             >
               Buy Data
             </Link>
+            <br />
+            
           </div>
         </div>
       </React.Fragment>

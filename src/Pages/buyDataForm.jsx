@@ -21,6 +21,7 @@ class buyDataForm extends Component {
       populationData: false,
       competitorData: false,
       log: { category: "Data", amount: null, team_id: null, round_num: 1 },
+      finances: [],
     };
   }
 
@@ -40,6 +41,12 @@ class buyDataForm extends Component {
       .get(config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID)
       .then((res) => {
         this.setState({ dataBought: res.data });
+        console.log(res);
+      });
+    http
+      .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
+      .then((res) => {
+        this.setState({ finances: res.data });
         console.log(res);
       });
 
@@ -115,6 +122,15 @@ class buyDataForm extends Component {
       team
     );
     console.log(data);
+
+    const prevFinance = this.state.finances.total_data;
+    const putFinance = parseInt(cost1, 10) + parseInt(prevFinance, 10);
+    this.state.finances.total_data = putFinance;
+    const { data1 } = await http.put(
+      config.apiEndpoint + "/finances/" + this.context.currentUser.teamID,
+      this.state.finances
+    );
+    console.log(data1);
   };
 
   handleClick = (e) => {
@@ -158,7 +174,7 @@ class buyDataForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Buy Data</h1>
             </nav>
-            <nav className="navbar navbar-light bg-primary">
+            <nav className="navbar background">
               Budget: {team.budget}{" "}
             </nav>
             <br />

@@ -70,6 +70,7 @@ class inventoryForm extends Component {
       smoothieProduct: [],
 
       log: { category: "Inventory", amount: null, team_id: null, round_num: 1 },
+      finances: [],
     };
   }
 
@@ -79,6 +80,13 @@ class inventoryForm extends Component {
     if (this.context.currentUser.name === null) {
       history.push("/");
     }
+
+    http
+      .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
+      .then((res) => {
+        this.setState({ finances: res.data });
+        console.log(res);
+      });
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -946,6 +954,13 @@ class inventoryForm extends Component {
       .then((res) => {
         console.log(res);
       });
+    const prevFinance = this.state.finances.total_inventory;
+    const putFinance = parseInt(purchaseTotal, 10) + parseInt(prevFinance, 10);
+    this.state.finances.total_inventory = putFinance;
+    http.put(
+      config.apiEndpoint + "/finances/" + this.context.currentUser.teamID,
+      this.state.finances
+    );
     toast.success("Inventory Order Submitted!");
   };
   handleSellingPriceSubmit = (e) => {
@@ -1035,11 +1050,11 @@ class inventoryForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Inventory</h1>
             </nav>
-            <nav className="navbar navbar-light bg-primary">
+            <nav className="navbar background">
               Budget: {team.budget}{" "}
             </nav>
-
-            <div>
+            <br />
+            <div class="container">
               <table class="table table-sm">
                 <thead class="thead-light">
                   <tr>
@@ -1129,6 +1144,7 @@ class inventoryForm extends Component {
             <div className="divider" />
             <div class="wrapper">
               <div class="form-group half ">
+                <center>
                 <h1>Order</h1>
                 <form onSubmit={this.handleInventoryOrderSubmit}>
                   <Input
@@ -1226,8 +1242,10 @@ class inventoryForm extends Component {
                     Submit
                   </button>
                 </form>
+                </center>
               </div>
               <div class="half">
+                <center>
                 <h1>Set Your Selling Prices</h1>
                 <form onSubmit={this.handleSellingPriceSubmit}>
                   <Input
@@ -1323,6 +1341,7 @@ class inventoryForm extends Component {
                     Submit
                   </button>
                 </form>
+                </center>
               </div>
             </div>
           </div>

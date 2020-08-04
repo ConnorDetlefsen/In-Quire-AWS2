@@ -20,6 +20,7 @@ class MarketingForm extends Component {
       errors: {},
       team: [],
       log: { category: "Marketing", amount: null, team_id: null, round_num: 1 },
+      finances: [],
     };
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
     this.putSubmit = this.putSubmit.bind(this);
@@ -43,6 +44,12 @@ class MarketingForm extends Component {
       .get(config.apiEndpoint + "/marketing/" + this.context.currentUser.teamID)
       .then((res) => {
         this.setState({ marketing: res.data });
+        console.log(res);
+      });
+    http
+      .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
+      .then((res) => {
+        this.setState({ finances: res.data });
         console.log(res);
       });
   }
@@ -80,6 +87,15 @@ class MarketingForm extends Component {
     const test = parseInt(amount, 10) + parseInt(plusThis, 10);
     marketing[selectVal] = parseInt(amount, 10) + parseInt(plusThis, 10);
     //marketing[selectVal] = amount + add;
+    const prevFinance = this.state.finances.total_marketing;
+    const putFinance = parseInt(amount, 10) + parseInt(prevFinance, 10);
+    this.state.finances.total_marketing = putFinance;
+    const { data1 } = await http.put(
+      config.apiEndpoint + "/finances/" + this.context.currentUser.teamID,
+      this.state.finances
+    );
+    console.log(data1);
+
     const { data } = await http.put(
       config.apiEndpoint + "/marketing/" + this.context.currentUser.teamID,
       marketing
@@ -171,12 +187,13 @@ class MarketingForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Marketing</h1>
             </nav>
-            <nav className="navbar navbar-light bg-primary">
+            <nav className="navbar background">
               Budget: {team.budget}{" "}
             </nav>
-
+            <br />
             <form onSubmit={this.handleSubmit}>
               <div>
+               <center>
                 <div>
                   <label>
                     Select Marketing Type
@@ -192,19 +209,19 @@ class MarketingForm extends Component {
                       <option value="television">Television</option>
                     </select>
                   </label>
-                </div>
-                <div>
-                  <label>Amount $ </label>
+                  &emsp;&emsp;
+                  <label>Amount $: &emsp; </label>
                   <input
                     value={this.state.amount}
                     onChange={this.handleChange}
                     name="amount"
                     type="number"
-                    class="form-control form-control-sm "
+                    class="col-xs-4 form-control-sm "
                     id="amount"
                     error={errors.amount}
                   />
                 </div>
+                
                 <div class="divider" />
                 <button
                   disabled={!this.context.currentUser.isManager}
@@ -214,33 +231,41 @@ class MarketingForm extends Component {
                 >
                   Submit
                 </button>
+                </center>
               </div>
             </form>
             <br />
-
             <div class="row">
-              <div class="col-sm-6">
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              <div class="col-sm-5">
                 <div class="card">
                   <h4>Facebook Marketing</h4>
                   <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.facebook}</h5>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <br />
+              &emsp;&emsp;&emsp;&emsp;
+              <div class="col-sm-5">
                 <div class="card">
                   <h4>Instagram Marketing</h4>
                   <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.instagram}</h5>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <br />
+              <br />
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              <div class="col-sm-5">
                 <div class="card">
                   <h4>Newspaper Marketing</h4>
                   <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.newspaper}</h5>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <br />
+              &emsp;&emsp;&emsp;&emsp;
+              <div class="col-sm-5">
                 <div class="card">
                   <h4>Television Marketing</h4>
                   <p>Description of what is included in this data package</p>

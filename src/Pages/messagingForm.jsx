@@ -68,27 +68,40 @@ class messagingForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Messages</h1>
             </nav>
-            <nav className="navbar navbar-light bg-primary">
+            <nav className="navbar background">
               Budget: {this.state.team.budget}{" "}
             </nav>
             <div>
-              <form onSubmit={this.handleSubmit}>
-                <div class="form-group">
-                  <p>Send a message to the team!</p>
-                  <textarea
-                    onChange={this.handleChange}
-                    className="form-control"
-                    rows="5"
-                  ></textarea>
-                </div>
-                <button
-                  disabled={!this.context.currentUser.isManager}
-                  type="submit"
-                  class="btn btn-primary"
-                >
-                  Submit
-                </button>
-              </form>
+              <center>
+                <form onSubmit={this.handleSubmit}>
+                  <div class="form-group">
+                    <br />
+
+                    <p>
+                      Send a message to the team!
+                      <br /> Please remember to keep a record of your messages
+                      on Google Docs
+                    </p>
+                    <div className="container">
+                      <p>
+                        <textarea
+                          onChange={this.handleChange}
+                          className="form-control"
+                          rows="6"
+                          cols="10"
+                        ></textarea>
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    disabled={!this.context.currentUser.isManager}
+                    type="submit"
+                    class="btn btn-primary"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </center>
             </div>
           </div>
         </div>

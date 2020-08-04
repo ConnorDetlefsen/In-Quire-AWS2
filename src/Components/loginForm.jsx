@@ -5,6 +5,7 @@ import http from "../Services/httpService";
 import Input from "./Input";
 import UserContext from "../Context/UserContext";
 import logo from "./In-Quire.png";
+import config from "../config.json";
 
 const authEndpoint = "https://in-quire-api-cpqv4tv3zkthnqzu.com/user";
 
@@ -104,6 +105,14 @@ class LoginForm extends Component {
         this.context.currentUser.teamID = userList[x].team_id; //using user id right now since the team ids are the same
         this.context.currentUser.isManager = userList[x].manager;
 
+        http
+          .post(config.apiEndpoint + "/login/", {
+            user_id: userList[x].user_id,
+          })
+          .then((res) => {
+            console.log(res);
+          });
+
         for (let x in teams) {
           if (this.context.currentUser.teamID === teams[x].team_id) {
             this.context.currentUser.isHighestBid = teams[x].ishighestbid;
@@ -136,34 +145,32 @@ class LoginForm extends Component {
   render() {
     return (
       <>
-      <center><img
-      src={logo}
-      width="200px"
-      height="100px"
-    ></img>
-
-    </center>
-      <React.Fragment>
-        <ToastContainer position="top-center" />
-        <div className="login-body">
-          <div className="login-page ">
-            <div className="login-css">
-              <div className="form">
-                <div className="login">
-                  <div className="Login Header">
-                    <h1><b>BAS User Login</b></h1>
+        <center>
+          <img src={logo} width="200px" height="100px"></img>
+        </center>
+        <React.Fragment>
+          <ToastContainer position="top-center" />
+          <div className="login-body">
+            <div className="login-page ">
+              <div className="login-css">
+                <div className="form">
+                  <div className="login">
+                    <div className="Login Header">
+                      <h1>
+                        <b>BAS User Login</b>
+                      </h1>
+                    </div>
                   </div>
+                  <form className="login-form " onSubmit={this.handleSubmit}>
+                    {this.renderInput("email", "Email")}
+                    {this.renderInput("password", "Password", "password")}
+                    {this.renderButton("Login")}
+                  </form>
                 </div>
-                <form className="login-form " onSubmit={this.handleSubmit}>
-                  {this.renderInput("email", "Email")}
-                  {this.renderInput("password", "Password", "password")}
-                  {this.renderButton("Login")}
-                </form>
               </div>
             </div>
           </div>
-        </div>
-      </React.Fragment>
+        </React.Fragment>
       </>
     );
   }

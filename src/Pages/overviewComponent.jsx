@@ -3,6 +3,7 @@ import SideBar from "../Components/sideBar";
 import UserContext from "../Context/UserContext";
 import http from "../Services/httpService";
 import config from "../config.json";
+import  "../App.css";
 
 class overviewComponent extends Component {
   state = {
@@ -30,15 +31,23 @@ class overviewComponent extends Component {
       <React.Fragment>
         <div class="d-flex" id="wrapper">
           <SideBar></SideBar>
+          
           <div id="page-content-wrapper">
+          <nav className="navbar navbar-dark bg-dark">
+              <h1 className="whiteFont">Overview</h1>
+            </nav>
             <div className="container">
               <section className="col main">
-                <div class="jumbotron">
-                  <h1 class="display-4">
+                <div class="jumbotron" className="back" >
+                  <center>
+                  <h1 class="display-4"><b>
                     Hello, {this.context.currentUser.name}!
-                  </h1>
-                  <small>Team ID: {this.context.currentUser.teamID} </small>
-                  <small> Round: {this.state.round} </small>
+                    </b></h1>
+                  <br/>
+                  <div>
+                  <h4>Team ID: {this.context.currentUser.teamID}  &emsp;  Round: {this.state.round}</h4>
+                  </div>
+                  <h4>  </h4>
                   <p class="lead">
                     Welcome to In-Quire Simulations! Continue with another
                     sentence here description
@@ -56,6 +65,7 @@ class overviewComponent extends Component {
                       allowFullScreen
                     ></iframe>
                   </div>
+                  </center>
                 </div>
                 <h1 className="title">Overview</h1>
                 <h2 className="overview-round-bar">Round 1</h2>
