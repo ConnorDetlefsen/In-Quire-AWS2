@@ -183,19 +183,17 @@ header .header {
   width: 370px;
   padding: 5% 0 0;
   margin: auto;
-  
 }
 .login-page .form .login {
   margin-top: -41px;
   margin-bottom: 36px;
-  
 }
 
 .form {
   position: relative;
   display: inline-block;
   background-color: #ffffff;
-  color: #0B506D;
+  color: #0b506d;
   max-width: 450px;
   margin: 0 auto 300px;
   padding: 50px;
@@ -242,11 +240,10 @@ header .header {
 .container-comp {
   position: center;
   z-index: 1;
-  max-width: 400px;
+  max-width: 150px;
   margin: 0 auto;
-  background-color: white
+  background-color: white;
 }
-
 
 .login-body {
   background-color: azure;
@@ -259,12 +256,11 @@ header .header {
   background-color: azure;
 }
 
-
 .back {
   background-color: azure;
   color: black;
   margin-top: 20px;
-  padding-top:    30px;
+  padding-top: 30px;
   padding-bottom: 30px;
   padding-left: 30px;
   padding-right: 30px;
@@ -283,4 +279,6 @@ header .header {
   padding: 8px;
 }
 
-
+.blackFont {
+  color: black;
+}

@@ -4,6 +4,10 @@ import config from "../config.json";
 import UserContext from "../Context/UserContext";
 import SideBar from "../Components/sideBar";
 
+const pdf = "S3_test.pdf";
+const txt = "S3_pull.txt";
+const csv = "msft.csv";
+
 class financesForm extends Component {
   static contextType = UserContext;
 
@@ -59,9 +63,7 @@ class financesForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Finances</h1>
             </nav>
-            <nav className="navbar background">
-              Budget: {team.budget}{" "}
-            </nav>
+            <nav className="navbar background">Budget: {team.budget} </nav>
             <table class="table">
               <thead class="thead-light">
                 <tr>
@@ -92,6 +94,20 @@ class financesForm extends Component {
                 </tr>
               </tbody>
             </table>
+            <button type="button" class="btn btn-warning" margin-top=".5em">
+              <a
+                class="blackFont"
+                href={
+                  "https://inquire-team" +
+                  this.context.currentUser.teamID +
+                  ".s3-us-west-1.amazonaws.com/" +
+                  txt
+                }
+                download
+              >
+                Download Finances
+              </a>
+            </button>
           </div>
         </div>
       </React.Fragment>

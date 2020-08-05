@@ -11,6 +11,7 @@ import Finances from "./Pages/financesForm";
 import Location from "./Pages/locationComponent";
 import Overview from "./Pages/overviewComponent";
 import BuyData from "./Pages/buyDataForm";
+import Inbox from "./Pages/inboxComponent";
 import { UserContext } from "./Context/UserContext";
 //          {this.state.currentUser.name !== null && <Nav></Nav>}
 
@@ -47,6 +48,7 @@ class App extends Component {
               <Route path="/messages" component={Messages} />
               <Route path="/finances" component={Finances} />
               <Route path="/location" component={Location} />
+              <Route path="/inbox" component={Inbox} />
 
               <Route path="/" exact component={Login} />
             </Switch>

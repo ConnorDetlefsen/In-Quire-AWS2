@@ -20,10 +20,7 @@ class sideBar extends Component {
             <img src={logo} width="120px" height="55px"></img>
           </div>
           <div class="list-group list-group-flush">
-            <Link
-              class="list-group-item list-group-item-action"
-              to="/overview"
-            >
+            <Link class="list-group-item list-group-item-action" to="/overview">
               Overview
             </Link>
             <Link
@@ -62,6 +59,13 @@ class sideBar extends Component {
               Memo
             </Link>
             <Link
+              class="list-group-item list-group-item-action "
+              //onClick={this.notRoundOne}
+              to="/inbox"
+            >
+              Inbox
+            </Link>
+            <Link
               class="list-group-item list-group-item-action"
               //onClick={this.notRoundOne}
               to="/buydata"
@@ -69,7 +73,6 @@ class sideBar extends Component {
               Buy Data
             </Link>
             <br />
-            
           </div>
         </div>
       </React.Fragment>

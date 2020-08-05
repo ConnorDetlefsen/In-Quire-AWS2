@@ -174,9 +174,7 @@ class buyDataForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Buy Data</h1>
             </nav>
-            <nav className="navbar background">
-              Budget: {team.budget}{" "}
-            </nav>
+            <nav className="navbar background">Budget: {team.budget} </nav>
             <br />
             <div class="row">
               <div class="column">
@@ -194,7 +192,7 @@ class buyDataForm extends Component {
                     value="1000"
                     name="marketing"
                   >
-                    Puchase
+                    Purchase
                   </button>
                   {this.state.dataBought.data1 === true && (
                     <a
@@ -226,7 +224,7 @@ class buyDataForm extends Component {
                     value="1500"
                     name="population"
                   >
-                    Puchase
+                    Purchase
                   </button>
                   {this.state.dataBought.data2 === true && (
                     <a
@@ -259,7 +257,7 @@ class buyDataForm extends Component {
                     value="2000"
                     name="competitor"
                   >
-                    Puchase
+                    Purchase
                   </button>
                   {this.state.dataBought.data3 === true && (
                     <a

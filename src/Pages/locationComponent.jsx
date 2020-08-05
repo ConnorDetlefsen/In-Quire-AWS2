@@ -9,6 +9,23 @@ import { ToastContainer, toast } from "react-toastify";
 import store1 from "../Store-Images/1.jpg";
 import store2 from "../Store-Images/2.jpg";
 import store3 from "../Store-Images/3.jpg";
+import store4 from "../Store-Images/4.jpg";
+import store5 from "../Store-Images/5.jpg";
+import store6 from "../Store-Images/6.jpg";
+import store7 from "../Store-Images/7.jpg";
+import store8 from "../Store-Images/8.jpg";
+import store9 from "../Store-Images/9.jpg";
+import store10 from "../Store-Images/10.jpg";
+import store11 from "../Store-Images/11.jpg";
+import store12 from "../Store-Images/12.jpg";
+import store13 from "../Store-Images/13.jpg";
+import store14 from "../Store-Images/14.jpg";
+import store15 from "../Store-Images/15.jpg";
+import store16 from "../Store-Images/16.jpg";
+import store17 from "../Store-Images/17.jpg";
+import store18 from "../Store-Images/18.jpg";
+import store19 from "../Store-Images/19.jpg";
+import store20 from "../Store-Images/20.jpg";
 
 const mapStyles = {
   width: "85%",
@@ -455,6 +472,9 @@ class locationComponent extends Component {
     // this.getLocation(this.state.location);
     // this.getPrevTeam(this.state.prevTeam);
     this.getCurrent(this.state.location);
+    http.get(config.apiEndpoint + "/location/").then((res) => {
+      this.state.locations = res.data;
+    });
   };
 
   handleBidClear = (e) => {
@@ -644,9 +664,7 @@ class locationComponent extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Location</h1>
             </nav>
-            <nav className="navbar background">
-              Budget: {team.budget}{" "}
-            </nav>
+            <nav className="navbar background">Budget: {team.budget} </nav>
             <br />
             <h1>
               <center>Bid on a location!</center>
@@ -884,13 +902,19 @@ class locationComponent extends Component {
               initialCenter={{ lat: 33.7931, lng: -117.8521 }}
             >
               <Marker
-                position={{ lat: 33.789, lng: -117.851 }}
+                position={{ lat: 33.791557, lng: -117.853284 }}
                 onClick={this.onMarkerClick}
                 name={
                   <div>
                     <div>
                       <h1>Location 1</h1>
-                      <img alt="store1" src={store1} height="300" />
+                      <img
+                        alt="store1"
+                        src={store1}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
                     </div>
                   </div>
                 }
@@ -905,13 +929,19 @@ class locationComponent extends Component {
                 </div>
               </InfoWindow>
               <Marker
-                position={{ lat: 33.7931, lng: -117.85 }}
+                position={{ lat: 33.788071, lng: -117.854528 }}
                 onClick={this.onMarkerClick}
                 name={
                   <div>
                     <div>
                       <h1>Location 2</h1>
-                      <img alt="store2" src={store2} height="300" />
+                      <img
+                        alt="store2"
+                        src={store2}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
                     </div>
                   </div>
                 }
@@ -926,13 +956,478 @@ class locationComponent extends Component {
                 </div>
               </InfoWindow>
               <Marker
-                position={{ lat: 33.7949, lng: -117.8556 }}
+                position={{ lat: 33.788088, lng: -117.851696 }}
                 onClick={this.onMarkerClick}
                 name={
                   <div>
                     <div>
                       <h1>Location 3</h1>
-                      <img alt="store3" src={store3} height="300" />
+                      <img
+                        alt="store3"
+                        src={store3}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.786299, lng: -117.852204 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 4</h1>
+                      <img
+                        alt="store4"
+                        src={store4}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.787779, lng: -117.858827 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 5</h1>
+                      <img
+                        alt="store5"
+                        src={store5}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.783276, lng: -117.867555 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 6</h1>
+                      <img
+                        alt="store6"
+                        src={store6}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.787737, lng: -117.867699 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 7</h1>
+                      <img
+                        alt="store7"
+                        src={store7}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.788237, lng: -117.848436 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 8</h1>
+                      <img
+                        alt="store8"
+                        src={store8}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.78531, lng: -117.835284 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 9</h1>
+                      <img
+                        alt="store9"
+                        src={store9}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.790777, lng: -117.835934 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 10</h1>
+                      <img
+                        alt="store10"
+                        src={store10}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.799069, lng: -117.835977 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 11</h1>
+                      <img
+                        alt="store11"
+                        src={store11}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.777883, lng: -117.848677 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 12</h1>
+                      <img
+                        alt="store12"
+                        src={store12}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.78067, lng: -117.844164 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 13</h1>
+                      <img
+                        alt="store13"
+                        src={store13}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.782146, lng: -117.866027 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 14</h1>
+                      <img
+                        alt="store14"
+                        src={store14}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.808814, lng: -117.855565 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 15</h1>
+                      <img
+                        alt="store15"
+                        src={store15}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.809634, lng: -117.850299 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 16</h1>
+                      <img
+                        alt="store16"
+                        src={store16}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.810981, lng: -117.835168 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 17</h1>
+                      <img
+                        alt="store17"
+                        src={store17}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.799369, lng: -117.848979 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 18</h1>
+                      <img
+                        alt="store18"
+                        src={store18}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.795265, lng: -117.852934 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 19</h1>
+                      <img
+                        alt="store19"
+                        src={store19}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
+                    </div>
+                  </div>
+                }
+              />
+              <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onClose}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
+              <Marker
+                position={{ lat: 33.795931, lng: -117.856588 }}
+                onClick={this.onMarkerClick}
+                name={
+                  <div>
+                    <div>
+                      <h1>Location 20</h1>
+                      <img
+                        alt="store20"
+                        src={store20}
+                        height="300"
+                        width="100%"
+                      />
+                      <h1>Starting Price: $10,000</h1>
                     </div>
                   </div>
                 }
