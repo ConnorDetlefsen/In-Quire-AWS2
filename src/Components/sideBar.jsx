@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import logo from "./In-Quire.png";
+import 'font-awesome/css/font-awesome.min.css';
 
 class sideBar extends Component {
   state = {
@@ -21,13 +22,13 @@ class sideBar extends Component {
           </div>
           <div class="list-group list-group-flush">
             <Link class="list-group-item list-group-item-action" to="/overview">
-              Overview
+            <i className="fa fa-home" aria-hidden="false">&ensp;Overview</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action "
               to="/location"
             >
-              Location
+              <i class="fa fa-map-marker" aria-hidden="true">&ensp;Location</i>
             </Link>
             <Link
               disabled={this.state.round}
@@ -35,42 +36,42 @@ class sideBar extends Component {
               //onClick={this.notRoundOne}
               to="/inventory"
             >
-              Inventory
+              <i class="fa fa-coffee" aria-hidden="true">&ensp;Inventory</i>
             </Link>
             <Link
               className="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/marketing"
             >
-              Marketing
+              <i class="fa fa-newspaper-o" aria-hidden="true">&ensp;Marketing</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/finances"
             >
-              Finances
+              <i class="fa fa-credit-card" aria-hidden="true">&ensp;Finances</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/messages"
             >
-              Memo
+              <i class="fa fa-envelope-o" aria-hidden="true">&ensp;Memo</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/inbox"
             >
-              Inbox
+              <i class="fa fa-inbox" aria-hidden="true">&ensp;Inbox</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action"
               //onClick={this.notRoundOne}
               to="/buydata"
             >
-              Buy Data
+              <i class="fa fa-database" aria-hidden="true"> &ensp;Buy Data</i>
             </Link>
             <br />
           </div>

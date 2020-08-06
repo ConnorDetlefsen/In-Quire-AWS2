@@ -4,6 +4,7 @@ import config from "../config.json";
 import UserContext from "../Context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import SideBar from "../Components/sideBar";
+import { Link } from "react-router-dom";
 
 class inboxComponent extends Component {
   static contextType = UserContext;
@@ -33,7 +34,7 @@ class inboxComponent extends Component {
         this.setState({ team: res.data });
       });
   }
-
+  //<td>{("" + finances.stamp).substring(11, 19)}</td>
   render() {
     const { inbox } = this.state;
     return (
@@ -46,8 +47,14 @@ class inboxComponent extends Component {
               <h1 class="whiteFont">Inbox</h1>
             </nav>
             <nav className="navbar background">
-              Budget: {this.state.team.budget}{" "}
+              Budget: {this.state.team.budget} <br />{" "}
+              <button class="btn btn-warning">
+                <Link class="blackFont" to="/refreshInbox">
+                  Refresh Page
+                </Link>
+              </button>
             </nav>
+
             <div>
               <center>
                 <table class="table">
@@ -63,7 +70,7 @@ class inboxComponent extends Component {
                       <tr key={inbox.inbox_id}>
                         <td>{inbox.sender}</td>
                         <td>{inbox.message}</td>
-                        <td>{inbox.stamp}</td>
+                        <td>{("" + inbox.stamp).substring(0, 10)}</td>
                       </tr>
                     ))}
                   </tbody>

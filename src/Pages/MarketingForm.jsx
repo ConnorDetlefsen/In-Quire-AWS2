@@ -4,7 +4,11 @@ import http from "../Services/httpService.js";
 import "react-toastify/dist/ReactToastify.css";
 import config from "../config.json";
 import SideBar from "../Components/sideBar";
-
+import { Link } from "react-router-dom";
+import facebookIMG from "../Marketing-Images/Facebook.png";
+import instagramIMG from "../Marketing-Images/instagram.png";
+import TVIMG from "../Marketing-Images/TV.png";
+import newspaperIMG from "../Marketing-Images/Newspaper.png";
 import UserContext from "../Context/UserContext";
 
 class MarketingForm extends Component {
@@ -188,49 +192,55 @@ class MarketingForm extends Component {
               <h1 class="whiteFont">Marketing</h1>
             </nav>
             <nav className="navbar background">
-              Budget: {team.budget}{" "}
+              Budget: {team.budget} <br />{" "}
+              <button class="btn btn-warning">
+                <Link class="blackFont" to="/refreshMKTG">
+                  Refresh Page
+                </Link>
+              </button>{" "}
             </nav>
+
             <br />
             <form onSubmit={this.handleSubmit}>
               <div>
-               <center>
-                <div>
-                  <label>
-                    Select Marketing Type
-                    <select
-                      id="dropdown"
-                      class=" form-control form-control-sm "
-                      onChange={this.handleDropdownChange}
-                      value={this.state.selectValue}
-                    >
-                      <option value="facebook">Facebook</option>
-                      <option value="instagram">Instagram</option>
-                      <option value="newspaper">Newspaper</option>
-                      <option value="television">Television</option>
-                    </select>
-                  </label>
-                  &emsp;&emsp;
-                  <label>Amount $: &emsp; </label>
-                  <input
-                    value={this.state.amount}
-                    onChange={this.handleChange}
-                    name="amount"
-                    type="number"
-                    class="col-xs-4 form-control-sm "
-                    id="amount"
-                    error={errors.amount}
-                  />
-                </div>
-                
-                <div class="divider" />
-                <button
-                  disabled={!this.context.currentUser.isManager}
-                  type="submit"
-                  margin-top=".5em"
-                  class="btn btn-primary"
-                >
-                  Submit
-                </button>
+                <center>
+                  <div>
+                    <label>
+                      Select Marketing Type
+                      <select
+                        id="dropdown"
+                        class=" form-control form-control-sm "
+                        onChange={this.handleDropdownChange}
+                        value={this.state.selectValue}
+                      >
+                        <option value="facebook">Facebook</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="newspaper">Newspaper</option>
+                        <option value="television">Television</option>
+                      </select>
+                    </label>
+                    &emsp;&emsp;
+                    <label>Amount $: &emsp; </label>
+                    <input
+                      value={this.state.amount}
+                      onChange={this.handleChange}
+                      name="amount"
+                      type="number"
+                      class="col-xs-4 form-control-sm "
+                      id="amount"
+                      error={errors.amount}
+                    />
+                  </div>
+
+                  <div class="divider" />
+                  <button
+                    disabled={!this.context.currentUser.isManager}
+                    type="submit"
+                    margin-top=".5em"
+                    class="btn btn-primary"
+                  >
+                    Submit
+                  </button>
                 </center>
               </div>
             </form>
@@ -239,7 +249,11 @@ class MarketingForm extends Component {
               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
                 <div class="card">
-                  <h4>Facebook Marketing</h4>
+                  <h4>
+                    {" "}
+                    <img src={facebookIMG} height="60" width="60" />
+                    Facebook Marketing
+                  </h4>
                   <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.facebook}</h5>
                 </div>
@@ -248,7 +262,11 @@ class MarketingForm extends Component {
               &emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
                 <div class="card">
-                  <h4>Instagram Marketing</h4>
+                  <h4>
+                    {" "}
+                    <img src={instagramIMG} height="50" width="50" />
+                    Instagram Marketing
+                  </h4>
                   <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.instagram}</h5>
                 </div>
@@ -258,7 +276,11 @@ class MarketingForm extends Component {
               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
                 <div class="card">
-                  <h4>Newspaper Marketing</h4>
+                  <h4>
+                    {" "}
+                    <img src={newspaperIMG} height="60" width="60" />
+                    Newspaper Marketing
+                  </h4>
                   <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.newspaper}</h5>
                 </div>
@@ -267,7 +289,11 @@ class MarketingForm extends Component {
               &emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
                 <div class="card">
-                  <h4>Television Marketing</h4>
+                  <h4>
+                    {" "}
+                    <img src={TVIMG} height="60" width="60" />
+                    Television Marketing
+                  </h4>
                   <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.television}</h5>
                 </div>

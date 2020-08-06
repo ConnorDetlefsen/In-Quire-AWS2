@@ -18,6 +18,7 @@ import barIMG from "../Inventory-Images/proteinbar.png";
 import saladIMG from "../Inventory-Images/salad.png";
 import sandwichIMG from "../Inventory-Images/sandwich.png";
 import smoothieIMG from "../Inventory-Images/smoothie.png";
+import { Link } from "react-router-dom";
 
 class inventoryForm extends Component {
   static contextType = UserContext;
@@ -529,7 +530,6 @@ class inventoryForm extends Component {
       latte
     );
     this.setState({ latteAmount: 0 });
-
     console.log(data);
   };
   milkSubmit = async (milk) => {
@@ -1063,7 +1063,15 @@ class inventoryForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Inventory</h1>
             </nav>
-            <nav className="navbar background">Budget: {team.budget} </nav>
+            <nav className="navbar background">
+              Budget: {team.budget} <br />{" "}
+              <button class="btn btn-warning">
+                <Link class="blackFont" to="/refreshInv">
+                  Refresh Page
+                </Link>
+              </button>
+            </nav>
+
             <br />
             <div class="container">
               <table class="table table-sm">
@@ -1079,7 +1087,7 @@ class inventoryForm extends Component {
                 <tbody>
                   <tr>
                     <td>
-                      <img src={coffeeIMG} height="50" width="50" />
+                      <img src={coffeeIMG} height="40" width="40" />
                       {coffeeProduct.name}
                     </td>
                     <td>${coffeeProduct.price}</td>
@@ -1089,7 +1097,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={cokeIMG} height="50" width="50" />
+                      <img src={cokeIMG} height="40" width="40" />
                       {cokeProduct.name}
                     </td>
                     <td>${cokeProduct.price}</td>
@@ -1099,7 +1107,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={croissantIMG} height="50" width="50" />
+                      <img src={croissantIMG} height="40" width="40" />
                       {croissantProduct.name}
                     </td>
                     <td>${croissantProduct.price}</td>
@@ -1109,7 +1117,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={fruitCupIMG} height="50" width="50" />
+                      <img src={fruitCupIMG} height="40" width="40" />
                       {fruitCupProduct.name}
                     </td>
                     <td>${fruitCupProduct.price}</td>
@@ -1119,7 +1127,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={icedIMG} height="50" width="50" />
+                      <img src={icedIMG} height="40" width="40" />
                       {icedCoffeeProduct.name}
                     </td>
                     <td>${icedCoffeeProduct.price}</td>
@@ -1129,7 +1137,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={juiceIMG} height="50" width="50" />
+                      <img src={juiceIMG} height="40" width="40" />
                       {juiceProduct.name}
                     </td>
                     <td>${juiceProduct.price}</td>
@@ -1139,7 +1147,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={latteIMG} height="50" width="50" />
+                      <img src={latteIMG} height="40" width="40" />
                       {latteProduct.name}
                     </td>
                     <td>${latteProduct.price}</td>
@@ -1149,7 +1157,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={milkIMG} height="50" width="50" />
+                      <img src={milkIMG} height="40" width="40" />
                       {milkProduct.name}
                     </td>
                     <td>${milkProduct.price}</td>
@@ -1159,7 +1167,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={barIMG} height="50" width="50" />
+                      <img src={barIMG} height="40" width="40" />
                       {barProduct.name}
                     </td>
                     <td>${barProduct.price}</td>
@@ -1169,7 +1177,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={saladIMG} height="50" width="50" />
+                      <img src={saladIMG} height="40" width="40" />
                       {saladProduct.name}
                     </td>
                     <td>${saladProduct.price}</td>
@@ -1179,7 +1187,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={sandwichIMG} height="50" width="50" />
+                      <img src={sandwichIMG} height="40" width="40" />
                       {sandwichProduct.name}
                     </td>
                     <td>${sandwichProduct.price}</td>
@@ -1189,7 +1197,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={smoothieIMG} height="50" width="50" />
+                      <img src={smoothieIMG} height="40" width="40" />
                       {smoothieProduct.name}
                     </td>
                     <td>${smoothieProduct.price}</td>
@@ -1203,9 +1211,8 @@ class inventoryForm extends Component {
             <div>
               <h1>
                 {" "}
-                &emsp;&emsp;&emsp;&emsp;&ensp; Order Form
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Set Your Selling
-                Prices{" "}
+                &emsp;&emsp;&emsp;&emsp;&ensp; Order Form (in units)
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Selling Prices (in $)
               </h1>
               <br />
               <div class="wrapper">
@@ -1260,54 +1267,55 @@ class inventoryForm extends Component {
                       </div>
                     </form>
                   </center>
-                  <div></div>
                 </div>
                 &emsp;&emsp;&emsp;&emsp;
                 <div class="quarter">
-                  <center>
-                    <Input
-                      name="latteAmount"
-                      value={this.state.latteAmount}
-                      label="Latte"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="milkAmount"
-                      value={this.state.milkAmount}
-                      label="Milk & Cookies"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="barAmount"
-                      value={this.state.barAmount}
-                      label="Protein Bar"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="saladAmount"
-                      value={this.state.saladAmount}
-                      label="Salad"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="sandwichAmount"
-                      value={this.state.sandwichAmount}
-                      label="Sandwich"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="smoothieAmount"
-                      value={this.state.smoothieAmount}
-                      label="Smoothie"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                  </center>
+                  <form onSubmit={this.handleInventoryOrderSubmit}>
+                    <center>
+                      <Input
+                        name="latteAmount"
+                        value={this.state.latteAmount}
+                        label="Latte"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="milkAmount"
+                        value={this.state.milkAmount}
+                        label="Milk & Cookies"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="barAmount"
+                        value={this.state.barAmount}
+                        label="Protein Bar"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="saladAmount"
+                        value={this.state.saladAmount}
+                        label="Salad"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="sandwichAmount"
+                        value={this.state.sandwichAmount}
+                        label="Sandwich"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="smoothieAmount"
+                        value={this.state.smoothieAmount}
+                        label="Smoothie"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                    </center>
+                  </form>
                 </div>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <div class="form-group quarter">
@@ -1362,54 +1370,57 @@ class inventoryForm extends Component {
                 </div>
                 &emsp;&emsp;&emsp;&emsp;
                 <div class="quarter">
-                  <center>
-                    <Input
-                      name="lattePrice"
-                      value={this.state.lattePrice}
-                      label="Latte Price"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="milkPrice"
-                      value={this.state.milkPrice}
-                      label="Milk & Cookies Price"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="barPrice"
-                      value={this.state.barPrice}
-                      label="Protein Bar Price"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="saladPrice"
-                      value={this.state.saladPrice}
-                      label="Salad Price"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="sandwichPrice"
-                      value={this.state.sandwichPrice}
-                      label="Sandwich Price"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                    <Input
-                      name="smoothiePrice"
-                      value={this.state.smoothiePrice}
-                      label="Smoothie Price"
-                      onChange={this.handleChange}
-                      error={errors.amount}
-                    ></Input>
-                  </center>
+                  <form onSubmit={this.handleSellingPriceSubmit}>
+                    <center>
+                      <Input
+                        name="lattePrice"
+                        value={this.state.lattePrice}
+                        label="Latte Price"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="milkPrice"
+                        value={this.state.milkPrice}
+                        label="Milk & Cookies Price"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="barPrice"
+                        value={this.state.barPrice}
+                        label="Protein Bar Price"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="saladPrice"
+                        value={this.state.saladPrice}
+                        label="Salad Price"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="sandwichPrice"
+                        value={this.state.sandwichPrice}
+                        label="Sandwich Price"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                      <Input
+                        name="smoothiePrice"
+                        value={this.state.smoothiePrice}
+                        label="Smoothie Price"
+                        onChange={this.handleChange}
+                        error={errors.amount}
+                      ></Input>
+                    </center>
+                  </form>
                 </div>
               </div>
               &emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <button
+                onClick={this.handleInventoryOrderSubmit}
                 disabled={!this.context.currentUser.isManager}
                 type="submit"
                 margin-top=".5em"
@@ -1422,6 +1433,7 @@ class inventoryForm extends Component {
               &emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;
               &emsp;&emsp;&emsp;
               <button
+                onClick={this.handleSellingPriceSubmit}
                 disabled={!this.context.currentUser.isManager}
                 type="submit"
                 margin-top=".5em"

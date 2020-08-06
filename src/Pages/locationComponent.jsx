@@ -26,6 +26,7 @@ import store17 from "../Store-Images/17.jpg";
 import store18 from "../Store-Images/18.jpg";
 import store19 from "../Store-Images/19.jpg";
 import store20 from "../Store-Images/20.jpg";
+import { Link } from "react-router-dom";
 
 const mapStyles = {
   width: "85%",
@@ -440,9 +441,7 @@ class locationComponent extends Component {
     } else {
       toast.error(
         "Bid must be higher than the current bid of: $" +
-          this.state.location.high_bid +
-          " by team: " +
-          this.state.prevID
+          this.state.location.high_bid
       );
     }
   };
@@ -664,17 +663,22 @@ class locationComponent extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Location</h1>
             </nav>
-            <nav className="navbar background">Budget: {team.budget} </nav>
+            <nav className="navbar background">
+              Budget: {team.budget} <br />
+              <button class="btn btn-warning">
+                <Link class="blackFont" to="/refreshLoc">
+                  Refresh Page
+                </Link>
+              </button>
+            </nav>
             <br />
             <h1>
               <center>Bid on a location!</center>
             </h1>
-            <h6>
-              <center>* Map shown below</center>
-            </h6>
+            <br />
             <div>
               <div class="container">
-                <table class="table table-sm">
+                <table class="table table-md">
                   <thead class="thead-light">
                     <tr>
                       <th scope="col">Location ID</th>

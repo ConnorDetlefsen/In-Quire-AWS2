@@ -12,6 +12,14 @@ import Location from "./Pages/locationComponent";
 import Overview from "./Pages/overviewComponent";
 import BuyData from "./Pages/buyDataForm";
 import Inbox from "./Pages/inboxComponent";
+import RefreshLoc from "./Refresh/refreshLoc";
+import RefreshInv from "./Refresh/refreshInv";
+import RefreshMKTG from "./Refresh/refreshMKTG";
+import RefreshMsg from "./Refresh/refreshMsg.jsx";
+import RefreshInbox from "./Refresh/refreshInbox";
+import RefreshFinances from "./Refresh/refreshFinances";
+import RefreshData from "./Refresh/refreshData";
+
 import { UserContext } from "./Context/UserContext";
 //          {this.state.currentUser.name !== null && <Nav></Nav>}
 
@@ -49,7 +57,13 @@ class App extends Component {
               <Route path="/finances" component={Finances} />
               <Route path="/location" component={Location} />
               <Route path="/inbox" component={Inbox} />
-
+              <Route path="/refreshLoc" component={RefreshLoc} />
+              <Route path="/refreshInv" component={RefreshInv} />
+              <Route path="/refreshMKTG" component={RefreshMKTG} />
+              <Route path="/refreshData" component={RefreshData} />
+              <Route path="/refreshFin" component={RefreshFinances} />
+              <Route path="/refreshMsg" component={RefreshMsg} />
+              <Route path="/refreshInbox" component={RefreshInbox} />
               <Route path="/" exact component={Login} />
             </Switch>
           </div>

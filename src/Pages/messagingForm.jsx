@@ -5,6 +5,7 @@ import UserContext from "../Context/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import Navbar from "../Components/Nav";
 import SideBar from "../Components/sideBar";
+import { Link } from "react-router-dom";
 
 class messagingForm extends Component {
   static contextType = UserContext;
@@ -69,8 +70,14 @@ class messagingForm extends Component {
               <h1 class="whiteFont">Messages</h1>
             </nav>
             <nav className="navbar background">
-              Budget: {this.state.team.budget}{" "}
+              Budget: {this.state.team.budget} <br />{" "}
+              <button class="btn btn-warning">
+                <Link class="blackFont" to="/refreshMsg">
+                  Refresh Page
+                </Link>
+              </button>
             </nav>
+
             <div>
               <center>
                 <form onSubmit={this.handleSubmit}>
@@ -78,7 +85,7 @@ class messagingForm extends Component {
                     <br />
 
                     <p>
-                      Send a message to the team!
+                      Send a message to the board!
                       <br /> Please remember to keep a record of your messages
                       on Google Docs
                     </p>

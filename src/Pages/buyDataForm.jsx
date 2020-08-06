@@ -4,6 +4,7 @@ import http from "../Services/httpService";
 import config from "../config.json";
 import SideBar from "../Components/sideBar";
 import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const pdf = "S3_test.pdf";
 const txt = "S3_pull.txt";
@@ -174,7 +175,15 @@ class buyDataForm extends Component {
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Buy Data</h1>
             </nav>
-            <nav className="navbar background">Budget: {team.budget} </nav>
+            <nav className="navbar background">
+              Budget: {team.budget} <br />{" "}
+              <button class="btn btn-warning">
+                <Link class="blackFont" to="/refreshData">
+                  Refresh Page
+                </Link>
+              </button>{" "}
+            </nav>
+
             <br />
             <div class="row">
               <div class="column">
