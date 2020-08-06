@@ -1073,7 +1073,6 @@ class inventoryForm extends Component {
             </nav>
 
             <br />
-            <div class="container">
               <table class="table table-sm">
                 <thead class="thead-light">
                   <tr>
@@ -1444,7 +1443,6 @@ class inventoryForm extends Component {
             </div>
             <br />
           </div>
-        </div>
       </React.Fragment>
     );
   }

@@ -72,7 +72,6 @@ class financesForm extends Component {
               </button>
             </nav>
             
-            <div class="container">
             <div class="jumbotron" className="back">
             <table class="table">
               <thead class="thead-light">
@@ -125,7 +124,6 @@ class financesForm extends Component {
               </button>
             </center>
           </div>
-        </div>
       </React.Fragment>
     );
   }
