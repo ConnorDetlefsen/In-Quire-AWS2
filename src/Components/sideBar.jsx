@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import logo from "./In-Quire.png";
-import "font-awesome/css/font-awesome.min.css";
+import 'font-awesome/css/font-awesome.min.css';
 
 class sideBar extends Component {
   state = {
@@ -22,17 +22,13 @@ class sideBar extends Component {
           </div>
           <div class="list-group list-group-flush">
             <Link class="list-group-item list-group-item-action" to="/overview">
-              <i className="fa fa-home" aria-hidden="false">
-                &ensp;Overview
-              </i>
+            <i className="fa fa-home" aria-hidden="false">&ensp;Overview</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action "
               to="/location"
             >
-              <i class="fa fa-map-marker" aria-hidden="true">
-                &ensp;Location
-              </i>
+              <i class="fa fa-map-marker" aria-hidden="true">&ensp;Location</i>
             </Link>
             <Link
               disabled={this.state.round}
@@ -40,67 +36,50 @@ class sideBar extends Component {
               //onClick={this.notRoundOne}
               to="/inventory"
             >
-              <i class="fa fa-coffee" aria-hidden="true">
-                &ensp;Inventory
-              </i>
+              <i class="fa fa-coffee" aria-hidden="true">&ensp;Inventory</i>
             </Link>
             <Link
               className="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/marketing"
             >
-              <i class="fa fa-newspaper-o" aria-hidden="true">
-                &ensp;Marketing
-              </i>
+              <i class="fa fa-newspaper-o" aria-hidden="true">&ensp;Marketing</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/finances"
             >
-              <i class="fa fa-credit-card" aria-hidden="true">
-                &ensp;Finances
-              </i>
+              <i class="fa fa-credit-card" aria-hidden="true">&ensp;Finances</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/messages"
             >
-              <i class="fa fa-envelope-o" aria-hidden="true">
-                &ensp;Memo
-              </i>
+              <i class="fa fa-envelope-o" aria-hidden="true">&ensp;Memo</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action "
               //onClick={this.notRoundOne}
               to="/inbox"
             >
-              <i class="fa fa-inbox" aria-hidden="true">
-                &ensp;Inbox
-              </i>
+              <i class="fa fa-inbox" aria-hidden="true">&ensp;Inbox</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action"
               //onClick={this.notRoundOne}
               to="/buydata"
             >
-              <i class="fa fa-database" aria-hidden="true">
-                {" "}
-                &ensp;Buy Data
-              </i>
+              <i class="fa fa-database" aria-hidden="true"> &ensp;Buy Data</i>
             </Link>
             <Link
               class="list-group-item list-group-item-action"
               //onClick={this.notRoundOne}
               to="/faq"
             >
-              <i class="fa fa-question" aria-hidden="true">
-                {" "}
-                &ensp;FAQ
-              </i>
+              <i class="fa fa-question" aria-hidden="true"> &ensp;FAQ</i>
             </Link>
-
             <br />
           </div>
         </div>
