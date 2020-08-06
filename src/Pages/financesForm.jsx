@@ -71,7 +71,9 @@ class financesForm extends Component {
                 </Link>
               </button>
             </nav>
-
+            
+            <div class="container">
+            <div class="jumbotron" className="back">
             <table class="table">
               <thead class="thead-light">
                 <tr>
@@ -102,6 +104,8 @@ class financesForm extends Component {
                 </tr>
               </tbody>
             </table>
+            </div>
+            </div>
             <br />
             <center>
               <button type="button" class="btn btn-warning" margin-top=".5em">

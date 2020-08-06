@@ -73,6 +73,13 @@ class sideBar extends Component {
             >
               <i class="fa fa-database" aria-hidden="true"> &ensp;Buy Data</i>
             </Link>
+            <Link
+              class="list-group-item list-group-item-action"
+              //onClick={this.notRoundOne}
+              to="/faq"
+            >
+              <i class="fa fa-question" aria-hidden="true"> &ensp;FAQ</i>
+            </Link>
             <br />
           </div>
         </div>

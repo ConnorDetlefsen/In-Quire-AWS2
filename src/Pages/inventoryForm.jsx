@@ -1087,7 +1087,7 @@ class inventoryForm extends Component {
                 <tbody>
                   <tr>
                     <td>
-                      <img src={coffeeIMG} height="30" width="30" />
+                      <img src={coffeeIMG} height="40" width="40" />
                       {coffeeProduct.name}
                     </td>
                     <td>${coffeeProduct.price}</td>
@@ -1097,7 +1097,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={cokeIMG} height="30" width="30" />
+                      <img src={cokeIMG} height="40" width="40" />
                       {cokeProduct.name}
                     </td>
                     <td>${cokeProduct.price}</td>
@@ -1107,7 +1107,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={croissantIMG} height="30" width="30" />
+                      <img src={croissantIMG} height="40" width="40" />
                       {croissantProduct.name}
                     </td>
                     <td>${croissantProduct.price}</td>
@@ -1117,7 +1117,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={fruitCupIMG} height="30" width="30" />
+                      <img src={fruitCupIMG} height="40" width="40" />
                       {fruitCupProduct.name}
                     </td>
                     <td>${fruitCupProduct.price}</td>
@@ -1127,7 +1127,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={icedIMG} height="30" width="30" />
+                      <img src={icedIMG} height="40" width="40" />
                       {icedCoffeeProduct.name}
                     </td>
                     <td>${icedCoffeeProduct.price}</td>
@@ -1137,7 +1137,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={juiceIMG} height="30" width="30" />
+                      <img src={juiceIMG} height="40" width="40" />
                       {juiceProduct.name}
                     </td>
                     <td>${juiceProduct.price}</td>
@@ -1147,7 +1147,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={latteIMG} height="30" width="30" />
+                      <img src={latteIMG} height="40" width="40" />
                       {latteProduct.name}
                     </td>
                     <td>${latteProduct.price}</td>
@@ -1157,7 +1157,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={milkIMG} height="30" width="30" />
+                      <img src={milkIMG} height="40" width="40" />
                       {milkProduct.name}
                     </td>
                     <td>${milkProduct.price}</td>
@@ -1167,7 +1167,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={barIMG} height="30" width="30" />
+                      <img src={barIMG} height="40" width="40" />
                       {barProduct.name}
                     </td>
                     <td>${barProduct.price}</td>
@@ -1177,7 +1177,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={saladIMG} height="30" width="30" />
+                      <img src={saladIMG} height="40" width="40" />
                       {saladProduct.name}
                     </td>
                     <td>${saladProduct.price}</td>
@@ -1187,7 +1187,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={sandwichIMG} height="30" width="30" />
+                      <img src={sandwichIMG} height="40" width="40" />
                       {sandwichProduct.name}
                     </td>
                     <td>${sandwichProduct.price}</td>
@@ -1197,7 +1197,7 @@ class inventoryForm extends Component {
                   <tr>
                     <td>
                       {" "}
-                      <img src={smoothieIMG} height="30" width="30" />
+                      <img src={smoothieIMG} height="40" width="40" />
                       {smoothieProduct.name}
                     </td>
                     <td>${smoothieProduct.price}</td>
@@ -1209,11 +1209,11 @@ class inventoryForm extends Component {
             </div>
             <div className="divider" />
             <div>
-              <h1>
+              <h2>
                 {" "}
-                &emsp;&emsp;&emsp; Order Form (in units)
-                &emsp;&emsp;&emsp;&emsp;&emsp;&ensp; Selling Prices (in $)
-              </h1>
+                &emsp;&emsp;&emsp;&emsp;&ensp; Order Form (in units)
+                &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp; Selling Prices (in $)
+              </h2>
               <br />
               <div class="wrapper">
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;

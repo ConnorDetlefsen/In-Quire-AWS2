@@ -29,7 +29,7 @@ import store20 from "../Store-Images/20.jpg";
 import { Link } from "react-router-dom";
 
 const mapStyles = {
-  width: "85%",
+  width: "80%",
   height: "100%",
   color: "black",
 };
@@ -677,7 +677,7 @@ class locationComponent extends Component {
             </h1>
             <br />
             <div>
-              <div className="container-comp2">
+              <div className="container">
                 <table class="table table-sm">
                   <thead class="thead-light">
                     <tr>
@@ -899,6 +899,8 @@ class locationComponent extends Component {
               </form>
             </div>
             <br /> <br />
+            
+            <div class="container">
             <Map
               google={this.props.google}
               zoom={14}
@@ -1447,6 +1449,7 @@ class locationComponent extends Component {
               </InfoWindow>
             </Map>
           </div>
+        </div>
         </div>
       </React.Fragment>
     );
