@@ -246,14 +246,6 @@ header .header {
   background-color: white;
 }
 
-.container-comp2 {
-  position: center;
-  z-index: 1;
-  max-width: 70px;
-  margin: 0 auto;
-  background-color: white;
-}
-
 .login-body {
   background-color: azure;
   font-family: "Roboto", sans-serif;
@@ -280,12 +272,12 @@ header .header {
 
 .table {
   border-collapse: collapse;
-  width: 50%;
+  width: 100%;
 }
 
 .th .td {
   text-align: left;
-  padding: 4px;
+  padding: 8px;
 }
 
 .blackFont {

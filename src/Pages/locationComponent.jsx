@@ -678,7 +678,7 @@ class locationComponent extends Component {
             <br />
             <div>
               <div class="container">
-                <table class="table table-sm">
+                <table class="table table-md">
                   <thead class="thead-light">
                     <tr>
                       <th scope="col">Location ID</th>
@@ -899,8 +899,6 @@ class locationComponent extends Component {
               </form>
             </div>
             <br /> <br />
-            
-            <div class="container">
             <Map
               google={this.props.google}
               zoom={14}
@@ -1449,7 +1447,6 @@ class locationComponent extends Component {
               </InfoWindow>
             </Map>
           </div>
-        </div>
         </div>
       </React.Fragment>
     );

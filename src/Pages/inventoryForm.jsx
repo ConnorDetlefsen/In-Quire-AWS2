@@ -1073,11 +1073,12 @@ class inventoryForm extends Component {
             </nav>
 
             <br />
+            <div class="container">
               <table class="table table-sm">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Product</th>
-                    <th scope="col">Wholesale Purchase Price</th>
+                    <th scope="col">Wholesale Purchase Product Price</th>
                     <th scope="col">Amount Owned</th>
                     <th scope="col">Your Selling Price</th>
                   </tr>
@@ -1208,11 +1209,11 @@ class inventoryForm extends Component {
             </div>
             <div className="divider" />
             <div>
-              <h2>
+              <h1>
                 {" "}
                 &emsp;&emsp;&emsp;&emsp;&ensp; Order Form (in units)
-                &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp; Selling Prices (in $)
-              </h2>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Selling Prices (in $)
+              </h1>
               <br />
               <div class="wrapper">
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -1443,6 +1444,7 @@ class inventoryForm extends Component {
             </div>
             <br />
           </div>
+        </div>
       </React.Fragment>
     );
   }

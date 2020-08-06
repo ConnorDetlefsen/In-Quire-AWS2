@@ -248,7 +248,7 @@ class MarketingForm extends Component {
             <div class="row">
               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
-                <div class="w3-card w3-white">
+                <div class="card">
                   <h4>
                     {" "}
                     <img src={facebookIMG} height="60" width="60" />
@@ -261,7 +261,7 @@ class MarketingForm extends Component {
               <br />
               &emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
-                <div class="w3-card w3-white">
+                <div class="card">
                   <h4>
                     {" "}
                     <img src={instagramIMG} height="50" width="50" />
@@ -275,7 +275,7 @@ class MarketingForm extends Component {
               <br />
               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
-                <div class="w3-card w3-white">
+                <div class="card">
                   <h4>
                     {" "}
                     <img src={newspaperIMG} height="60" width="60" />
@@ -288,7 +288,7 @@ class MarketingForm extends Component {
               <br />
               &emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
-                <div class="w3-card w3-white">
+                <div class="card">
                   <h4>
                     {" "}
                     <img src={TVIMG} height="60" width="60" />
