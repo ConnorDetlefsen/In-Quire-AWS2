@@ -90,16 +90,16 @@ class sideBar extends Component {
                 &ensp;Buy Data
               </i>
             </Link>
-            <Link
+            <a
               class="list-group-item list-group-item-action"
               //onClick={this.notRoundOne}
-              to="/faq"
+              href="https://docs.google.com/document/u/1/d/1AW1_sqPzfWL9sLH0pceFsyZf1SaESFUNDRwnD5G_hpg/edit?usp=sharing"
             >
               <i class="fa fa-question" aria-hidden="true">
                 {" "}
                 &ensp;FAQ
               </i>
-            </Link>
+            </a>
 
             <br />
           </div>

@@ -23,6 +23,7 @@ class buyDataForm extends Component {
       competitorData: false,
       log: { category: "Data", amount: null, team_id: null, round_num: 1 },
       finances: [],
+      data: [],
     };
   }
 
@@ -48,6 +49,17 @@ class buyDataForm extends Component {
       .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
       .then((res) => {
         this.setState({ finances: res.data });
+        console.log(res);
+      });
+    http
+      .get(
+        config.apiEndpoint +
+          "/filenames/" +
+          this.context.currentUser.teamID +
+          "/1" //round #
+      )
+      .then((res) => {
+        this.setState({ data: res.data });
         console.log(res);
       });
 
@@ -209,7 +221,8 @@ class buyDataForm extends Component {
                         "https://inquire-team" +
                         this.context.currentUser.teamID +
                         ".s3-us-west-1.amazonaws.com/" +
-                        txt
+                        this.state.data.data1 +
+                        ".csv"
                       }
                       download
                     >
@@ -241,7 +254,8 @@ class buyDataForm extends Component {
                         "https://inquire-team" +
                         this.context.currentUser.teamID +
                         ".s3-us-west-1.amazonaws.com/" +
-                        pdf
+                        this.state.data.data2 +
+                        ".csv"
                       }
                       download
                     >
@@ -274,7 +288,8 @@ class buyDataForm extends Component {
                         "https://inquire-team" +
                         this.context.currentUser.teamID +
                         ".s3-us-west-1.amazonaws.com/" +
-                        csv
+                        this.state.data.data3 +
+                        ".csv"
                       }
                       download
                     >

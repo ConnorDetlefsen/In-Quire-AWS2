@@ -20,6 +20,7 @@ class financesForm extends Component {
       inventory: 0,
       fixed: 0,
       legal: 0,
+      data: [],
     };
   }
   async componentDidMount() {
@@ -46,6 +47,18 @@ class financesForm extends Component {
         console.log(res);
       });
     this.setFinances(this.state.finances);
+
+    http
+      .get(
+        config.apiEndpoint +
+          "/filenames/" +
+          this.context.currentUser.teamID +
+          "/1"
+      )
+      .then((res) => {
+        this.setState({ data: res.data });
+        console.log(res);
+      });
   }
 
   setFinances = (finances) => {
@@ -110,8 +123,8 @@ class financesForm extends Component {
                   href={
                     "https://inquire-team" +
                     this.context.currentUser.teamID +
-                    ".s3-us-west-1.amazonaws.com/finances" +
-                    this.context.currentUser.teamID +
+                    ".s3-us-west-1.amazonaws.com/" +
+                    this.state.data.finances +
                     ".csv"
                   }
                   download

@@ -1209,11 +1209,12 @@ class inventoryForm extends Component {
             </div>
             <div className="divider" />
             <div>
-              <h1>
+              <h2>
                 {" "}
                 &emsp;&emsp;&emsp;&emsp;&ensp; Order Form (in units)
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Selling Prices (in $)
-              </h1>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Selling
+                Prices (in $)
+              </h2>
               <br />
               <div class="wrapper">
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;

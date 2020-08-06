@@ -57,17 +57,7 @@ class overviewComponent extends Component {
                     </p>
                     <hr class="my-4" />
                     <p>Below you will find more information!</p>
-                    <div>
-                      <iframe
-                        title="video"
-                        width="560"
-                        height="315"
-                        src="https://www.youtube.com/embed/PYH5uxMulk8"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
+                    <div>text here?</div>
                   </center>
                 </div>
                 <div className="container">
