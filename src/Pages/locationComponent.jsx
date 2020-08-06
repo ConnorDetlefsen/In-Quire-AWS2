@@ -677,8 +677,8 @@ class locationComponent extends Component {
             </h1>
             <br />
             <div>
-              <div class="container">
-                <table class="table table-md">
+              <div className="container-comp2">
+                <table class="table table-sm">
                   <thead class="thead-light">
                     <tr>
                       <th scope="col">Location ID</th>
