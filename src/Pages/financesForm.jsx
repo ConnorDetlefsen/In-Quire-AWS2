@@ -29,6 +29,12 @@ class financesForm extends Component {
     if (this.context.currentUser.name === null) {
       history.push("/");
     }
+    http.get(config.apiEndpoint + "/roundend/1").then((res) => {
+      console.log(res);
+      if (res.data.roundisover === true) {
+        history.push("/");
+      }
+    });
     http
       .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -53,7 +59,7 @@ class financesForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/2" //change this based on round
+          "/1" //change this based on round
       )
       .then((res) => {
         this.setState({ data: res.data });
@@ -117,16 +123,21 @@ class financesForm extends Component {
             </table>
             <br />
             <center>
-              <button type="button" class="btn btn-warning" margin-top=".5em">
+              <button
+                disabled={true}
+                type="button"
+                class="btn btn-warning"
+                margin-top=".5em"
+              >
                 <a
                   class="blackFont"
-                  href={
+                  /* href={
                     "https://inquire-team" +
                     this.context.currentUser.teamID +
                     ".s3-us-west-1.amazonaws.com/" +
                     this.state.data.finances +
-                    ".csv"
-                  }
+                    ".csv" 
+                  }*/
                   download
                 >
                   Download Finances

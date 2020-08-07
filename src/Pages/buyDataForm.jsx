@@ -33,6 +33,12 @@ class buyDataForm extends Component {
     if (this.context.currentUser.name === null) {
       history.push("/");
     }
+    http.get(config.apiEndpoint + "/roundend/1").then((res) => {
+      console.log(res);
+      if (res.data.roundisover === true) {
+        history.push("/");
+      }
+    });
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -56,7 +62,7 @@ class buyDataForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/2" //round #
+          "/1" //round #
       )
       .then((res) => {
         this.setState({ data: res.data });

@@ -89,6 +89,13 @@ class locationComponent extends Component {
     if (this.context.currentUser.name === null) {
       history.push("/");
     }
+
+    http.get(config.apiEndpoint + "/roundend/1").then((res) => {
+      console.log(res);
+      if (res.data.roundisover === true) {
+        history.push("/");
+      }
+    });
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -493,7 +500,7 @@ class locationComponent extends Component {
           const refund = res.data.high_bid;
           this.state.refund = res.data.high_bid;
           console.log(refund);
-          res.data.high_bid = 0;
+          res.data.high_bid = res.data.price;
           res.data.team_id = 0;
           this.state.locations[x].team_id = 0;
           http.put(config.apiEndpoint + "/location/" + locID, res.data);
@@ -662,6 +669,12 @@ class locationComponent extends Component {
           <div id="page-content-wrapper">
             <nav className="navbar navbar-dark bg-dark">
               <h1 class="whiteFont">Location</h1>
+              <br></br>
+              {this.context.currentUser.isHighestBid === false && (
+                <h1 className="orangeFont">
+                  Location update! You were outbid!
+                </h1>
+              )}
             </nav>
             <nav className="navbar background">
               Budget: {team.budget} <br />
@@ -878,8 +891,8 @@ class locationComponent extends Component {
                   </label>
                   &emsp;
                   <button
-                    disabled={true} // after round 1
-                    //disabled={!this.context.currentUser.isManager}
+                    // disabled={true} // after round 1
+                    disabled={!this.context.currentUser.isManager}
                     type="submit"
                     class="btn btn-primary"
                     margin-top=".5em"
@@ -888,8 +901,8 @@ class locationComponent extends Component {
                   </button>
                   &emsp;&emsp;
                   <button
-                    disabled={true} // after round 1
-                    //disabled={!this.context.currentUser.isManager}
+                    // disabled={true} // after round 1
+                    disabled={!this.context.currentUser.isManager}
                     type="button"
                     class="btn btn-warning"
                     onClick={this.handleBidClear}

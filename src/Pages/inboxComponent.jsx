@@ -23,6 +23,12 @@ class inboxComponent extends Component {
     if (this.context.currentUser.name === null) {
       history.push("/");
     }
+    http.get(config.apiEndpoint + "/roundend/1").then((res) => {
+      console.log(res);
+      if (res.data.roundisover === true) {
+        history.push("/");
+      }
+    });
     http
       .get(config.apiEndpoint + "/inbox/" + this.context.currentUser.teamID)
       .then((res) => {
