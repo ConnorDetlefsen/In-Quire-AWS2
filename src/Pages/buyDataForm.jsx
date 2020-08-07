@@ -369,7 +369,7 @@ class buyDataForm extends Component {
                     type="button"
                     onClick={this.handleClick}
                     class="btn btn-primary"
-                    value="2000"
+                    value="7000"
                     name="detailedInc"
                   >
                     Purchase
