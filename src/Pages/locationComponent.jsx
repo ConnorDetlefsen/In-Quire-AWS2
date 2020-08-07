@@ -878,8 +878,8 @@ class locationComponent extends Component {
                   </label>
                   &emsp;
                   <button
-                    //disabled={true} // after round 1
-                    disabled={!this.context.currentUser.isManager}
+                    disabled={true} // after round 1
+                    //disabled={!this.context.currentUser.isManager}
                     type="submit"
                     class="btn btn-primary"
                     margin-top=".5em"
@@ -888,8 +888,8 @@ class locationComponent extends Component {
                   </button>
                   &emsp;&emsp;
                   <button
-                    //disabled={true} // after round 1
-                    disabled={!this.context.currentUser.isManager}
+                    disabled={true} // after round 1
+                    //disabled={!this.context.currentUser.isManager}
                     type="button"
                     class="btn btn-warning"
                     onClick={this.handleBidClear}

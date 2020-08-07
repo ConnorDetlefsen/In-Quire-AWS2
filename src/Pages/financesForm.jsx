@@ -53,7 +53,7 @@ class financesForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/1" //change this based on round
+          "/2" //change this based on round
       )
       .then((res) => {
         this.setState({ data: res.data });

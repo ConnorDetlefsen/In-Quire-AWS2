@@ -8,7 +8,7 @@ import "../App.css";
 class overviewComponent extends Component {
   state = {
     team: [],
-    round: 1,
+    round: 2,
   };
   static contextType = UserContext;
 
