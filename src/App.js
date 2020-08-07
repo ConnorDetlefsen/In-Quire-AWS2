@@ -28,19 +28,7 @@ class App extends Component {
     console.log("getting user: " + username);
     const user = { name: "Connor" };
     this.setState({ currentUser: user });
-  }; /*
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentUser: {
-        name: null,
-        teamID: null,
-        budget: null,
-        isManager: null,
-        isHighestBid: null,
-      },
-    };
-  } */
+  };
 
   state = {
     currentUser: {

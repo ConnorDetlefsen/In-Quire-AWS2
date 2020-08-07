@@ -254,6 +254,7 @@ class locationComponent extends Component {
     console.log(amount);
     location.team_id = this.context.currentUser.teamID; //update location id and new highest bid
     location.high_bid = this.state.amount; //updates bid
+    //location.team_name = this.state.team.name;
     const { data } = await http.put(
       config.apiEndpoint + "/location/" + locationID,
       location
@@ -416,8 +417,9 @@ class locationComponent extends Component {
       }
     }
     if (
-      this.context.currentUser.isHighestBid === true &&
-      this.state.prevID !== this.context.currentUser.teamID
+      this.context.currentUser.isHighestBid ===
+      true /*&&
+      this.state.prevID !== this.context.currentUser.teamID */
     ) {
       toast.error("You are already a highest bidder!");
       return;
@@ -502,6 +504,7 @@ class locationComponent extends Component {
           console.log(refund);
           res.data.high_bid = res.data.price;
           res.data.team_id = 0;
+          //  res.data.team_name = null;
           this.state.locations[x].team_id = 0;
           http.put(config.apiEndpoint + "/location/" + locID, res.data);
 
@@ -934,7 +937,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $474,900</h1>
                       </div>
                     </div>
                   }
@@ -961,7 +964,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $304,300</h1>
                       </div>
                     </div>
                   }
@@ -988,7 +991,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $356,300</h1>
                       </div>
                     </div>
                   }
@@ -1015,7 +1018,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $292,200</h1>
                       </div>
                     </div>
                   }
@@ -1042,7 +1045,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $450,800</h1>
                       </div>
                     </div>
                   }
@@ -1069,7 +1072,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $468,500</h1>
                       </div>
                     </div>
                   }
@@ -1096,7 +1099,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $275,000</h1>
                       </div>
                     </div>
                   }
@@ -1123,7 +1126,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $467,300</h1>
                       </div>
                     </div>
                   }
@@ -1150,7 +1153,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $468,100</h1>
                       </div>
                     </div>
                   }
@@ -1177,7 +1180,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $326,700</h1>
                       </div>
                     </div>
                   }
@@ -1204,7 +1207,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $333,400</h1>
                       </div>
                     </div>
                   }
@@ -1231,7 +1234,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $393,200</h1>
                       </div>
                     </div>
                   }
@@ -1258,7 +1261,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $392,100</h1>
                       </div>
                     </div>
                   }
@@ -1285,7 +1288,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $460,200</h1>
                       </div>
                     </div>
                   }
@@ -1312,7 +1315,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $371,700</h1>
                       </div>
                     </div>
                   }
@@ -1339,7 +1342,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $353,800</h1>
                       </div>
                     </div>
                   }
@@ -1366,7 +1369,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $323,000</h1>
                       </div>
                     </div>
                   }
@@ -1393,7 +1396,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $456,800</h1>
                       </div>
                     </div>
                   }
@@ -1420,7 +1423,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $460,900</h1>
                       </div>
                     </div>
                   }
@@ -1447,7 +1450,7 @@ class locationComponent extends Component {
                           height="300"
                           width="100%"
                         />
-                        <h1>Starting Price: $10,000</h1>
+                        <h1>Starting Price: $407,600</h1>
                       </div>
                     </div>
                   }

@@ -67,8 +67,8 @@ class sideBar extends Component {
                   &ensp;Finances
                 </i>
               </NavLink>
-              <NavLink
-                disabled={this.state.round}
+              <Link
+                //disabled={this.state.round}
                 class="list-group-item list-group-item-action "
                 //onClick={this.notRoundOne}
                 to="/messages"
@@ -76,7 +76,7 @@ class sideBar extends Component {
                 <i class="fa fa-envelope-o" aria-hidden="true">
                   &ensp;Memo
                 </i>
-              </NavLink>
+              </Link>
               <NavLink
                 disabled={this.state.round}
                 class="list-group-item list-group-item-action "
