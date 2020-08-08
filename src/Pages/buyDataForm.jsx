@@ -45,7 +45,7 @@ class buyDataForm extends Component {
     http.get(config.apiEndpoint + "/roundend/1").then((res) => {
       console.log(res);
       if (res.data.roundisover === true) {
-        // history.push("/");
+        history.push("/");
       }
     });
     http
@@ -321,7 +321,7 @@ class buyDataForm extends Component {
                         this.context.currentUser.teamID +
                         ".s3-us-west-1.amazonaws.com/" +
                         this.state.data.data7 +
-                        ".jpg"
+                        ".csv"
                       }
                       download
                     >
@@ -432,7 +432,7 @@ class buyDataForm extends Component {
                         this.context.currentUser.teamID +
                         ".s3-us-west-1.amazonaws.com/" +
                         this.state.data.data8 +
-                        ".jpg"
+                        ".csv"
                       }
                       download
                     >
@@ -540,7 +540,7 @@ class buyDataForm extends Component {
                         this.context.currentUser.teamID +
                         ".s3-us-west-1.amazonaws.com/" +
                         this.state.data.data9 +
-                        ".jpg"
+                        ".csv"
                       }
                       download
                     >
