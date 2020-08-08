@@ -45,7 +45,7 @@ class buyDataForm extends Component {
     http.get(config.apiEndpoint + "/roundend/1").then((res) => {
       console.log(res);
       if (res.data.roundisover === true) {
-        history.push("/");
+        // history.push("/");
       }
     });
     http
@@ -269,115 +269,6 @@ class buyDataForm extends Component {
     toast.success("Data Purchased!");
   };
 
-  /* <div
-                  class="cardData
-                "
-                >
-                  <h5>Placeholder data pack 7: $3000</h5>
-                  <p>description of this survey</p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data7
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="3000"
-                    name="data7"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data7 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data7 +
-                        ".jpg"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div> 
-                
-                
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Placeholder data pack 8: $3000</h5>
-                  <p>description of this survey</p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data8
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="3000"
-                    name="data8"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data8 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data8 +
-                        ".jpg"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                
-                 <div
-                  class="cardData
-                "
-                >
-                  <h5>Placeholder data pack 9: $3000</h5>
-                  <p>description of this survey</p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data9
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="3000"
-                    name="data9"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data9 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data9 +
-                        ".jpg"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-
-
-                */
-
   render() {
     const { team } = this.state;
     return (
@@ -401,6 +292,43 @@ class buyDataForm extends Component {
             <br />
             <div class="row">
               <div class="column">
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Customer Age Data: $4000</h5>
+                  <p>
+                    We collected age information of 2000 customers close to your
+                    store.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data7
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="4000"
+                    name="data7"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data7 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data7 +
+                        ".jpg"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
                 <div
                   class="cardData
                 "
@@ -475,6 +403,43 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Customer Income Data: $4000</h5>
+                  <p>
+                    We collected income information of 2000 customers close to
+                    your store
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data8
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="4000"
+                    name="data8"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data8 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data8 +
+                        ".jpg"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
                 <div class="cardData">
                   <h5>Basic Income Survey: $3000</h5>
                   <p>
@@ -546,6 +511,43 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Customer Location Data: $4000</h5>
+                  <p>
+                    We collected location information of 2000 customers close to
+                    your store.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data9
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="4000"
+                    name="data9"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data9 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data9 +
+                        ".jpg"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
                 <div class="cardData">
                   <h5>Basic Age Survey: $3,000</h5>
                   <p>
