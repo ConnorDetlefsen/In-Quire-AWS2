@@ -919,6 +919,119 @@ class inventoryForm extends Component {
       toast.error("Please enter whole numbers only");
       return;
     }
+    if (!(coffeeAmount == "" || coffeeAmount == "0")) {
+      const a = parseInt(coffeeAmount, 10);
+      if (a < 10) {
+        console.log("coff");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(cokeAmount == "" || cokeAmount == "0")) {
+      const a = parseInt(cokeAmount, 10);
+
+      if (a < 10) {
+        console.log("coke");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(croissantAmount == "" || croissantAmount == "0")) {
+      const a = parseInt(croissantAmount, 10);
+
+      if (a < 10) {
+        console.log("cros");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(fruitCupAmount == "" || fruitCupAmount == "0")) {
+      const a = parseInt(fruitCupAmount, 10);
+
+      if (a < 10) {
+        console.log("frui");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(icedCoffeeAmount == "" || icedCoffeeAmount == "0")) {
+      const a = parseInt(icedCoffeeAmount, 10);
+
+      if (a < 10) {
+        console.log("iced");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(juiceAmount == "" || juiceAmount == "0")) {
+      const a = parseInt(juiceAmount, 10);
+
+      if (a < 10) {
+        console.log("juic");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(latteAmount == "" || latteAmount == "0")) {
+      const a = parseInt(latteAmount, 10);
+      if (a < 10) {
+        console.log("lat");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(milkAmount == "" || milkAmount == "0")) {
+      const a = parseInt(milkAmount, 10);
+      if (a < 10) {
+        console.log("milk");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(barAmount == "" || barAmount == "0")) {
+      const a = parseInt(barAmount, 10);
+      if (a < 10) {
+        console.log("bar");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(saladAmount == "" || saladAmount == "0")) {
+      const a = parseInt(saladAmount, 10);
+      if (a < 10) {
+        console.log("salad");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(sandwichAmount == "" || sandwichAmount == "0")) {
+      const a = parseInt(sandwichAmount, 10);
+      if (a < 10) {
+        console.log("sand");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
+    if (!(smoothieAmount == "" || smoothieAmount == "0")) {
+      const a = parseInt(smoothieAmount, 10);
+      if (a < 10) {
+        console.log("smoot");
+
+        toast.error("You must order at least 10 units of every item you order");
+        return;
+      }
+    }
 
     const errors = this.validate(); //error checking if negative or if no dropdown selected
     this.setState({ errors: errors || {} });
@@ -1217,7 +1330,8 @@ class inventoryForm extends Component {
             <div>
               <h2>
                 {" "}
-                &emsp;&emsp;&emsp;&emsp;&ensp; Order Form (in units)
+                &emsp;&emsp;&emsp;&emsp;&ensp; Order Form (in units){" "}
+                <small>A minimum order of 10 units is enforced</small>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Selling
                 Prices (in $)
               </h2>
