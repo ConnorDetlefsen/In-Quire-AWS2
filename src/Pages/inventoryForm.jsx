@@ -1331,7 +1331,6 @@ class inventoryForm extends Component {
               <h2>
                 {" "}
                 &emsp;&emsp;&emsp;&emsp;&ensp; Order Form (in units){" "}
-                <small>A minimum order of 10 units is enforced</small>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Selling
                 Prices (in $)
               </h2>
