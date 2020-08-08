@@ -26,7 +26,11 @@ class buyDataForm extends Component {
       basicAge: false,
       detailedAge: false,
 
-      log: { category: "Data", amount: null, team_id: null, round_num: 1 },
+      data7: false,
+      data8: false,
+      data9: false,
+
+      log: { category: "Data", amount: null, team_id: null, round_num: 2 },
       finances: [],
       data: [],
     };
@@ -67,7 +71,7 @@ class buyDataForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/1" //round #
+          "/2" //round #
       )
       .then((res) => {
         this.setState({ data: res.data });
@@ -140,6 +144,33 @@ class buyDataForm extends Component {
   };
   dataUpdate6 = async (dataBought) => {
     dataBought.data6 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
+  dataUpdate7 = async (dataBought) => {
+    dataBought.data7 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
+  dataUpdate8 = async (dataBought) => {
+    dataBought.data8 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
+  dataUpdate9 = async (dataBought) => {
+    dataBought.data9 = true;
 
     const { data } = await http.put(
       config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
@@ -223,8 +254,129 @@ class buyDataForm extends Component {
       this.setState({ detailedAge: true });
       this.dataUpdate6(this.state.dataBought);
     }
+    if (e.target.name === "data7") {
+      this.setState({ data7: true });
+      this.dataUpdate7(this.state.dataBought);
+    }
+    if (e.target.name === "data8") {
+      this.setState({ data8: true });
+      this.dataUpdate8(this.state.dataBought);
+    }
+    if (e.target.name === "data9") {
+      this.setState({ data9: true });
+      this.dataUpdate9(this.state.dataBought);
+    }
     toast.success("Data Purchased!");
   };
+
+  /* <div
+                  class="cardData
+                "
+                >
+                  <h5>Placeholder data pack 7: $3000</h5>
+                  <p>description of this survey</p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data7
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="3000"
+                    name="data7"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data7 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data7 +
+                        ".jpg"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div> 
+                
+                
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Placeholder data pack 8: $3000</h5>
+                  <p>description of this survey</p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data8
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="3000"
+                    name="data8"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data8 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data8 +
+                        ".jpg"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
+                
+                 <div
+                  class="cardData
+                "
+                >
+                  <h5>Placeholder data pack 9: $3000</h5>
+                  <p>description of this survey</p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data9
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="3000"
+                    name="data9"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data9 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data9 +
+                        ".jpg"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
+
+
+                */
 
   render() {
     const { team } = this.state;
@@ -249,7 +401,10 @@ class buyDataForm extends Component {
             <br />
             <div class="row">
               <div class="column">
-                <div class="card">
+                <div
+                  class="cardData
+                "
+                >
                   <h5>Basic Population Survey: $3000</h5>
                   <p>
                     This survey is a rough estimate of the population, or number
@@ -283,7 +438,7 @@ class buyDataForm extends Component {
                     </a>
                   )}
                 </div>
-                <div class="card">
+                <div class="cardData">
                   <h5>Detailed Population Survey: $7000</h5>
                   <p>
                     This survey is a more specific estimate of the population,
@@ -320,7 +475,7 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
-                <div class="card">
+                <div class="cardData">
                   <h5>Basic Income Survey: $3000</h5>
                   <p>
                     This survey is a rough estimate of the average income of the
@@ -354,7 +509,7 @@ class buyDataForm extends Component {
                     </a>
                   )}
                 </div>
-                <div class="card">
+                <div class="cardData">
                   <h5>Detailed Income Survey: $7000</h5>
                   <p>
                     This survey is a more specific estimate of the average
@@ -391,7 +546,7 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
-                <div class="card">
+                <div class="cardData">
                   <h5>Basic Age Survey: $3,000</h5>
                   <p>
                     This survey is a rough estimate of the average age of the
@@ -426,7 +581,7 @@ class buyDataForm extends Component {
                     </a>
                   )}
                 </div>
-                <div class="card">
+                <div class="cardData">
                   <h5>Detailed Age Survey: $7000</h5>
                   <p>
                     This survey is a more specific estimate of the average age

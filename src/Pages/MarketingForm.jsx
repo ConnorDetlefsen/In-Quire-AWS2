@@ -23,7 +23,7 @@ class MarketingForm extends Component {
       selectValue: "facebook",
       errors: {},
       team: [],
-      log: { category: "Marketing", amount: null, team_id: null, round_num: 1 },
+      log: { category: "Marketing", amount: null, team_id: null, round_num: 2 },
       finances: [],
     };
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
@@ -254,7 +254,7 @@ class MarketingForm extends Component {
             <div class="row">
               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
-                <div class="card">
+                <div class="cardMKTG">
                   <h4>
                     {" "}
                     <img src={facebookIMG} height="60" width="60" />
@@ -267,7 +267,7 @@ class MarketingForm extends Component {
               <br />
               &emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
-                <div class="card">
+                <div class="cardMKTG">
                   <h4>
                     {" "}
                     <img src={instagramIMG} height="50" width="50" />
@@ -281,7 +281,7 @@ class MarketingForm extends Component {
               <br />
               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
-                <div class="card">
+                <div class="cardMKTG">
                   <h4>
                     {" "}
                     <img src={newspaperIMG} height="60" width="60" />
@@ -294,7 +294,7 @@ class MarketingForm extends Component {
               <br />
               &emsp;&emsp;&emsp;&emsp;
               <div class="col-sm-5">
-                <div class="card">
+                <div class="cardMKTG">
                   <h4>
                     {" "}
                     <img src={TVIMG} height="60" width="60" />

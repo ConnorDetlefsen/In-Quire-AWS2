@@ -37,8 +37,8 @@ class sideBar extends Component {
                   &ensp;Location
                 </i>
               </Link>
-              <NavLink
-                disabled={this.state.round}
+              <Link
+                //disabled={this.state.round}
                 class="list-group-item list-group-item-action "
                 //onClick={this.notRoundOne}
                 to="/inventory"
@@ -46,9 +46,9 @@ class sideBar extends Component {
                 <i class="fa fa-coffee" aria-hidden="true">
                   &ensp;Inventory
                 </i>
-              </NavLink>
-              <NavLink
-                disabled={this.state.round}
+              </Link>
+              <Link
+                // disabled={this.state.round}
                 className="list-group-item list-group-item-action "
                 //onClick={this.notRoundOne}
                 to="/marketing"
@@ -56,9 +56,9 @@ class sideBar extends Component {
                 <i class="fa fa-newspaper-o" aria-hidden="true">
                   &ensp;Marketing
                 </i>
-              </NavLink>
-              <NavLink
-                disabled={this.state.round}
+              </Link>
+              <Link
+                // disabled={this.state.round}
                 class="list-group-item list-group-item-action "
                 //onClick={this.notRoundOne}
                 to="/finances"
@@ -66,7 +66,7 @@ class sideBar extends Component {
                 <i class="fa fa-credit-card" aria-hidden="true">
                   &ensp;Finances
                 </i>
-              </NavLink>
+              </Link>
               <Link
                 //disabled={this.state.round}
                 class="list-group-item list-group-item-action "
@@ -77,8 +77,8 @@ class sideBar extends Component {
                   &ensp;Memo
                 </i>
               </Link>
-              <NavLink
-                disabled={this.state.round}
+              <Link
+                //disabled={this.state.round}
                 class="list-group-item list-group-item-action "
                 //onClick={this.notRoundOne}
                 to="/inbox"
@@ -86,7 +86,7 @@ class sideBar extends Component {
                 <i class="fa fa-inbox" aria-hidden="true">
                   &ensp;Inbox
                 </i>
-              </NavLink>
+              </Link>
               <Link
                 //disabled={this.state.round}
                 class="list-group-item list-group-item-action"
