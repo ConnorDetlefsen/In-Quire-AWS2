@@ -23,7 +23,7 @@ class MarketingForm extends Component {
       selectValue: "facebook",
       errors: {},
       team: [],
-      log: { category: "Marketing", amount: null, team_id: null, round_num: 2 },
+      log: { category: "Marketing", amount: null, team_id: null, round_num: 3 },
       finances: [],
     };
     this.handleDropdownChange = this.handleDropdownChange.bind(this);

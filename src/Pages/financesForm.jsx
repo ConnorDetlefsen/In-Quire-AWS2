@@ -59,7 +59,7 @@ class financesForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/2" //change this based on round
+          "/3"
       )
       .then((res) => {
         this.setState({ data: res.data });
@@ -131,13 +131,13 @@ class financesForm extends Component {
               >
                 <a
                   class="blackFont"
-                  /* href={
+                  href={
                     "https://inquire-team" +
                     this.context.currentUser.teamID +
                     ".s3-us-west-1.amazonaws.com/" +
                     this.state.data.finances +
-                    ".csv" 
-                  }*/
+                    ".csv"
+                  }
                   download
                 >
                   Download Finances
