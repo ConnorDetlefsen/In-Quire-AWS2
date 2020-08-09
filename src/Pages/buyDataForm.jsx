@@ -339,10 +339,11 @@ class buyDataForm extends Component {
                   class="cardData
                 "
                 >
-                  <h5>Competitor first set: $4000</h5>
+                  <h5>Competitor Data One: $10000</h5>
                   <p>
-                    We collected age information of 2000 customers close to your
-                    store.
+                    Graphs displaying the amount of inventory purchased by each
+                    team, data displaying the comparison of latitude and
+                    longitude per each location, and the budgets of each team.
                   </p>
                   <button
                     disabled={
@@ -352,7 +353,7 @@ class buyDataForm extends Component {
                     type="button"
                     onClick={this.handleClick}
                     class="btn btn-primary"
-                    value="4000"
+                    value="10000"
                     name="data10"
                   >
                     Purchase
@@ -487,10 +488,12 @@ class buyDataForm extends Component {
                   class="cardData
                 "
                 >
-                  <h5>Competitor second set: $4000</h5>
+                  <h5>Competitor Data Two: $14000</h5>
                   <p>
-                    We collected age information of 2000 customers close to your
-                    store.
+                    Graphs displaying the comparison of each team's budgets v.
+                    their marketing spending per each category and graphs
+                    displaying the quantity versus selling price of each
+                    inventory item.
                   </p>
                   <button
                     disabled={
@@ -500,7 +503,7 @@ class buyDataForm extends Component {
                     type="button"
                     onClick={this.handleClick}
                     class="btn btn-primary"
-                    value="4000"
+                    value="14000"
                     name="data11"
                   >
                     Purchase
@@ -632,10 +635,11 @@ class buyDataForm extends Component {
                   class="cardData
                 "
                 >
-                  <h5>Competitor 3rd set: $4000</h5>
+                  <h5>Competitor Data Three: $8000</h5>
                   <p>
-                    We collected age information of 2000 customers close to your
-                    store.
+                    Graphs of location data comparing latitude / longitude,
+                    latitude / budget, longitude / budget, and each team's
+                    budgets
                   </p>
                   <button
                     disabled={
@@ -645,7 +649,7 @@ class buyDataForm extends Component {
                     type="button"
                     onClick={this.handleClick}
                     class="btn btn-primary"
-                    value="4000"
+                    value="8000"
                     name="data12"
                   >
                     Purchase
