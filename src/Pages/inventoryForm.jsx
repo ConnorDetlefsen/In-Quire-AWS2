@@ -83,7 +83,7 @@ class inventoryForm extends Component {
       sandwichProduct: [],
       smoothieProduct: [],
 
-      log: { category: "Inventory", amount: null, team_id: null, round_num: 3 },
+      log: { category: "Inventory", amount: null, team_id: null, round_num: 4 },
       finances: [],
     };
   }

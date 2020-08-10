@@ -34,7 +34,11 @@ class buyDataForm extends Component {
       data11: false,
       data12: false,
 
-      log: { category: "Data", amount: null, team_id: null, round_num: 3 },
+      data13: false,
+      data14: false,
+      data15: false,
+
+      log: { category: "Data", amount: null, team_id: null, round_num: 4 },
       finances: [],
       data: [],
     };
@@ -75,7 +79,7 @@ class buyDataForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/3" //round #
+          "/4" //round #
       )
       .then((res) => {
         this.setState({ data: res.data });
@@ -209,6 +213,33 @@ class buyDataForm extends Component {
     );
     console.log(data);
   };
+  dataUpdate13 = async (dataBought) => {
+    dataBought.data13 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
+  dataUpdate14 = async (dataBought) => {
+    dataBought.data14 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
+  dataUpdate15 = async (dataBought) => {
+    dataBought.data15 = true;
+
+    const { data } = await http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      dataBought
+    );
+    console.log(data);
+  };
 
   budgetUpdate = async (team) => {
     const cost1 = this.state.cost;
@@ -309,6 +340,18 @@ class buyDataForm extends Component {
       this.setState({ data12: true });
       this.dataUpdate12(this.state.dataBought);
     }
+    if (e.target.name === "data13") {
+      this.setState({ data13: true });
+      this.dataUpdate13(this.state.dataBought);
+    }
+    if (e.target.name === "data14") {
+      this.setState({ data14: true });
+      this.dataUpdate14(this.state.dataBought);
+    }
+    if (e.target.name === "data15") {
+      this.setState({ data15: true });
+      this.dataUpdate15(this.state.dataBought);
+    }
     toast.success("Data Purchased!");
   };
 
@@ -335,6 +378,45 @@ class buyDataForm extends Component {
             <br />
             <div class="row">
               <div class="column">
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Round 2 Competitor Data One: $10000</h5>
+                  <p>
+                    Graphs displaying the amount of inventory purchased by each
+                    team, data displaying the comparison of latitude and
+                    longitude per each location, and the budgets of each team
+                    from round 2.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data13
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="10000"
+                    name="data13"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data13 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data13 +
+                        ".pdf"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
                 <div
                   class="cardData
                 "
@@ -488,6 +570,45 @@ class buyDataForm extends Component {
                   class="cardData
                 "
                 >
+                  <h5>Round 2 Competitor Data Two: $14000</h5>
+                  <p>
+                    Graphs displaying the comparison of each team's budgets v.
+                    their marketing spending per each category and graphs
+                    displaying the quantity versus selling price of each
+                    inventory item from round 2.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data14
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="14000"
+                    name="data14"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data14 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data14 +
+                        ".pdf"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
+                <div
+                  class="cardData
+                "
+                >
                   <h5>Competitor Data Two: $14000</h5>
                   <p>
                     Graphs displaying the comparison of each team's budgets v.
@@ -631,6 +752,44 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Round 2 Competitor Data Three: $8000</h5>
+                  <p>
+                    Graphs of location data comparing latitude / longitude,
+                    latitude / budget, longitude / budget, and each team's
+                    budgets from round 2
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data15
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="8000"
+                    name="data15"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data15 === true && (
+                    <a
+                      href={
+                        "https://inquire-team" +
+                        this.context.currentUser.teamID +
+                        ".s3-us-west-1.amazonaws.com/" +
+                        this.state.data.data15 +
+                        ".pdf"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
                 <div
                   class="cardData
                 "

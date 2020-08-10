@@ -59,7 +59,7 @@ class financesForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/3"
+          "/4"
       )
       .then((res) => {
         this.setState({ data: res.data });
@@ -124,7 +124,7 @@ class financesForm extends Component {
             <br />
             <center>
               <button
-                disabled={true} //undisable this after round 2
+                //disabled={true} //undisable this after round 2
                 type="button"
                 class="btn btn-warning"
                 margin-top=".5em"
