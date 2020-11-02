@@ -85,8 +85,8 @@ class sideBar extends Component {
               <Link
                 //disabled={this.state.round}
                 class="list-group-item list-group-item-action "
-                onClick={this.onClick}
-                page="/messages"
+                //onClick={this.onClick}
+                to="/messages"
               >
                 <i class="fa fa-envelope-o" aria-hidden="true">
                   &ensp;Memo

@@ -45,6 +45,8 @@ class buyDataForm extends Component {
       log: { category: "Data", amount: null, team_id: null, round_num: 5 },
       finances: [],
       data: [],
+
+      constantDataBought: [],
     };
   }
 
@@ -60,6 +62,12 @@ class buyDataForm extends Component {
         history.push("/");
       }
     });
+
+    http
+      .get(config.apiEndpoint + "/samedata/" + this.context.currentUser.teamID)
+      .then((res) => {
+        this.setState({ constantDataBought: res.data });
+      });
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -121,155 +129,53 @@ class buyDataForm extends Component {
     console.log(data);
   };
 */
-  dataUpdate1 = async (dataBought) => {
-    dataBought.data1 = true;
+  dataUpdate1 = async (constantDataBought) => {
+    constantDataBought.data1 = true;
 
     http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
-      dataBought
-    );
-
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
-      dataBought
+      config.apiEndpoint + "/samedata/" + this.context.currentUser.teamID,
+      constantDataBought
     );
   };
-  dataUpdate2 = async (dataBought) => {
-    dataBought.data2 = true;
+  dataUpdate2 = async (constantDataBought) => {
+    constantDataBought.data2 = true;
 
     http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
-      dataBought
-    );
-
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
-      dataBought
+      config.apiEndpoint + "/samedata/" + this.context.currentUser.teamID,
+      constantDataBought
     );
   };
 
-  dataUpdate3 = async (dataBought) => {
-    dataBought.data3 = true;
+  dataUpdate3 = async (constantDataBought) => {
+    constantDataBought.data3 = true;
 
     http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
-      dataBought
-    );
-
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
-      dataBought
+      config.apiEndpoint + "/samedata/" + this.context.currentUser.teamID,
+      constantDataBought
     );
   };
-  dataUpdate4 = async (dataBought) => {
-    dataBought.data4 = true;
+  dataUpdate4 = async (constantDataBought) => {
+    constantDataBought.data4 = true;
 
     http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
-      dataBought
-    );
-
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
-      dataBought
+      config.apiEndpoint + "/samedata/" + this.context.currentUser.teamID,
+      constantDataBought
     );
   };
-  dataUpdate5 = async (dataBought) => {
-    dataBought.data5 = true;
+  dataUpdate5 = async (constantDataBought) => {
+    constantDataBought.data5 = true;
 
     http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
-      dataBought
-    );
-
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
-      dataBought
+      config.apiEndpoint + "/samedata/" + this.context.currentUser.teamID,
+      constantDataBought
     );
   };
-  dataUpdate6 = async (dataBought) => {
-    dataBought.data6 = true;
+  dataUpdate6 = async (constantDataBought) => {
+    constantDataBought.data6 = true;
 
     http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
-      dataBought
-    );
-
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
-      dataBought
-    );
-    http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
-      dataBought
+      config.apiEndpoint + "/samedata/" + this.context.currentUser.teamID,
+      constantDataBought
     );
   };
   dataUpdate7 = async (dataBought) => {
@@ -486,27 +392,27 @@ class buyDataForm extends Component {
     if (e.target.name === "basicPop") {
       //this.setState({ marketingData: this.state.dataBought.data1 });
       this.setState({ basicPop: true });
-      this.dataUpdate1(this.state.dataBought);
+      this.dataUpdate1(this.state.constantDataBought);
     }
     if (e.target.name === "detailedPop") {
       this.setState({ detailedPop: true });
-      this.dataUpdate2(this.state.dataBought);
+      this.dataUpdate2(this.state.constantDataBought);
     }
     if (e.target.name === "basicInc") {
       this.setState({ basicInc: true });
-      this.dataUpdate3(this.state.dataBought);
+      this.dataUpdate3(this.state.constantDataBought);
     }
     if (e.target.name === "detailedInc") {
       this.setState({ detailedInc: true });
-      this.dataUpdate4(this.state.dataBought);
+      this.dataUpdate4(this.state.constantDataBought);
     }
     if (e.target.name === "basicAge") {
       this.setState({ basicAge: true });
-      this.dataUpdate5(this.state.dataBought);
+      this.dataUpdate5(this.state.constantDataBought);
     }
     if (e.target.name === "detailedAge") {
       this.setState({ detailedAge: true });
-      this.dataUpdate6(this.state.dataBought);
+      this.dataUpdate6(this.state.constantDataBought);
     }
     if (e.target.name === "data7") {
       this.setState({ data7: true });
@@ -594,7 +500,7 @@ class buyDataForm extends Component {
                   <button
                     disabled={
                       !this.context.currentUser.isManager ||
-                      this.state.dataBought.data1
+                      this.state.constantDataBought.data1
                     }
                     type="button"
                     onClick={this.handleClick}
@@ -604,7 +510,7 @@ class buyDataForm extends Component {
                   >
                     Purchase
                   </button>
-                  {this.state.dataBought.data1 === true && (
+                  {this.state.constantDataBought.data1 === true && (
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
@@ -627,7 +533,7 @@ class buyDataForm extends Component {
                   <button
                     disabled={
                       !this.context.currentUser.isManager ||
-                      this.state.dataBought.data2
+                      this.state.constantDataBought.data2
                     }
                     type="button"
                     onClick={this.handleClick}
@@ -637,7 +543,7 @@ class buyDataForm extends Component {
                   >
                     Purchase
                   </button>
-                  {this.state.dataBought.data2 === true && (
+                  {this.state.constantDataBought.data2 === true && (
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
@@ -661,7 +567,7 @@ class buyDataForm extends Component {
                   <button
                     disabled={
                       !this.context.currentUser.isManager ||
-                      this.state.dataBought.data3
+                      this.state.constantDataBought.data3
                     }
                     type="button"
                     onClick={this.handleClick}
@@ -671,7 +577,7 @@ class buyDataForm extends Component {
                   >
                     Purchase
                   </button>
-                  {this.state.dataBought.data3 === true && (
+                  {this.state.constantDataBought.data3 === true && (
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
@@ -694,7 +600,7 @@ class buyDataForm extends Component {
                   <button
                     disabled={
                       !this.context.currentUser.isManager ||
-                      this.state.dataBought.data4
+                      this.state.constantDataBought.data4
                     }
                     type="button"
                     onClick={this.handleClick}
@@ -704,7 +610,7 @@ class buyDataForm extends Component {
                   >
                     Purchase
                   </button>
-                  {this.state.dataBought.data4 === true && (
+                  {this.state.constantDataBought.data4 === true && (
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
@@ -729,7 +635,7 @@ class buyDataForm extends Component {
                   <button
                     disabled={
                       !this.context.currentUser.isManager ||
-                      this.state.dataBought.data5
+                      this.state.constantDataBought.data5
                     }
                     type="button"
                     onClick={this.handleClick}
@@ -739,7 +645,7 @@ class buyDataForm extends Component {
                   >
                     Purchase
                   </button>
-                  {this.state.dataBought.data5 === true && (
+                  {this.state.constantDataBought.data5 === true && (
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
@@ -762,7 +668,7 @@ class buyDataForm extends Component {
                   <button
                     disabled={
                       !this.context.currentUser.isManager ||
-                      this.state.dataBought.data6
+                      this.state.constantDataBought.data6
                     }
                     type="button"
                     onClick={this.handleClick}
@@ -772,7 +678,7 @@ class buyDataForm extends Component {
                   >
                     Purchase
                   </button>
-                  {this.state.dataBought.data6 === true && (
+                  {this.state.constantDataBought.data6 === true && (
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
