@@ -63,7 +63,7 @@ class overviewComponent extends Component {
                     <div>
                       <h4>
                         Team ID: {this.context.currentUser.teamID} &emsp; Round:{" "}
-                        {this.state.round}
+                        {this.context.currentUser.round}
                       </h4>
                     </div>
                     <h4> </h4>

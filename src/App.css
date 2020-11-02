@@ -213,7 +213,7 @@ header .header {
   font-weight: bold;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+.login-input {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -224,7 +224,7 @@ header .header {
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.login-button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -238,17 +238,17 @@ header .header {
   transition: all 0.3 ease;
   cursor: pointer;
 }
-.form .message {
+.login-message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
-.form .message a {
+.login-message a {
   color: #4caf50;
   text-decoration: none;
 }
 
-.container-comp {
+.login-comp {
   position: center;
   z-index: 1;
   max-width: 150px;
@@ -261,10 +261,6 @@ header .header {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.background {
-  background-color: azure;
 }
 
 .back {

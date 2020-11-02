@@ -1,16 +1,31 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import logo from "./In-Quire.png";
 import "font-awesome/css/font-awesome.min.css";
+import UserContext from "../Context/UserContext";
+
 class sideBar extends Component {
   state = {
     round: true,
   };
+  static contextType = UserContext;
+
   notRoundOne() {
     toast.error("You can access this next round! ");
   }
+
+  onClick = (e) => {
+    const { history } = this.props;
+    if (this.context.currentUser.round === 1) {
+      toast.error("You can access this next round! ");
+      return;
+    } else {
+      history.push(e.currentTarget.attributes.page.value);
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -38,10 +53,10 @@ class sideBar extends Component {
                 </i>
               </Link>
               <Link
-                //disabled={this.state.round}
                 class="list-group-item list-group-item-action "
-                //onClick={this.notRoundOne}
-                to="/inventory"
+                onClick={this.onClick}
+                page="/inventory"
+                //to="/inventory"
               >
                 <i class="fa fa-coffee" aria-hidden="true">
                   &ensp;Inventory
@@ -50,8 +65,8 @@ class sideBar extends Component {
               <Link
                 // disabled={this.state.round}
                 className="list-group-item list-group-item-action "
-                //onClick={this.notRoundOne}
-                to="/marketing"
+                onClick={this.onClick}
+                page="/marketing"
               >
                 <i class="fa fa-newspaper-o" aria-hidden="true">
                   &ensp;Marketing
@@ -60,8 +75,8 @@ class sideBar extends Component {
               <Link
                 // disabled={this.state.round}
                 class="list-group-item list-group-item-action "
-                //onClick={this.notRoundOne}
-                to="/finances"
+                onClick={this.onClick}
+                page="/finances"
               >
                 <i class="fa fa-credit-card" aria-hidden="true">
                   &ensp;Finances
@@ -70,8 +85,8 @@ class sideBar extends Component {
               <Link
                 //disabled={this.state.round}
                 class="list-group-item list-group-item-action "
-                //onClick={this.notRoundOne}
-                to="/messages"
+                onClick={this.onClick}
+                page="/messages"
               >
                 <i class="fa fa-envelope-o" aria-hidden="true">
                   &ensp;Memo
@@ -80,8 +95,8 @@ class sideBar extends Component {
               <Link
                 //disabled={this.state.round}
                 class="list-group-item list-group-item-action "
-                //onClick={this.notRoundOne}
-                to="/inbox"
+                onClick={this.onClick}
+                page="/inbox"
               >
                 <i class="fa fa-inbox" aria-hidden="true">
                   &ensp;Inbox
@@ -90,8 +105,8 @@ class sideBar extends Component {
               <Link
                 //disabled={this.state.round}
                 class="list-group-item list-group-item-action"
-                //onClick={this.notRoundOne}
-                to="/buydata"
+                onClick={this.onClick}
+                page="/buydata"
               >
                 <i class="fa fa-database" aria-hidden="true">
                   {" "}
@@ -116,4 +131,4 @@ class sideBar extends Component {
     );
   }
 }
-export default sideBar;
+export default withRouter(sideBar);

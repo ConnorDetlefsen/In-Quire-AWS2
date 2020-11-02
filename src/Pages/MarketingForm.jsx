@@ -23,7 +23,7 @@ class MarketingForm extends Component {
       selectValue: "facebook",
       errors: {},
       team: [],
-      log: { category: "Marketing", amount: null, team_id: null, round_num: 5 },
+
       finances: [],
     };
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
@@ -163,8 +163,8 @@ class MarketingForm extends Component {
       .post(config.apiEndpoint + "/log/", {
         amount: amount,
         team_id: this.context.currentUser.teamID,
-        round_num: log.round_num,
-        category: log.category,
+        round_num: this.context.currentUser.round,
+        category: "Marketing",
       })
       .then((res) => {
         console.log(res);

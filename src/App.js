@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Login from "./Components/loginForm";
 import Inventory from "./Pages/inventoryForm";
 // import Nav from "./Components/Nav";
@@ -37,6 +37,7 @@ class App extends Component {
       budget: null,
       isManager: null,
       isHighestBid: null,
+      round: null,
     },
   };
   render() {
@@ -74,4 +75,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

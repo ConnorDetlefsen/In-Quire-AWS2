@@ -21,6 +21,7 @@ class LoginForm extends Component {
     id: 1,
     // team: [],
     teams: [],
+    roundEnd: [],
   };
 
   schema = {
@@ -104,6 +105,7 @@ class LoginForm extends Component {
         this.context.currentUser.name = userList[x].first_name;
         this.context.currentUser.teamID = userList[x].team_id; //using user id right now since the team ids are the same
         this.context.currentUser.isManager = userList[x].manager;
+        this.context.currentUser.round = this.state.roundend.round_num;
 
         http
           .post(config.apiEndpoint + "/login/", {
@@ -139,6 +141,9 @@ class LoginForm extends Component {
     http.get(teamEndpoint).then((res) => {
       this.setState({ teams: res.data });
       console.log(res);
+    });
+    http.get(config.apiEndpoint + "roundend/1").then((res) => {
+      this.setState({ roundend: res.data });
     });
   }
 
