@@ -1551,7 +1551,10 @@ class inventoryForm extends Component {
               &emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <button
                 onClick={this.handleInventoryOrderSubmit}
-                disabled={!this.context.currentUser.isManager}
+                disabled={
+                  !this.context.currentUser.isManager &&
+                  !this.context.currentUser.isInventory
+                }
                 type="submit"
                 margin-top=".5em"
                 class="btn btn-primary"
@@ -1564,7 +1567,10 @@ class inventoryForm extends Component {
               &emsp;&emsp;&emsp;
               <button
                 onClick={this.handleSellingPriceSubmit}
-                disabled={!this.context.currentUser.isManager}
+                disabled={
+                  !this.context.currentUser.isManager &&
+                  !this.context.currentUser.isInventory
+                }
                 type="submit"
                 margin-top=".5em"
                 class="btn btn-primary"

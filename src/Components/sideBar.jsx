@@ -105,8 +105,8 @@ class sideBar extends Component {
               <Link
                 //disabled={this.state.round}
                 class="list-group-item list-group-item-action"
-                onClick={this.onClick}
-                page="/buydata"
+                // onClick={this.onClick}
+                to="/buydata"
               >
                 <i class="fa fa-database" aria-hidden="true">
                   {" "}

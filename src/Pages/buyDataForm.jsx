@@ -536,7 +536,8 @@ class buyDataForm extends Component {
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
-                        this.state.data.filename1
+                        this.state.data.filename1 +
+                        ".jpg"
                       }
                       download
                     >
@@ -568,7 +569,8 @@ class buyDataForm extends Component {
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
-                        this.state.data.filename2
+                        this.state.data.filename2 +
+                        ".jpg"
                       }
                       download
                     >
@@ -601,7 +603,8 @@ class buyDataForm extends Component {
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
-                        this.state.data.filename3
+                        this.state.data.filename3 +
+                        ".jpg"
                       }
                       download
                     >
@@ -633,7 +636,8 @@ class buyDataForm extends Component {
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
-                        this.state.data.filename4
+                        this.state.data.filename4 +
+                        ".jpg"
                       }
                       download
                     >
@@ -667,7 +671,8 @@ class buyDataForm extends Component {
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
-                        this.state.data.filename5
+                        this.state.data.filename5 +
+                        ".jpg"
                       }
                       download
                     >
@@ -699,7 +704,8 @@ class buyDataForm extends Component {
                     <a
                       href={
                         "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
-                        this.state.data.filename6
+                        this.state.data.filename6 +
+                        ".jpg"
                       }
                       download
                     >

@@ -264,7 +264,10 @@ class MarketingForm extends Component {
 
                   <div class="divider" />
                   <button
-                    disabled={!this.context.currentUser.isManager}
+                    disabled={
+                      !this.context.currentUser.isManager &&
+                      !this.context.currentUser.isMarketing
+                    }
                     type="submit"
                     margin-top=".5em"
                     class="btn btn-primary"

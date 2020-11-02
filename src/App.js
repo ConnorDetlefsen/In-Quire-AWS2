@@ -38,6 +38,9 @@ class App extends Component {
       isManager: null,
       isHighestBid: null,
       round: null,
+      isMarketing: null,
+      isInventory: null,
+      isConsultant: null,
     },
   };
   render() {

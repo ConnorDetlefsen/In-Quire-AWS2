@@ -140,7 +140,8 @@ class financesForm extends Component {
                   class="blackFont"
                   href={
                     "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
-                    this.state.data.filename8
+                    this.state.data.finances +
+                    ".csv"
                   }
                   download
                 >

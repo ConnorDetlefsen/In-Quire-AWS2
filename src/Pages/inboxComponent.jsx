@@ -29,17 +29,65 @@ class inboxComponent extends Component {
         history.push("/");
       }
     });
-    http
-      .get(
-        config.apiEndpoint +
-          "/inbox/" +
-          this.context.currentUser.teamID +
-          "/" +
-          this.context.currentUser.round
-      )
-      .then((res) => {
-        this.setState({ inbox: res.data });
-      });
+
+    if (this.context.currentUser.isInventory === true) {
+      http
+        .get(
+          config.apiEndpoint +
+            "/inbox/" +
+            this.context.currentUser.teamID +
+            "/" +
+            this.context.currentUser.round +
+            "/Inventory"
+        )
+        .then((res) => {
+          this.setState({ inbox: res.data });
+        });
+    }
+    if (this.context.currentUser.isManager === true) {
+      http
+        .get(
+          config.apiEndpoint +
+            "/inbox/" +
+            this.context.currentUser.teamID +
+            "/" +
+            this.context.currentUser.round +
+            "/Manager"
+        )
+        .then((res) => {
+          this.setState({ inbox: res.data });
+        });
+    }
+
+    if (this.context.currentUser.isConsultant === true) {
+      http
+        .get(
+          config.apiEndpoint +
+            "/inbox/" +
+            this.context.currentUser.teamID +
+            "/" +
+            this.context.currentUser.round +
+            "/Consultant"
+        )
+        .then((res) => {
+          this.setState({ inbox: res.data });
+        });
+    }
+    if (this.context.currentUser.isMarketing === true) {
+      http
+        .get(
+          config.apiEndpoint +
+            "/inbox/" +
+            this.context.currentUser.teamID +
+            "/" +
+            this.context.currentUser.round +
+            "/Marketing"
+        )
+        .then((res) => {
+          this.setState({ inbox: res.data });
+        });
+    }
+
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
