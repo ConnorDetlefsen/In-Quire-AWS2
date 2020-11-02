@@ -124,81 +124,153 @@ class buyDataForm extends Component {
   dataUpdate1 = async (dataBought) => {
     dataBought.data1 = true;
 
-    const { data } = await http.put(
-      config.apiEndpoint +
-        "/buydata/" +
-        this.context.currentUser.teamID +
-        "/" +
-        this.context.currentUser.round,
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
       dataBought
     );
-    console.log(data);
+
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
+      dataBought
+    );
   };
   dataUpdate2 = async (dataBought) => {
     dataBought.data2 = true;
 
-    const { data } = await http.put(
-      config.apiEndpoint +
-        "/buydata/" +
-        this.context.currentUser.teamID +
-        "/" +
-        this.context.currentUser.round,
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
       dataBought
     );
-    console.log(data);
+
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
+      dataBought
+    );
   };
 
   dataUpdate3 = async (dataBought) => {
     dataBought.data3 = true;
 
-    const { data } = await http.put(
-      config.apiEndpoint +
-        "/buydata/" +
-        this.context.currentUser.teamID +
-        "/" +
-        this.context.currentUser.round,
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
       dataBought
     );
-    console.log(data);
+
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
+      dataBought
+    );
   };
   dataUpdate4 = async (dataBought) => {
     dataBought.data4 = true;
 
-    const { data } = await http.put(
-      config.apiEndpoint +
-        "/buydata/" +
-        this.context.currentUser.teamID +
-        "/" +
-        this.context.currentUser.round,
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
       dataBought
     );
-    console.log(data);
+
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
+      dataBought
+    );
   };
   dataUpdate5 = async (dataBought) => {
     dataBought.data5 = true;
 
-    const { data } = await http.put(
-      config.apiEndpoint +
-        "/buydata/" +
-        this.context.currentUser.teamID +
-        "/" +
-        this.context.currentUser.round,
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
       dataBought
     );
-    console.log(data);
+
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
+      dataBought
+    );
   };
   dataUpdate6 = async (dataBought) => {
     dataBought.data6 = true;
 
-    const { data } = await http.put(
-      config.apiEndpoint +
-        "/buydata/" +
-        this.context.currentUser.teamID +
-        "/" +
-        this.context.currentUser.round,
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/1",
       dataBought
     );
-    console.log(data);
+
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/2",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/3",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/4",
+      dataBought
+    );
+    http.put(
+      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID + "/5",
+      dataBought
+    );
   };
   dataUpdate7 = async (dataBought) => {
     dataBought.data7 = true;
