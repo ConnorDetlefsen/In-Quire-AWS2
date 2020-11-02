@@ -67,13 +67,25 @@ class buyDataForm extends Component {
         console.log(res);
       });
     http
-      .get(config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID)
+      .get(
+        config.apiEndpoint +
+          "/buydata/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round
+      )
       .then((res) => {
         this.setState({ dataBought: res.data });
         console.log(res);
       });
     http
-      .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
+      .get(
+        config.apiEndpoint +
+          "/finances/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round
+      )
       .then((res) => {
         this.setState({ finances: res.data });
         console.log(res);
@@ -83,7 +95,8 @@ class buyDataForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/5" //round #
+          "/" +
+          this.context.currentUser.round //round #
       )
       .then((res) => {
         this.setState({ data: res.data });
@@ -112,7 +125,11 @@ class buyDataForm extends Component {
     dataBought.data1 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -121,7 +138,11 @@ class buyDataForm extends Component {
     dataBought.data2 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -131,7 +152,11 @@ class buyDataForm extends Component {
     dataBought.data3 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -140,7 +165,11 @@ class buyDataForm extends Component {
     dataBought.data4 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -149,7 +178,11 @@ class buyDataForm extends Component {
     dataBought.data5 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -158,7 +191,11 @@ class buyDataForm extends Component {
     dataBought.data6 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -167,7 +204,11 @@ class buyDataForm extends Component {
     dataBought.data7 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -176,7 +217,11 @@ class buyDataForm extends Component {
     dataBought.data8 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -185,7 +230,11 @@ class buyDataForm extends Component {
     dataBought.data9 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -194,7 +243,11 @@ class buyDataForm extends Component {
     dataBought.data10 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -203,7 +256,11 @@ class buyDataForm extends Component {
     dataBought.data11 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -212,7 +269,11 @@ class buyDataForm extends Component {
     dataBought.data12 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -221,7 +282,11 @@ class buyDataForm extends Component {
     dataBought.data13 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -230,7 +295,11 @@ class buyDataForm extends Component {
     dataBought.data14 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -239,7 +308,11 @@ class buyDataForm extends Component {
     dataBought.data15 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -248,7 +321,11 @@ class buyDataForm extends Component {
     dataBought.data16 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -257,7 +334,11 @@ class buyDataForm extends Component {
     dataBought.data17 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -266,7 +347,11 @@ class buyDataForm extends Component {
     dataBought.data18 = true;
 
     const { data } = await http.put(
-      config.apiEndpoint + "/buydata/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/buydata/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       dataBought
     );
     console.log(data);
@@ -281,8 +366,8 @@ class buyDataForm extends Component {
       .post(config.apiEndpoint + "/log/", {
         amount: cost1,
         team_id: this.context.currentUser.teamID,
-        round_num: log.round_num,
-        category: log.category,
+        round_num: this.context.currentUser.round,
+        category: "Data",
       })
       .then((res) => {
         console.log(res);
@@ -302,7 +387,11 @@ class buyDataForm extends Component {
     const putFinance = parseInt(cost1, 10) + parseInt(prevFinance, 10);
     this.state.finances.total_data = putFinance;
     const { data1 } = await http.put(
-      config.apiEndpoint + "/finances/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/finances/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       this.state.finances
     );
     console.log(data1);
@@ -425,159 +514,6 @@ class buyDataForm extends Component {
                   class="cardData
                 "
                 >
-                  <h5>Round 3 Competitor Data One: $10000</h5>
-                  <p>
-                    Graphs displaying the amount of inventory purchased by each
-                    team, data displaying the comparison of latitude and
-                    longitude per each location, and the budgets of each team
-                    from round 3.
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data16
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="10000"
-                    name="data16"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data16 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data16 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Round 2 Competitor Data One: $10000</h5>
-                  <p>
-                    Graphs displaying the amount of inventory purchased by each
-                    team, data displaying the comparison of latitude and
-                    longitude per each location, and the budgets of each team
-                    from round 2.
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data13
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="10000"
-                    name="data13"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data13 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data13 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Competitor Data One: $10000</h5>
-                  <p>
-                    Graphs displaying the amount of inventory purchased by each
-                    team, data displaying the comparison of latitude and
-                    longitude per each location, and the budgets of each team.
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data10
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="10000"
-                    name="data10"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data10 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data10 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Customer Age Data: $4000</h5>
-                  <p>
-                    We collected age information of 2000 customers close to your
-                    store.
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data7
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="4000"
-                    name="data7"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data7 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data7 +
-                        ".csv"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
                   <h5>Basic Population Survey: $3000</h5>
                   <p>
                     This survey is a rough estimate of the population, or number
@@ -599,11 +535,8 @@ class buyDataForm extends Component {
                   {this.state.dataBought.data1 === true && (
                     <a
                       href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data1 +
-                        ".jpg"
+                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename1
                       }
                       download
                     >
@@ -634,11 +567,8 @@ class buyDataForm extends Component {
                   {this.state.dataBought.data2 === true && (
                     <a
                       href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data2 +
-                        ".jpg"
+                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename2
                       }
                       download
                     >
@@ -648,160 +578,6 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Round 3 Competitor Data Two: $14000</h5>
-                  <p>
-                    Graphs displaying the amount of inventory purchased by each
-                    team, data displaying the comparison of latitude and
-                    longitude per each location, and the budgets of each team
-                    from round 3.
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data17
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="14000"
-                    name="data17"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data17 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data17 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Round 2 Competitor Data Two: $14000</h5>
-                  <p>
-                    Graphs displaying the comparison of each team's budgets v.
-                    their marketing spending per each category and graphs
-                    displaying the quantity versus selling price of each
-                    inventory item from round 2.
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data14
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="14000"
-                    name="data14"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data14 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data14 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Competitor Data Two: $14000</h5>
-                  <p>
-                    Graphs displaying the comparison of each team's budgets v.
-                    their marketing spending per each category and graphs
-                    displaying the quantity versus selling price of each
-                    inventory item.
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data11
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="14000"
-                    name="data11"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data11 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data11 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Customer Income Data: $4000</h5>
-                  <p>
-                    We collected income information of 2000 customers close to
-                    your store
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data8
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="4000"
-                    name="data8"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data8 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data8 +
-                        ".csv"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
                 <div class="cardData">
                   <h5>Basic Income Survey: $3000</h5>
                   <p>
@@ -824,11 +600,8 @@ class buyDataForm extends Component {
                   {this.state.dataBought.data3 === true && (
                     <a
                       href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data3 +
-                        ".jpg"
+                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename3
                       }
                       download
                     >
@@ -859,11 +632,8 @@ class buyDataForm extends Component {
                   {this.state.dataBought.data4 === true && (
                     <a
                       href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data4 +
-                        ".jpg"
+                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename4
                       }
                       download
                     >
@@ -873,156 +643,6 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Round 3 Competitor Data Three: $8000</h5>
-                  <p>
-                    Data comparing the quantities and prices of the inventory
-                    each team bought between round 3 and round 4
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data18
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="8000"
-                    name="data18"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data18 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data18 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Round 2 Competitor Data Three: $8000</h5>
-                  <p>
-                    Graphs of location data comparing latitude / longitude,
-                    latitude / budget, longitude / budget, and each team's
-                    budgets from round 2
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data15
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="8000"
-                    name="data15"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data15 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data15 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Competitor Data Three: $8000</h5>
-                  <p>
-                    Graphs of location data comparing latitude / longitude,
-                    latitude / budget, longitude / budget, and each team's
-                    budgets
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data12
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="8000"
-                    name="data12"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data12 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data12 +
-                        ".pdf"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
-                <div
-                  class="cardData
-                "
-                >
-                  <h5>Customer Location Data: $4000</h5>
-                  <p>
-                    We collected location information of 2000 customers close to
-                    your store.
-                  </p>
-                  <button
-                    disabled={
-                      !this.context.currentUser.isManager ||
-                      this.state.dataBought.data9
-                    }
-                    type="button"
-                    onClick={this.handleClick}
-                    class="btn btn-primary"
-                    value="4000"
-                    name="data9"
-                  >
-                    Purchase
-                  </button>
-                  {this.state.dataBought.data9 === true && (
-                    <a
-                      href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data9 +
-                        ".csv"
-                      }
-                      download
-                    >
-                      Data Download
-                    </a>
-                  )}
-                </div>
                 <div class="cardData">
                   <h5>Basic Age Survey: $3,000</h5>
                   <p>
@@ -1046,11 +666,8 @@ class buyDataForm extends Component {
                   {this.state.dataBought.data5 === true && (
                     <a
                       href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data5 +
-                        ".jpg"
+                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename5
                       }
                       download
                     >
@@ -1081,11 +698,8 @@ class buyDataForm extends Component {
                   {this.state.dataBought.data6 === true && (
                     <a
                       href={
-                        "https://inquire-team" +
-                        this.context.currentUser.teamID +
-                        ".s3-us-west-1.amazonaws.com/" +
-                        this.state.data.data6 +
-                        ".jpg"
+                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename6
                       }
                       download
                     >

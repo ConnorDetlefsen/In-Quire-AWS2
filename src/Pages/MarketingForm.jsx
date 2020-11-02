@@ -51,13 +51,25 @@ class MarketingForm extends Component {
         console.log(res);
       });
     http
-      .get(config.apiEndpoint + "/marketing/" + this.context.currentUser.teamID)
+      .get(
+        config.apiEndpoint +
+          "/marketing/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round
+      )
       .then((res) => {
         this.setState({ marketing: res.data });
         console.log(res);
       });
     http
-      .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
+      .get(
+        config.apiEndpoint +
+          "/finances/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round
+      )
       .then((res) => {
         this.setState({ finances: res.data });
         console.log(res);
@@ -83,7 +95,11 @@ class MarketingForm extends Component {
   handleUpdate = async (marketing) => {
     marketing.facebook = 1000;
     const { data } = await http.put(
-      config.apiEndpoint + "/marketing/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/marketing/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       marketing
     );
 
@@ -101,13 +117,21 @@ class MarketingForm extends Component {
     const putFinance = parseInt(amount, 10) + parseInt(prevFinance, 10);
     this.state.finances.total_marketing = putFinance;
     const { data1 } = await http.put(
-      config.apiEndpoint + "/finances/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/finances/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       this.state.finances
     );
     console.log(data1);
 
     const { data } = await http.put(
-      config.apiEndpoint + "/marketing/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/marketing/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       marketing
     );
     console.log(data);
@@ -260,7 +284,6 @@ class MarketingForm extends Component {
                     <img src={facebookIMG} height="60" width="60" />
                     Facebook Marketing
                   </h4>
-                  <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.facebook}</h5>
                 </div>
               </div>
@@ -273,7 +296,6 @@ class MarketingForm extends Component {
                     <img src={instagramIMG} height="50" width="50" />
                     Instagram Marketing
                   </h4>
-                  <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.instagram}</h5>
                 </div>
               </div>
@@ -287,7 +309,6 @@ class MarketingForm extends Component {
                     <img src={newspaperIMG} height="60" width="60" />
                     Newspaper Marketing
                   </h4>
-                  <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.newspaper}</h5>
                 </div>
               </div>
@@ -300,7 +321,6 @@ class MarketingForm extends Component {
                     <img src={TVIMG} height="60" width="60" />
                     Television Marketing
                   </h4>
-                  <p>Description of what is included in this data package</p>
                   <h5>Amount Spent: {marketing.television}</h5>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Login from "./Components/loginForm";
 import Inventory from "./Pages/inventoryForm";
 // import Nav from "./Components/Nav";
@@ -75,4 +75,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default App;

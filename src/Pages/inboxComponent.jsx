@@ -30,7 +30,13 @@ class inboxComponent extends Component {
       }
     });
     http
-      .get(config.apiEndpoint + "/inbox/" + this.context.currentUser.teamID)
+      .get(
+        config.apiEndpoint +
+          "/inbox/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round
+      )
       .then((res) => {
         this.setState({ inbox: res.data });
       });

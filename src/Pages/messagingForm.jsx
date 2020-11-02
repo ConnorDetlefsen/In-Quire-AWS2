@@ -31,12 +31,20 @@ class messagingForm extends Component {
         history.push("/");
       }
     });
+    /*
     http
-      .get(config.apiEndpoint + "/message/" + this.context.currentUser.teamID)
+      .get(
+        config.apiEndpoint +
+          "/message/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round
+      )
       .then((res) => {
         this.setState({ messages: res.data });
         console.log(res);
       });
+      */
     http
       .get(config.apiEndpoint + "/team/" + this.context.currentUser.teamID)
       .then((res) => {
@@ -48,10 +56,18 @@ class messagingForm extends Component {
     e.preventDefault();
 
     http
-      .post(config.apiEndpoint + "/message/", {
-        message: this.state.new_message,
-        team_id: this.context.currentUser.teamID,
-      })
+      .post(
+        config.apiEndpoint +
+          "/message/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round,
+        {
+          message: this.state.new_message,
+          team_id: this.context.currentUser.teamID,
+          round_num: this.context.currentUser.round,
+        }
+      )
       .then((res) => {
         console.log(res);
         toast.success(`Message Sent`);

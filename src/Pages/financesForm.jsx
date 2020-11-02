@@ -36,7 +36,13 @@ class financesForm extends Component {
       }
     });
     http
-      .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
+      .get(
+        config.apiEndpoint +
+          "/finances/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round
+      )
       .then((res) => {
         this.setState({ finances: res.data });
         console.log(res);
@@ -59,7 +65,8 @@ class financesForm extends Component {
         config.apiEndpoint +
           "/filenames/" +
           this.context.currentUser.teamID +
-          "/5"
+          "/" +
+          this.context.currentUser.round
       )
       .then((res) => {
         this.setState({ data: res.data });

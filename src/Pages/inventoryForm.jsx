@@ -102,7 +102,13 @@ class inventoryForm extends Component {
     });
 
     http
-      .get(config.apiEndpoint + "/finances/" + this.context.currentUser.teamID)
+      .get(
+        config.apiEndpoint +
+          "/finances/" +
+          this.context.currentUser.teamID +
+          "/" +
+          this.context.currentUser.round
+      )
       .then((res) => {
         this.setState({ finances: res.data });
         console.log(res);
@@ -1080,8 +1086,8 @@ class inventoryForm extends Component {
       .post(config.apiEndpoint + "/log/", {
         amount: purchaseTotal,
         team_id: this.context.currentUser.teamID,
-        round_num: log.round_num,
-        category: log.category,
+        round_num: this.context.currentUser.round,
+        category: "Inventory",
       })
       .then((res) => {
         console.log(res);
@@ -1090,7 +1096,11 @@ class inventoryForm extends Component {
     const putFinance = parseInt(purchaseTotal, 10) + parseInt(prevFinance, 10);
     this.state.finances.total_inventory = putFinance;
     http.put(
-      config.apiEndpoint + "/finances/" + this.context.currentUser.teamID,
+      config.apiEndpoint +
+        "/finances/" +
+        this.context.currentUser.teamID +
+        "/" +
+        this.context.currentUser.round,
       this.state.finances
     );
     toast.success("Inventory Order Submitted!");
