@@ -56,18 +56,11 @@ class messagingForm extends Component {
     e.preventDefault();
 
     http
-      .post(
-        config.apiEndpoint +
-          "/message/" +
-          this.context.currentUser.teamID +
-          "/" +
-          this.context.currentUser.round,
-        {
-          message: this.state.new_message,
-          team_id: this.context.currentUser.teamID,
-          round_num: this.context.currentUser.round,
-        }
-      )
+      .post(config.apiEndpoint + "/message/", {
+        message: this.state.new_message,
+        team_id: this.context.currentUser.teamID,
+        round_num: this.context.currentUser.round,
+      })
       .then((res) => {
         console.log(res);
         toast.success(`Message Sent`);

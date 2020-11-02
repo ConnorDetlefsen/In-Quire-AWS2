@@ -139,11 +139,8 @@ class financesForm extends Component {
                 <a
                   class="blackFont"
                   href={
-                    "https://inquire-team" +
-                    this.context.currentUser.teamID +
-                    ".s3-us-west-1.amazonaws.com/" +
-                    this.state.data.finances +
-                    ".csv"
+                    "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                    this.state.data.filename8
                   }
                   download
                 >

@@ -78,13 +78,11 @@ class inboxComponent extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {inbox.map((inbox) => (
-                      <tr key={inbox.inbox_id}>
-                        <td>{inbox.sender}</td>
-                        <td>{inbox.message}</td>
-                        <td>{("" + inbox.stamp).substring(0, 10)}</td>
-                      </tr>
-                    ))}
+                    <tr>
+                      <td>{inbox.sender}</td>
+                      <td>{inbox.message}</td>
+                      <td>{("" + inbox.stamp).substring(0, 10)}</td>
+                    </tr>
                   </tbody>
                 </table>
               </center>

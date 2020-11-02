@@ -457,6 +457,14 @@ class locationComponent extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { history } = this.props;
+
+    http.get(config.apiEndpoint + "/roundend/1").then((res) => {
+      if (res.data.roundisover === true) {
+        toast.error("round is over");
+        history.push("/");
+      }
+    });
 
     const errors = this.validate(); //error checking if negative or if no dropdown selected
     this.setState({ errors: errors || {} });
