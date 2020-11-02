@@ -463,6 +463,7 @@ class locationComponent extends Component {
       if (res.data.roundisover === true) {
         toast.error("round is over");
         history.push("/");
+        return;
       }
     });
 
