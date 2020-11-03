@@ -14,7 +14,10 @@ class inboxComponent extends Component {
     this.state = {
       errors: {},
       team: [],
-      inbox: [],
+      message1: [],
+      message2: [],
+      message3: [],
+      message4: [],
     };
   }
   async componentDidMount() {
@@ -38,10 +41,15 @@ class inboxComponent extends Component {
             this.context.currentUser.teamID +
             "/" +
             this.context.currentUser.round +
-            "/Inventory"
+            "/inventory"
         )
         .then((res) => {
-          this.setState({ inbox: res.data });
+          this.setState({
+            message1: res.data[0],
+            message2: res.data[1],
+            message3: res.data[2],
+            message4: res.data[3],
+          });
         });
     }
     if (this.context.currentUser.isManager === true) {
@@ -52,7 +60,7 @@ class inboxComponent extends Component {
             this.context.currentUser.teamID +
             "/" +
             this.context.currentUser.round +
-            "/Manager"
+            "/manager"
         )
         .then((res) => {
           this.setState({ inbox: res.data });
@@ -67,7 +75,7 @@ class inboxComponent extends Component {
             this.context.currentUser.teamID +
             "/" +
             this.context.currentUser.round +
-            "/Consultant"
+            "/consultant"
         )
         .then((res) => {
           this.setState({ inbox: res.data });
@@ -81,7 +89,7 @@ class inboxComponent extends Component {
             this.context.currentUser.teamID +
             "/" +
             this.context.currentUser.round +
-            "/Marketing"
+            "/marketing"
         )
         .then((res) => {
           this.setState({ inbox: res.data });
@@ -127,9 +135,24 @@ class inboxComponent extends Component {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>{inbox.sender}</td>
-                      <td>{inbox.message}</td>
-                      <td>{("" + inbox.stamp).substring(0, 10)}</td>
+                      <td>{message1.sender}</td>
+                      <td>{message1.message}</td>
+                      <td>{("" + message1.stamp).substring(0, 10)}</td>
+                    </tr>
+                    <tr>
+                      <td>{message2.sender}</td>
+                      <td>{message2.message}</td>
+                      <td>{("" + message2.stamp).substring(0, 10)}</td>
+                    </tr>
+                    <tr>
+                      <td>{message3.sender}</td>
+                      <td>{message3.message}</td>
+                      <td>{("" + message3.stamp).substring(0, 10)}</td>
+                    </tr>
+                    <tr>
+                      <td>{message4.sender}</td>
+                      <td>{message4.message}</td>
+                      <td>{("" + message4.stamp).substring(0, 10)}</td>
                     </tr>
                   </tbody>
                 </table>
