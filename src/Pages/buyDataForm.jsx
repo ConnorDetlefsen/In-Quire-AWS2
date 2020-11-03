@@ -96,8 +96,8 @@ class buyDataForm extends Component {
       )
       .then((res) => {
         this.setState({ finances: res.data });
-        console.log(res);
       });
+
     http
       .get(
         config.apiEndpoint +
@@ -492,6 +492,76 @@ class buyDataForm extends Component {
                   class="cardData
                 "
                 >
+                  <h5>Customer Age Survey: $7000</h5>
+                  <p>
+                    This survey contains information on the age of your
+                    customers.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data7
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="7000"
+                    name="data7"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data7 === true && (
+                    <a
+                      href={
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename7 +
+                        ".csv"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Customer Gender Survey: $7000</h5>
+                  <p>
+                    This survey contains information on the gender of your
+                    customers.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data8
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="7000"
+                    name="data8"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data8 === true && (
+                    <a
+                      href={
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename8 +
+                        ".csv"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
+                <div
+                  class="cardData
+                "
+                >
                   <h5>Basic Population Survey: $3000</h5>
                   <p>
                     This survey is a rough estimate of the population, or number
@@ -558,6 +628,41 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Customer Income Survey: $7000</h5>
+                  <p>
+                    This survey contains information on the income of your
+                    customers.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data9
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="7000"
+                    name="data9"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data9 === true && (
+                    <a
+                      href={
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename9 +
+                        ".csv"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
                 <div class="cardData">
                   <h5>Basic Income Survey: $3000</h5>
                   <p>
@@ -625,6 +730,41 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Customer Location Survey: $7000</h5>
+                  <p>
+                    This survey contains information on the location of your
+                    customers.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data10
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="7000"
+                    name="data10"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data10 === true && (
+                    <a
+                      href={
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename10 +
+                        ".csv"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
                 <div class="cardData">
                   <h5>Basic Age Survey: $3,000</h5>
                   <p>
