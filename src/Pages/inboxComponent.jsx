@@ -18,6 +18,8 @@ class inboxComponent extends Component {
       message2: [],
       message3: [],
       message4: [],
+
+      inbox: [],
     };
   }
   async componentDidMount() {
@@ -45,6 +47,7 @@ class inboxComponent extends Component {
         )
         .then((res) => {
           this.setState({
+            inbox: res.data,
             message1: res.data[0],
             message2: res.data[1],
             message3: res.data[2],
@@ -63,7 +66,14 @@ class inboxComponent extends Component {
             "/manager"
         )
         .then((res) => {
-          this.setState({ inbox: res.data });
+          this.setState({
+            inbox: res.data,
+
+            message1: res.data[0],
+            message2: res.data[1],
+            message3: res.data[2],
+            message4: res.data[3],
+          });
         });
     }
 
@@ -78,7 +88,14 @@ class inboxComponent extends Component {
             "/consultant"
         )
         .then((res) => {
-          this.setState({ inbox: res.data });
+          this.setState({
+            inbox: res.data,
+
+            message1: res.data[0],
+            message2: res.data[1],
+            message3: res.data[2],
+            message4: res.data[3],
+          });
         });
     }
     if (this.context.currentUser.isMarketing === true) {
@@ -92,7 +109,14 @@ class inboxComponent extends Component {
             "/marketing"
         )
         .then((res) => {
-          this.setState({ inbox: res.data });
+          this.setState({
+            inbox: res.data,
+
+            message1: res.data[0],
+            message2: res.data[1],
+            message3: res.data[2],
+            message4: res.data[3],
+          });
         });
     }
 
@@ -104,7 +128,7 @@ class inboxComponent extends Component {
   }
   //<td>{("" + finances.stamp).substring(11, 19)}</td>
   render() {
-    const { inbox } = this.state;
+    const { inbox, message1, message2, message3, message4 } = this.state;
     return (
       <React.Fragment>
         <ToastContainer />
@@ -134,26 +158,41 @@ class inboxComponent extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>{message1.sender}</td>
-                      <td>{message1.message}</td>
-                      <td>{("" + message1.stamp).substring(0, 10)}</td>
-                    </tr>
-                    <tr>
-                      <td>{message2.sender}</td>
-                      <td>{message2.message}</td>
-                      <td>{("" + message2.stamp).substring(0, 10)}</td>
-                    </tr>
-                    <tr>
-                      <td>{message3.sender}</td>
-                      <td>{message3.message}</td>
-                      <td>{("" + message3.stamp).substring(0, 10)}</td>
-                    </tr>
-                    <tr>
-                      <td>{message4.sender}</td>
-                      <td>{message4.message}</td>
-                      <td>{("" + message4.stamp).substring(0, 10)}</td>
-                    </tr>
+                    {inbox && !message1 && (
+                      <tr>
+                        <td>{inbox.sender}</td>
+                        <td>{inbox.message}</td>
+                        <td>{("" + inbox.stamp).substring(0, 10)}</td>
+                      </tr>
+                    )}
+                    {message1 && (
+                      <tr>
+                        <td>{message1.sender}</td>
+                        <td>{message1.message}</td>
+                        <td>{("" + message1.stamp).substring(0, 10)}</td>
+                      </tr>
+                    )}
+                    {message2 && (
+                      <tr>
+                        <td>{message2.sender}</td>
+                        <td>{message2.message}</td>
+                        <td>{("" + message2.stamp).substring(0, 10)}</td>
+                      </tr>
+                    )}
+                    {message3 && (
+                      <tr>
+                        <td>{message3.sender}</td>
+                        <td>{message3.message}</td>
+                        <td>{("" + message3.stamp).substring(0, 10)}</td>
+                      </tr>
+                    )}
+                    {message4 && (
+                      <tr>
+                        <td>{message4.sender}</td>
+                        <td>{message4.message}</td>
+                        <td>{("" + message4.stamp).substring(0, 10)}</td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </center>
