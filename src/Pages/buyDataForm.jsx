@@ -513,7 +513,7 @@ class buyDataForm extends Component {
                   {this.state.constantDataBought.data1 === true && (
                     <a
                       href={
-                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
                         this.state.data.filename1 +
                         ".jpg"
                       }
@@ -546,7 +546,7 @@ class buyDataForm extends Component {
                   {this.state.constantDataBought.data2 === true && (
                     <a
                       href={
-                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
                         this.state.data.filename2 +
                         ".jpg"
                       }
@@ -580,7 +580,7 @@ class buyDataForm extends Component {
                   {this.state.constantDataBought.data3 === true && (
                     <a
                       href={
-                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
                         this.state.data.filename3 +
                         ".jpg"
                       }
@@ -613,7 +613,7 @@ class buyDataForm extends Component {
                   {this.state.constantDataBought.data4 === true && (
                     <a
                       href={
-                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
                         this.state.data.filename4 +
                         ".jpg"
                       }
@@ -648,7 +648,7 @@ class buyDataForm extends Component {
                   {this.state.constantDataBought.data5 === true && (
                     <a
                       href={
-                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
                         this.state.data.filename5 +
                         ".jpg"
                       }
@@ -681,7 +681,7 @@ class buyDataForm extends Component {
                   {this.state.constantDataBought.data6 === true && (
                     <a
                       href={
-                        "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
                         this.state.data.filename6 +
                         ".jpg"
                       }
