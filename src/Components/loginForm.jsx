@@ -176,6 +176,17 @@ class LoginForm extends Component {
                     {this.renderButton("Login")}
                   </form>
                 </div>
+                <p>
+                  By clicking login, you agree to InQuire's
+                  <a
+                    //class="list-group-item list-group-item-action"
+                    //onClick={this.notRoundOne}
+                    href="https://in-quire.com/terms-of-service-bas/"
+                  >
+                    {" "}
+                    terms of service.
+                  </a>
+                </p>
               </div>
             </div>
           </div>
