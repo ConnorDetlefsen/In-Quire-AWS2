@@ -139,7 +139,7 @@ class financesForm extends Component {
                 <a
                   class="blackFont"
                   href={
-                    "https://sas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                    "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
                     this.state.data.finances +
                     ".csv"
                   }
