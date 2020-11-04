@@ -492,6 +492,42 @@ class buyDataForm extends Component {
                   class="cardData
                 "
                 >
+                  <h5>Competitor Survey 1: $7000</h5>
+                  <p>
+                    Data that shows the number of items bought for each team and
+                    quantity bought v. the prices sold with the overall budgets
+                    of each team
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data11
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="7000"
+                    name="data11"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data11 === true && (
+                    <a
+                      href={
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename11 +
+                        ".pdf"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
+                <div
+                  class="cardData
+                "
+                >
                   <h5>Customer Age Survey: $7000</h5>
                   <p>
                     This survey contains information on the age of your
@@ -632,10 +668,47 @@ class buyDataForm extends Component {
                   class="cardData
                 "
                 >
+                  <h5>Competitor Survey 2: $7000</h5>
+                  <p>
+                    Data that shows the number of items bought for each team,
+                    marketing spending, and location data based on budget and
+                    the overall budgets of each team
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data12
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="7000"
+                    name="data12"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data12 === true && (
+                    <a
+                      href={
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename12 +
+                        ".pdf"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
+                <div
+                  class="cardData
+                "
+                >
                   <h5>Customer Income Survey: $7000</h5>
                   <p>
-                    This survey contains information on the income of your
-                    customers.
+                    Data that shows the number of items bought compared to what
+                    price they are sold at, a comparison of the previous rounds
+                    quantity of inventory, and marketing
                   </p>
                   <button
                     disabled={
@@ -730,6 +803,42 @@ class buyDataForm extends Component {
                 </div>
               </div>
               <div class="column">
+                <div
+                  class="cardData
+                "
+                >
+                  <h5>Competitor Survey 3: $7000</h5>
+                  <p>
+                    Data that shows the number of items bought compared to what
+                    price they are sold at, a comparison of the previous rounds
+                    quantity of inventory, and marketing.
+                  </p>
+                  <button
+                    disabled={
+                      !this.context.currentUser.isManager ||
+                      this.state.dataBought.data13
+                    }
+                    type="button"
+                    onClick={this.handleClick}
+                    class="btn btn-primary"
+                    value="7000"
+                    name="data13"
+                  >
+                    Purchase
+                  </button>
+                  {this.state.dataBought.data13 === true && (
+                    <a
+                      href={
+                        "https://bas-buydata-files.s3-us-west-1.amazonaws.com/" +
+                        this.state.data.filename13 +
+                        ".pdf"
+                      }
+                      download
+                    >
+                      Data Download
+                    </a>
+                  )}
+                </div>
                 <div
                   class="cardData
                 "
