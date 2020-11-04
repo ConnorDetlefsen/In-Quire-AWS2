@@ -150,8 +150,6 @@ class LoginForm extends Component {
     });
   }
 
-  //{this.renderButton("Login")}
-
   render() {
     return (
       <>
@@ -171,19 +169,10 @@ class LoginForm extends Component {
                       </h1>
                     </div>
                   </div>
-                  <form
-                    className="login-form " /*onSubmit={this.handleSubmit} */
-                  >
+                  <form className="login-form " onSubmit={this.handleSubmit}>
                     {this.renderInput("email", "Email")}
                     {this.renderInput("password", "Password", "password")}
-                    <a
-                      //class="list-group-item list-group-item-action"
-                      //onClick={this.notRoundOne}
-                      href="https://in-quire.com/maintenance-mode/"
-                    >
-                      {" "}
-                      Login
-                    </a>
+                    {this.renderButton("Login")}
                   </form>
                 </div>
                 <p>
