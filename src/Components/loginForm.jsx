@@ -181,7 +181,7 @@ class LoginForm extends Component {
                   <a
                     //class="list-group-item list-group-item-action"
                     //onClick={this.notRoundOne}
-                    href="https://in-quire.com/terms-of-service-bas/"
+                    href="https://in-quire.com/terms-of-service/"
                   >
                     {" "}
                     terms of service.
