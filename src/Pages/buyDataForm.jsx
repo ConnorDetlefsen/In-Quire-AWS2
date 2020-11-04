@@ -809,9 +809,8 @@ class buyDataForm extends Component {
                 >
                   <h5>Competitor Survey 3: $7000</h5>
                   <p>
-                    Data that shows the number of items bought compared to what
-                    price they are sold at, a comparison of the previous rounds
-                    quantity of inventory, and marketing.
+                    Data that shows the marketing spending, location data, and
+                    total budget for each team
                   </p>
                   <button
                     disabled={
