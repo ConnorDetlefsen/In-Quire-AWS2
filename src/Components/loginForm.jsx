@@ -134,7 +134,6 @@ class LoginForm extends Component {
         history.push("/overview");
       }
     }
-
     toast.error("Username and Password doesn't match");
   };
   async componentDidMount() {
@@ -150,6 +149,8 @@ class LoginForm extends Component {
       this.setState({ roundend: res.data });
     });
   }
+
+  //{this.renderButton("Login")}
 
   render() {
     return (
@@ -170,10 +171,19 @@ class LoginForm extends Component {
                       </h1>
                     </div>
                   </div>
-                  <form className="login-form " onSubmit={this.handleSubmit}>
+                  <form
+                    className="login-form " /*onSubmit={this.handleSubmit} */
+                  >
                     {this.renderInput("email", "Email")}
                     {this.renderInput("password", "Password", "password")}
-                    {this.renderButton("Login")}
+                    <a
+                      //class="list-group-item list-group-item-action"
+                      //onClick={this.notRoundOne}
+                      href="https://in-quire.com/maintenance-mode/"
+                    >
+                      {" "}
+                      Login
+                    </a>
                   </form>
                 </div>
                 <p>
